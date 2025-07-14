@@ -423,9 +423,11 @@ export default function HomePage() {
                       </Select>
                     </div>
 
-                    <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-700">
-                      Generate Preview
-                    </Button>
+                    <a href="https://www.synthesia.io/" target="_blank" rel="nofollow noopener noreferrer">
+                      <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-700">
+                        Generate Preview
+                      </Button>
+                    </a>
                     <p className="text-sm text-gray-500 text-center">
                       Free preview under 10 seconds. No signup required.
                     </p>
