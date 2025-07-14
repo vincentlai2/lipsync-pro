@@ -1,6 +1,5 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import Canonical from '@/components/Canonical'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
@@ -14,6 +13,7 @@ import {
   Video,
   ArrowLeft,
   Mail,
+  
   Twitter,
   Linkedin
 } from 'lucide-react'

@@ -8,16 +8,19 @@ import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
 
 export const metadata: Metadata = {
-  title: 'What is AI Lip Sync? Complete Beginner\'s Guide 2024 | LipSync.pro',
+  title: 'What is AI Lip Sync? Complete Beginner\'s Guide 2025 | LipSync.pro',
   description: 'Learn everything about AI lip sync technology: how it works, applications, benefits, and getting started. Complete guide with examples and best practices.',
   keywords: ['AI lip sync', 'artificial intelligence', 'video dubbing', 'speech synthesis', 'video localization', 'deep learning'],
+  alternates: {
+    canonical: 'https://lipsync.pro/what-is-ai-lip-sync',
+  },
   authors: [{ name: 'LipSync Team', url: '/author/lipsync-team' }],
   openGraph: {
-    title: 'What is AI Lip Sync? Complete Beginner\'s Guide 2024',
+    title: 'What is AI Lip Sync? Complete Beginner\'s Guide 2025',
     description: 'Learn everything about AI lip sync technology: how it works, applications, benefits, and getting started.',
     type: 'article',
     publishedTime: '2024-01-15T10:00:00.000Z',
-    modifiedTime: '2024-01-20T14:30:00.000Z',
+    modifiedTime: '2025-07-14T14:30:00.000Z',
     authors: ['LipSync Team'],
     tags: ['AI lip sync', 'video technology', 'dubbing', 'localization'],
     images: [{
@@ -29,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'What is AI Lip Sync? Complete Beginner\'s Guide 2024',
+    title: 'What is AI Lip Sync? Complete Beginner\'s Guide 2025',
     description: 'Learn everything about AI lip sync technology: how it works, applications, and getting started.',
     images: ['/og-image.png']
   }
@@ -38,11 +41,11 @@ export const metadata: Metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: 'What is AI Lip Sync? Complete Beginner\'s Guide 2024',
+      headline: 'What is AI Lip Sync? Complete Beginner\'s Guide 2025',
   description: 'Learn everything about AI lip sync technology: how it works, applications, benefits, and getting started.',
   image: '/og-image.png',
   datePublished: '2024-01-15T10:00:00.000Z',
-  dateModified: '2024-01-20T14:30:00.000Z',
+  dateModified: '2025-07-14T14:30:00.000Z',
   author: {
     '@type': 'Organization',
     name: 'LipSync Team',
@@ -289,10 +292,10 @@ export default function WhatIsAILipSyncPage() {
                     </CardHeader>
                     <CardContent>
                       <ul className="text-sm text-muted-foreground space-y-2">
-                        <li>�?Movie and TV show dubbing</li>
-                        <li>�?Multilingual content creation</li>
-                        <li>�?Voice actor replacement</li>
-                        <li>�?Post-production fixes</li>
+                        <li>• Movie and TV show dubbing</li>
+                        <li>• Multilingual content creation</li>
+                        <li>• Voice actor replacement</li>
+                        <li>• Post-production fixes</li>
                       </ul>
                     </CardContent>
                   </Card>
@@ -305,10 +308,10 @@ export default function WhatIsAILipSyncPage() {
                     </CardHeader>
                     <CardContent>
                       <ul className="text-sm text-muted-foreground space-y-2">
-                        <li>�?E-learning course localization</li>
-                        <li>�?Corporate training videos</li>
-                        <li>�?Language learning content</li>
-                        <li>�?Educational accessibility</li>
+                        <li>• E-learning course localization</li>
+                        <li>• Corporate training videos</li>
+                        <li>• Language learning content</li>
+                        <li>• Educational accessibility</li>
                       </ul>
                     </CardContent>
                   </Card>
@@ -321,10 +324,10 @@ export default function WhatIsAILipSyncPage() {
                     </CardHeader>
                     <CardContent>
                       <ul className="text-sm text-muted-foreground space-y-2">
-                        <li>�?Influencer content translation</li>
-                        <li>�?Global marketing campaigns</li>
-                        <li>�?Brand localization</li>
-                        <li>�?User-generated content</li>
+                        <li>• Influencer content translation</li>
+                        <li>• Global marketing campaigns</li>
+                        <li>• Brand localization</li>
+                        <li>• User-generated content</li>
                       </ul>
                     </CardContent>
                   </Card>
@@ -337,10 +340,10 @@ export default function WhatIsAILipSyncPage() {
                     </CardHeader>
                     <CardContent>
                       <ul className="text-sm text-muted-foreground space-y-2">
-                        <li>�?CEO messages in multiple languages</li>
-                        <li>�?Product announcements</li>
-                        <li>�?Internal communications</li>
-                        <li>�?Customer support videos</li>
+                        <li>• CEO messages in multiple languages</li>
+                        <li>• Product announcements</li>
+                        <li>• Internal communications</li>
+                        <li>• Customer support videos</li>
                       </ul>
                     </CardContent>
                   </Card>
@@ -475,11 +478,11 @@ export default function WhatIsAILipSyncPage() {
                     </CardHeader>
                     <CardContent>
                       <ul className="text-sm text-muted-foreground space-y-2">
-                        <li>�?Complex facial expressions and emotions</li>
-                        <li>�?Handling different lighting conditions</li>
-                        <li>�?Multiple speakers in the same frame</li>
-                        <li>�?Side profile and partial face views</li>
-                        <li>�?Fast speech or unclear pronunciation</li>
+                        <li>• Complex facial expressions and emotions</li>
+                        <li>• Handling different lighting conditions</li>
+                        <li>• Multiple speakers in the same frame</li>
+                        <li>• Side profile and partial face views</li>
+                        <li>• Fast speech or unclear pronunciation</li>
                       </ul>
                     </CardContent>
                   </Card>
@@ -490,11 +493,11 @@ export default function WhatIsAILipSyncPage() {
                     </CardHeader>
                     <CardContent>
                       <ul className="text-sm text-muted-foreground space-y-2">
-                        <li>�?Maintaining natural facial expressions</li>
-                        <li>�?Preserving speaker's personality</li>
-                        <li>�?Cultural gesture adaptation</li>
-                        <li>�?Accent and pronunciation variations</li>
-                        <li>�?Emotional context preservation</li>
+                        <li>• Maintaining natural facial expressions</li>
+                        <li>• Preserving speaker's personality</li>
+                        <li>• Cultural gesture adaptation</li>
+                        <li>• Accent and pronunciation variations</li>
+                        <li>• Emotional context preservation</li>
                       </ul>
                     </CardContent>
                   </Card>
@@ -507,19 +510,19 @@ export default function WhatIsAILipSyncPage() {
                       <div>
                         <h4 className="font-semibold mb-2">Video Requirements:</h4>
                         <ul className="text-sm text-muted-foreground space-y-1">
-                          <li>�?Use HD or 4K resolution</li>
-                          <li>�?Ensure good lighting</li>
-                          <li>�?Keep face clearly visible</li>
-                          <li>�?Minimize background noise</li>
+                          <li>• Use HD or 4K resolution</li>
+                          <li>• Ensure good lighting</li>
+                          <li>• Keep face clearly visible</li>
+                          <li>• Minimize background noise</li>
                         </ul>
                       </div>
                       <div>
                         <h4 className="font-semibold mb-2">Audio Guidelines:</h4>
                         <ul className="text-sm text-muted-foreground space-y-1">
-                          <li>�?Use clear, high-quality audio</li>
-                          <li>�?Match speaking pace when possible</li>
-                          <li>�?Consider voice similarity</li>
-                          <li>�?Test with shorter clips first</li>
+                          <li>• Use clear, high-quality audio</li>
+                          <li>• Match speaking pace when possible</li>
+                          <li>• Consider voice similarity</li>
+                          <li>• Test with shorter clips first</li>
                         </ul>
                       </div>
                     </div>

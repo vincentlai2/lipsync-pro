@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     description: 'Learn how AI lip sync technology can revolutionize your e-learning content.',
     type: 'article',
     publishedTime: '2025-07-10T10:00:00.000Z',
-    modifiedTime: '2025-07-10T14:30:00.000Z',
+    modifiedTime: '2025-07-14T14:30:00.000Z',
     authors: ['LipSync Team'],
     tags: ['AI lip sync', 'e-learning', 'educational content'],
     images: [{
@@ -43,11 +43,14 @@ const jsonLd = {
   description: 'Learn how AI lip sync technology can revolutionize your e-learning content creation and delivery.',
   image: '/og-image.png',
   datePublished: '2025-07-10T10:00:00.000Z',
-  dateModified: '2025-07-10T14:30:00.000Z',
+  dateModified: '2025-07-14T14:30:00.000Z',
   author: {
     '@type': 'Organization',
     name: 'LipSync Team',
     url: '/author/lipsync-team'
+
+
+    
   },
   publisher: {
     '@type': 'Organization',

@@ -6,7 +6,7 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "LipSync.pro - AI Lip Sync Generator | Create Realistic Lip-Sync Videos Instantly",
+  title: "LipSync.pro - AI Lip Sync Generator | Create Perfect Lip-Sync Videos Instantly",
   description:
     "Upload any video, input voice or text, and watch perfect lip-sync happen in seconds. The most advanced AI lip sync tool for creators worldwide. Free preview, no watermark.",
   keywords:
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "LipSync.pro - AI Lip Sync Generator | 40+ Languages Supported",
+    title: "LipSync.pro - AI Lip Sync Generator | Create Perfect Lip-Sync Videos Instantly",
     description:
       "Generate realistic AI lip sync videos instantly. Best Wav2Lip alternative with multilingual support. Upload video + text/voice = perfect lip sync in seconds. Free trial available.",
     images: ["/og-image.png"],

@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { Button } from '@/components/ui/button'
-import Canonical from '@/components/Canonical'
+// import Canonical from '@/components/Canonical'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Mail, Phone, MessageSquare } from 'lucide-react'
 import Header from '@/components/ui/Header'

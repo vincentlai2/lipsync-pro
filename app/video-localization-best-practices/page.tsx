@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     description: 'Learn the best practices for video localization to effectively reach global audiences.',
     type: 'article',
     publishedTime: '2025-07-10T10:00:00.000Z',
-    modifiedTime: '2025-07-10T14:30:00.000Z',
+    modifiedTime: '2025-07-14T14:30:00.000Z',
     authors: ['LipSync Team'],
     images: [{
       url: '/og-image.png',
@@ -36,7 +36,7 @@ const jsonLd = {
   description: 'Comprehensive guide on video localization best practices for global content strategy.',
   image: '/og-image.png',
   datePublished: '2025-07-10T10:00:00.000Z',
-  dateModified: '2025-07-10T14:30:00.000Z',
+  dateModified: '2025-07-14T14:30:00.000Z',
   author: {
     '@type': 'Organization',
     name: 'LipSync Team',

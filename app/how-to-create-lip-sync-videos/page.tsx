@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   creator: "LipSync.pro",
   publisher: "LipSync.pro",
   category: "Technology",
+  alternates: {
+    canonical: 'https://lipsync.pro/how-to-create-lip-sync-videos',
+  },
   openGraph: {
     title: "How to Create Lip Sync Videos: AI vs Manual Methods | Expert Guide 2025",
     description: "Expert guide on creating professional lip sync videos using AI and manual methods. Written by AI video processing engineers with 5+ years experience.",
@@ -17,7 +20,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "article",
     publishedTime: "2024-12-01T00:00:00.000Z",
-    modifiedTime: "2025-07-10T00:00:00.000Z",
+    modifiedTime: "2025-07-14T00:00:00.000Z",
     section: "Technology",
     tags: ["AI", "Video Processing", "Lip Sync", "Content Creation", "Tutorial"],
     images: [
@@ -465,7 +468,7 @@ export default function HowToCreateLipSyncVideos() {
                 🚀 Ready to create your own AI lip sync videos?
               </p>
               <p className="text-sm text-green-700 mb-6">
-                Free Trial �?Quick Setup �?Professional Results
+                Free Trial • Quick Setup • Professional Results
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a 

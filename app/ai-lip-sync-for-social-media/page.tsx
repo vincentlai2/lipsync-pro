@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     description: 'Transform your social media content with AI lip sync technology.',
     type: 'article',
     publishedTime: '2025-07-10T10:00:00.000Z',
-    modifiedTime: '2025-07-10T14:30:00.000Z',
+    modifiedTime: '2025-07-14T14:30:00.000Z',
     authors: ['LipSync Team'],
     tags: ['AI lip sync', 'social media', 'content creation'],
     images: [{
@@ -43,7 +43,7 @@ const jsonLd = {
   description: 'Transform your social media content with AI lip sync technology for global audience engagement.',
   image: '/og-image.png',
   datePublished: '2025-07-10T10:00:00.000Z',
-  dateModified: '2025-07-10T14:30:00.000Z',
+  dateModified: '2025-07-14T14:30:00.000Z',
   author: {
     '@type': 'Organization',
     name: 'LipSync Team',

@@ -1,22 +1,18 @@
 'use client'
 
-import { useState } from "react"
 import { Button } from "@/components/ui/button"
 // import Canonical from "@/components/Canonical"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import { Upload, Shield, Video, Youtube, Star, Play, ChevronRight, Mic, FileText, Languages, Clock, Menu, ExternalLink } from "lucide-react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import Header from "@/components/ui/Header"
 import Footer from "@/components/ui/Footer"
-import { WaitlistForm } from "@/components/ui/WaitlistForm"
 import Link from "next/link"
 
 export default function HomePage() {
-  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false)
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -48,7 +44,7 @@ export default function HomePage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="min-h-[90vh] relative flex items-center py-20 px-4 overflow-hidden" role="banner" aria-label="AI Lip Sync Generator Hero Section">
+      <section id="hero" className="min-h-[90vh] relative flex items-center py-20 px-4 overflow-hidden" role="banner" aria-label="AI Lip Sync Generator Hero Section">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(59,130,246,0.1),transparent_50%)]"></div>
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(59,130,246,0.08),transparent_50%)]"></div>
@@ -71,35 +67,19 @@ export default function HomePage() {
                 <a href="#features" className="text-blue-600 hover:text-blue-700 underline"> AI lip sync generator</a> for content creators, educators, and businesses worldwide.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Dialog open={isWaitlistOpen} onOpenChange={setIsWaitlistOpen}>
-                  <DialogTrigger asChild>
-                    <Button size="lg" className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 shadow-lg shadow-blue-500/20 hover:scale-105 transition-all text-lg px-8 py-3">
-                      Join Early Access Waitlist
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto">
-                    <div className="p-6">
-                      <div className="text-center mb-6">
-                        <h3 className="text-2xl font-bold mb-2">Join Early Access Waitlist</h3>
-                        <p className="text-gray-600">Be the first to experience next-generation AI lip sync technology</p>
-                      </div>
-                      <WaitlistForm />
-                    </div>
-                  </DialogContent>
-                </Dialog>
-                <Link href="/localization-tools-comparison">
-                  <Button variant="outline" size="lg" className="text-lg px-8 py-3 bg-white/50 backdrop-blur-sm hover:bg-white/80 hover:scale-105 transition-all border-2">
+                <a href="https://www.synthesia.io/" target="_blank" rel="nofollow noopener noreferrer">
+                  <Button size="lg" className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 shadow-lg shadow-blue-500/20 hover:scale-105 transition-all text-lg px-8 py-3 w-full sm:w-auto">
                     <ExternalLink className="w-5 h-5 mr-2" />
-                    Try Similar Tools Now
+                    Try AI Lip Sync Generator
                   </Button>
-                </Link>
+                </a>
               </div>
               <div className="flex items-center gap-4 text-sm text-gray-500">
                 <div className="flex items-center gap-1.5">
                   <div className="w-4 h-4 rounded-full bg-blue-100 flex items-center justify-center">
                     <div className="w-2 h-2 rounded-full bg-blue-600"></div>
                   </div>
-                  Coming Q2 2025
+                  Available Now 2025
                 </div>
                 <div className="flex items-center gap-1.5">
                   <div className="w-4 h-4 rounded-full bg-blue-100 flex items-center justify-center">
@@ -538,8 +518,8 @@ export default function HomePage() {
                   </div>
                   <div>
                     <div className="font-semibold">Jessica Martinez</div>
-                    <div className="text-sm text-gray-500">YouTube Creator �?2M subscribers</div>
-                    <div className="text-xs text-blue-600">�?Verified Customer</div>
+                    <div className="text-sm text-gray-500">YouTube Creator • 2M subscribers</div>
+                    <div className="text-xs text-blue-600">✓ Verified Customer</div>
                   </div>
                 </div>
                                  <blockquote className="text-gray-700 mb-4 italic">
@@ -547,9 +527,9 @@ export default function HomePage() {
                  </blockquote>
                 <div className="border-t pt-4">
                   <div className="text-sm font-medium text-gray-900">Results achieved:</div>
-                  <div className="text-sm text-gray-600">�?15 videos translated to 5 languages</div>
-                  <div className="text-sm text-gray-600">�?300% increase in international views</div>
-                  <div className="text-sm text-gray-600">�?85% reduction in production time</div>
+                  <div className="text-sm text-gray-600">• 15 videos translated to 5 languages</div>
+                  <div className="text-sm text-gray-600">• 300% increase in international views</div>
+                  <div className="text-sm text-gray-600">• 85% reduction in production time</div>
                 </div>
               </CardContent>
             </Card>
@@ -562,8 +542,8 @@ export default function HomePage() {
                   </div>
                   <div>
                     <div className="font-semibold">TechCorp Training</div>
-                    <div className="text-sm text-gray-500">Enterprise Customer �?10,000+ employees</div>
-                    <div className="text-xs text-green-600">�?Enterprise Client</div>
+                    <div className="text-sm text-gray-500">Enterprise Customer • 10,000+ employees</div>
+                    <div className="text-xs text-green-600">✓ Enterprise Client</div>
                   </div>
                 </div>
                                  <blockquote className="text-gray-700 mb-4 italic">
@@ -571,9 +551,9 @@ export default function HomePage() {
                  </blockquote>
                 <div className="border-t pt-4">
                   <div className="text-sm font-medium text-gray-900">Implementation:</div>
-                  <div className="text-sm text-gray-600">�?200+ hours processed in 2 weeks</div>
-                  <div className="text-sm text-gray-600">�?12 languages supported</div>
-                  <div className="text-sm text-gray-600">�?$500K cost savings vs traditional</div>
+                  <div className="text-sm text-gray-600">• 200+ hours processed in 2 weeks</div>
+                  <div className="text-sm text-gray-600">• 12 languages supported</div>
+                  <div className="text-sm text-gray-600">• $500K cost savings vs traditional</div>
                 </div>
               </CardContent>
             </Card>
@@ -586,8 +566,8 @@ export default function HomePage() {
                   </div>
                   <div>
                     <div className="font-semibold">Dr. Lisa Singh</div>
-                    <div className="text-sm text-gray-500">Online Course Creator �?Coursera</div>
-                    <div className="text-xs text-purple-600">�?Verified Educator</div>
+                    <div className="text-sm text-gray-500">Online Course Creator • Coursera</div>
+                    <div className="text-xs text-purple-600">✓ Verified Educator</div>
                   </div>
                 </div>
                 <blockquote className="text-gray-700 mb-4 italic">
@@ -595,9 +575,9 @@ export default function HomePage() {
                 </blockquote>
                 <div className="border-t pt-4">
                   <div className="text-sm font-medium text-gray-900">Academic impact:</div>
-                  <div className="text-sm text-gray-600">�?50+ lecture videos localized</div>
-                  <div className="text-sm text-gray-600">�?8 languages for global reach</div>
-                  <div className="text-sm text-gray-600">�?5-star course rating maintained</div>
+                  <div className="text-sm text-gray-600">• 50+ lecture videos localized</div>
+                  <div className="text-sm text-gray-600">• 8 languages for global reach</div>
+                  <div className="text-sm text-gray-600">• 5-star course rating maintained</div>
                 </div>
               </CardContent>
             </Card>
@@ -637,17 +617,17 @@ export default function HomePage() {
               <div className="bg-white rounded-lg p-6">
                 <div className="text-lg font-semibold mb-2">Stanford AI Lab</div>
                 <div className="text-sm text-gray-600 mb-3">"Superior lip-sync quality compared to existing open-source solutions"</div>
-                <div className="text-xs text-blue-600">Independent Research Study �?2024</div>
+                <div className="text-xs text-blue-600">Independent Research Study • 2024</div>
               </div>
               <div className="bg-white rounded-lg p-6">
                 <div className="text-lg font-semibold mb-2">TechCrunch Review</div>
                 <div className="text-sm text-gray-600 mb-3">"LipSync.pro sets new standard for commercial AI lip-sync technology"</div>
-                <div className="text-xs text-blue-600">Technology Review �?March 2024</div>
+                <div className="text-xs text-blue-600">Technology Review • March 2024</div>
               </div>
               <div className="bg-white rounded-lg p-6">
                 <div className="text-lg font-semibold mb-2">G2 Crowd</div>
                 <div className="text-sm text-gray-600 mb-3">"Leader in AI Video Generation category with 4.8/5 rating"</div>
-                <div className="text-xs text-blue-600">User Reviews �?2024</div>
+                <div className="text-xs text-blue-600">User Reviews • 2024</div>
               </div>
             </div>
           </div>
@@ -673,7 +653,7 @@ export default function HomePage() {
                       <Languages className="w-10 h-10 text-white" />
                     </div>
                     <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full">
-                      <span className="text-xs font-medium text-blue-700">EN �?ES</span>
+                      <span className="text-xs font-medium text-blue-700">EN → ES</span>
                     </div>
                   </div>
                   <div className="absolute top-4 right-4">
@@ -1148,7 +1128,7 @@ export default function HomePage() {
           </div>
 
           <div className="text-center mt-12">
-            <p className="text-gray-600 mb-4">All plans include 7-day free trial �?No setup fees �?Cancel anytime</p>
+            <p className="text-gray-600 mb-4">All plans include 7-day free trial • No setup fees • Cancel anytime</p>
             <Button variant="link" className="text-blue-600 hover:text-blue-700">
               View detailed comparison <ChevronRight className="w-4 h-4 ml-1" />
             </Button>
@@ -1665,7 +1645,7 @@ export default function HomePage() {
                       href="/what-is-ai-lip-sync"
                       className="text-blue-600 hover:text-blue-700 text-sm font-medium"
                     >
-                      Learn More �?                    </a>
+                      Learn More →                    </a>
                   </div>
                 </CardContent>
               </Card>
@@ -1687,7 +1667,7 @@ export default function HomePage() {
                       href="/ai-lip-sync-vs-traditional-dubbing"
                       className="text-blue-600 hover:text-blue-700 text-sm font-medium"
                     >
-                      Compare �?                    </a>
+                      Compare →                    </a>
                   </div>
                 </CardContent>
               </Card>
@@ -1713,7 +1693,7 @@ export default function HomePage() {
                     href="/video-localization-best-practices"
                     className="text-blue-600 hover:text-blue-700 text-sm font-medium"
                   >
-                    Read Guide �?                  </a>
+                    Read Guide →                  </a>
             </div>
               </CardContent>
             </Card>
@@ -1735,7 +1715,7 @@ export default function HomePage() {
                     href="/ai-lip-sync-for-elearning"
                     className="text-blue-600 hover:text-blue-700 text-sm font-medium"
                   >
-                    Explore �?                  </a>
+                    Explore →                  </a>
             </div>
               </CardContent>
             </Card>
@@ -1757,7 +1737,7 @@ export default function HomePage() {
                     href="/ai-lip-sync-for-social-media"
                     className="text-blue-600 hover:text-blue-700 text-sm font-medium"
                   >
-                    Create �?                  </a>
+                    Create →                  </a>
             </div>
               </CardContent>
             </Card>
@@ -1773,11 +1753,15 @@ export default function HomePage() {
                 Get the latest guides, tutorials, and industry insights delivered to your inbox.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800">
-                  Subscribe to Newsletter
+                <Button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800" asChild>
+                  <Link href="/contact">
+                    Subscribe to Newsletter
+                  </Link>
                 </Button>
-                <Button variant="outline" className="border-blue-200 hover:border-blue-300">
-                  Browse All Articles
+                <Button variant="outline" className="border-blue-200 hover:border-blue-300" asChild>
+                  <Link href="/blog">
+                    Browse All Articles
+                  </Link>
                 </Button>
           </div>
         </div>
@@ -1793,12 +1777,16 @@ export default function HomePage() {
             Join thousands of creators using the best AI lip sync tool for professional video dubbing with AI technology
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-3">
-              Try for Free
-            </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-3 bg-transparent">
-              View Pricing
-            </Button>
+            <a href="#hero" className="scroll-smooth">
+              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-3 w-full sm:w-auto">
+                Try for Free
+              </Button>
+            </a>
+            <a href="#pricing" className="scroll-smooth">
+              <Button variant="outline" size="lg" className="text-lg px-8 py-3 bg-transparent w-full sm:w-auto">
+                View Pricing
+              </Button>
+            </a>
           </div>
           <p className="text-gray-500">Upgrade for HD quality, full-length videos and API access</p>
         </div>

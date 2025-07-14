@@ -1,6 +1,5 @@
 import { Metadata } from 'next'
 import { Badge } from '@/components/ui/badge'
-import Canonical from '@/components/Canonical'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import Header from '@/components/ui/Header'
 import Footer from '@/components/ui/Footer'
@@ -14,7 +13,7 @@ export default function ChangelogPage() {
   const updates = [
     {
       version: 'v2.1.0',
-      date: 'July 10, 2025',
+      date: 'July 14, 2025',
       type: 'major',
       changes: [
         'Added 10 new languages support',
@@ -75,7 +74,7 @@ export default function ChangelogPage() {
                   <ul className="space-y-2">
                     {update.changes.map((change, i) => (
                       <li key={i} className="flex items-start">
-                        <span className="text-green-600 mr-2">â€?/span>
+                        <span className="text-green-600 mr-2">âœ“</span>
                         {change}
                       </li>
                     ))}

@@ -29,9 +29,11 @@ export default function Header() {
           <Button variant="outline" size="sm" className="hover:scale-105 transition-all">
             Sign In
           </Button>
-          <Button size="sm" className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 shadow-lg shadow-blue-500/20 hover:scale-105 transition-all">
-            Try Free
-          </Button>
+          <a href="/#hero" className="scroll-smooth">
+            <Button size="sm" className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 shadow-lg shadow-blue-500/20 hover:scale-105 transition-all">
+              Try Free
+            </Button>
+          </a>
         </nav>
         <Sheet>
           <SheetTrigger asChild>
@@ -57,9 +59,11 @@ export default function Header() {
                 <Button variant="outline" className="w-full">
                   Sign In
                 </Button>
-                <Button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800">
-                  Try Lip Sync
-                </Button>
+                <a href="/#hero" className="scroll-smooth">
+                  <Button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800">
+                    Try Lip Sync
+                  </Button>
+                </a>
               </div>
             </nav>
           </SheetContent>
