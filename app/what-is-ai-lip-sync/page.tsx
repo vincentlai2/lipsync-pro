@@ -49,7 +49,7 @@ const jsonLd = {
   author: {
     '@type': 'Organization',
     name: 'LipSync Team',
-    url: '/author/lipsync-team'
+    url: 'https://lipsync.pro/author/lipsync-team'
   },
   publisher: {
     '@type': 'Organization',
@@ -61,7 +61,7 @@ const jsonLd = {
   },
   mainEntityOfPage: {
     '@type': 'WebPage',
-    '@id': '/what-is-ai-lip-sync'
+    '@id': 'https://lipsync.pro/what-is-ai-lip-sync'
   }
 }
 

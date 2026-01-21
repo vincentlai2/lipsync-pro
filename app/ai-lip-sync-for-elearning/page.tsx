@@ -13,10 +13,14 @@ export const metadata: Metadata = {
   description: 'Learn how AI lip sync technology can revolutionize your e-learning content. Create engaging multilingual courses with perfect lip synchronization.',
   keywords: ['AI lip sync', 'e-learning', 'educational content', 'video localization', 'online courses', 'multilingual education'],
   authors: [{ name: 'LipSync Team', url: '/author/lipsync-team' }],
+  alternates: {
+    canonical: 'https://lipsync.pro/ai-lip-sync-for-elearning',
+  },
   openGraph: {
     title: 'AI Lip Sync for E-Learning: Transform Your Educational Content',
     description: 'Learn how AI lip sync technology can revolutionize your e-learning content.',
     type: 'article',
+    url: 'https://lipsync.pro/ai-lip-sync-for-elearning',
     publishedTime: '2025-07-10T10:00:00.000Z',
     modifiedTime: '2025-07-14T14:30:00.000Z',
     authors: ['LipSync Team'],
@@ -47,10 +51,7 @@ const jsonLd = {
   author: {
     '@type': 'Organization',
     name: 'LipSync Team',
-    url: '/author/lipsync-team'
-
-
-    
+    url: 'https://lipsync.pro/author/lipsync-team'
   },
   publisher: {
     '@type': 'Organization',
@@ -62,7 +63,7 @@ const jsonLd = {
   },
   mainEntityOfPage: {
     '@type': 'WebPage',
-    '@id': '/ai-lip-sync-for-elearning'
+    '@id': 'https://lipsync.pro/ai-lip-sync-for-elearning'
   }
 };
 

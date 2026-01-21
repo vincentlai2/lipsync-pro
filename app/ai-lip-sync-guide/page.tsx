@@ -10,23 +10,69 @@ export const metadata: Metadata = {
   title: 'Complete AI Lip Sync Guide 2025 | LipSync.pro',
   description: 'Master AI lip sync technology with our comprehensive guide. Learn best practices, techniques, and advanced video production methods for professional dubbing.',
   keywords: ['AI lip sync guide', 'video dubbing guide', 'lip sync tutorial', 'artificial intelligence dubbing', 'automated voice synchronization', 'video production tools', 'facial animation', 'speech synthesis', 'voice cloning', 'multilingual content creation'],
+  authors: [{ name: 'LipSync Team', url: '/author/lipsync-team' }],
+  alternates: {
+    canonical: 'https://lipsync.pro/ai-lip-sync-guide',
+  },
   openGraph: {
     title: 'Complete AI Lip Sync Guide 2025',
     description: 'Master AI lip sync technology with our comprehensive guide.',
     type: 'article',
     url: 'https://lipsync.pro/ai-lip-sync-guide',
+    publishedTime: '2024-12-01T10:00:00.000Z',
+    modifiedTime: new Date().toISOString(),
+    authors: ['LipSync Team'],
+    tags: ['AI lip sync', 'video dubbing', 'guide', 'tutorial'],
     images: [{
       url: '/og-image.png',
       width: 1200,
       height: 630,
       alt: 'Complete AI Lip Sync Guide'
     }]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Complete AI Lip Sync Guide 2025',
+    description: 'Master AI lip sync technology with our comprehensive guide.',
+    images: ['/og-image.png']
   }
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Complete AI Lip Sync Guide 2025',
+  description: 'Master AI lip sync technology with our comprehensive guide. Learn best practices, techniques, and advanced video production methods for professional dubbing.',
+  image: '/og-image.png',
+  datePublished: '2024-12-01T10:00:00.000Z',
+  dateModified: new Date().toISOString(),
+  author: {
+    '@type': 'Organization',
+    name: 'LipSync Team',
+    url: 'https://lipsync.pro/author/lipsync-team'
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'LipSync.pro',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://lipsync.pro/og-image.png'
+    }
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': 'https://lipsync.pro/ai-lip-sync-guide'
+  },
+  keywords: 'AI lip sync guide, video dubbing guide, lip sync tutorial, artificial intelligence dubbing, automated voice synchronization'
 };
 
 export default function AILipSyncGuidePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
         <div className="container mx-auto px-4 py-8">

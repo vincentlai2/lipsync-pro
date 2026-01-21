@@ -20,6 +20,9 @@ export const metadata: Metadata = {
     telephone: false,
   },
   metadataBase: new URL("https://lipsync.pro"),
+  alternates: {
+    canonical: 'https://lipsync.pro',
+  },
   openGraph: {
     title: "LipSync.pro - AI Lip Sync Generator | Create Perfect Lip-Sync Videos Instantly",
     description:

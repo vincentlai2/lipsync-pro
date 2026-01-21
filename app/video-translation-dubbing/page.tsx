@@ -12,17 +12,63 @@ export const metadata: Metadata = {
   description: 'Complete guide to video translation and dubbing. Compare AI vs traditional methods, costs, quality, and best practices for global content creation.',
   keywords: ['video translation', 'video dubbing', 'AI dubbing', 'multilingual videos', 'voice over', 'localization'],
   authors: [{ name: 'LipSync Team', url: '/author/lipsync-team' }],
+  alternates: {
+    canonical: 'https://lipsync.pro/video-translation-dubbing',
+  },
   openGraph: {
     title: 'Video Translation and Dubbing Guide 2025 | AI vs Traditional Methods',
     description: 'Complete guide to video translation and dubbing. Compare methods, costs, and best practices.',
     type: 'article',
+    url: 'https://lipsync.pro/video-translation-dubbing',
+    publishedTime: '2025-01-22T09:00:00.000Z',
+    modifiedTime: new Date().toISOString(),
+    authors: ['LipSync Team'],
+    tags: ['video translation', 'video dubbing', 'AI dubbing', 'localization'],
     images: [{ url: '/og-image.png', width: 1200, height: 630 }]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Video Translation and Dubbing Guide 2025 | AI vs Traditional Methods',
+    description: 'Complete guide to video translation and dubbing. Compare methods, costs, and best practices.',
+    images: ['/og-image.png']
   }
 }
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Video Translation and Dubbing Guide 2025 | AI vs Traditional Methods',
+  description: 'Complete guide to video translation and dubbing. Compare AI vs traditional methods, costs, quality, and best practices for global content creation.',
+  image: '/og-image.png',
+  datePublished: '2025-01-22T09:00:00.000Z',
+  dateModified: new Date().toISOString(),
+  author: {
+    '@type': 'Organization',
+    name: 'LipSync Team',
+    url: 'https://lipsync.pro/author/lipsync-team'
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'LipSync.pro',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://lipsync.pro/og-image.png'
+    }
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': 'https://lipsync.pro/video-translation-dubbing'
+  },
+  keywords: 'video translation, video dubbing, AI dubbing, multilingual videos, voice over, localization'
+};
 
 export default function VideoTranslationDubbingPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
         <div className="container mx-auto px-4 py-8">

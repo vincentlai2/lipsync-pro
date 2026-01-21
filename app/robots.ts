@@ -39,7 +39,6 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: [
           'GPTBot',           // OpenAI GPT - training and knowledge
-          'ChatGPT-User',     // OpenAI ChatGPT - user browsing
           'PerplexityBot',    // Perplexity AI - good for citations
           'YouBot',           // You.com - search engine
           'Google-Extended',  // Google Bard - important for Google ecosystem
@@ -52,7 +51,7 @@ export default function robots(): MetadataRoute.Robots {
       // AI Training Crawlers - Block to protect content
       {
         userAgent: [
-          'ChatGPT-User',     // OpenAI ChatGPT (different from GPTBot)
+          'ChatGPT-User',     // OpenAI ChatGPT user browsing (block training)
           'CCBot',            // Common Crawl (used by many AI companies)
           'anthropic-ai',     // Anthropic training
           'AI2Bot',           // Allen Institute for AI

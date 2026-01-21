@@ -13,19 +13,30 @@ export const metadata: Metadata = {
   description: 'Learn the best practices for video localization to effectively reach global audiences. Expert tips on translation, cultural adaptation, and AI tools.',
   keywords: ['video localization', 'best practices', 'translation', 'cultural adaptation', 'global content', 'AI localization'],
   authors: [{ name: 'LipSync Team', url: '/author/lipsync-team' }],
+  alternates: {
+    canonical: 'https://lipsync.pro/video-localization-best-practices',
+  },
   openGraph: {
     title: 'Video Localization Best Practices: Complete Guide 2025',
     description: 'Learn the best practices for video localization to effectively reach global audiences.',
     type: 'article',
+    url: 'https://lipsync.pro/video-localization-best-practices',
     publishedTime: '2025-07-10T10:00:00.000Z',
     modifiedTime: '2025-07-14T14:30:00.000Z',
     authors: ['LipSync Team'],
+    tags: ['video localization', 'best practices', 'translation', 'cultural adaptation'],
     images: [{
       url: '/og-image.png',
       width: 1200,
       height: 630,
       alt: 'Video Localization Best Practices'
     }]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Video Localization Best Practices: Complete Guide 2025',
+    description: 'Learn the best practices for video localization to effectively reach global audiences.',
+    images: ['/og-image.png']
   }
 };
 
@@ -40,15 +51,19 @@ const jsonLd = {
   author: {
     '@type': 'Organization',
     name: 'LipSync Team',
-    url: '/author/lipsync-team'
+    url: 'https://lipsync.pro/author/lipsync-team'
   },
   publisher: {
     '@type': 'Organization',
     name: 'LipSync.pro',
     logo: {
       '@type': 'ImageObject',
-      url: '/placeholder-logo.png'
+      url: 'https://lipsync.pro/og-image.png'
     }
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': 'https://lipsync.pro/video-localization-best-practices'
   }
 };
 

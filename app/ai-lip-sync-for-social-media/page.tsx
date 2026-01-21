@@ -13,10 +13,14 @@ export const metadata: Metadata = {
   description: 'Transform your social media content with AI lip sync technology. Create engaging multilingual videos that connect with global audiences.',
   keywords: ['AI lip sync', 'social media', 'video content', 'multilingual content', 'content creation', 'video localization'],
   authors: [{ name: 'LipSync Team', url: '/author/lipsync-team' }],
+  alternates: {
+    canonical: 'https://lipsync.pro/ai-lip-sync-for-social-media',
+  },
   openGraph: {
     title: 'AI Lip Sync for Social Media: Create Engaging Multilingual Content',
     description: 'Transform your social media content with AI lip sync technology.',
     type: 'article',
+    url: 'https://lipsync.pro/ai-lip-sync-for-social-media',
     publishedTime: '2025-07-10T10:00:00.000Z',
     modifiedTime: '2025-07-14T14:30:00.000Z',
     authors: ['LipSync Team'],
@@ -47,7 +51,7 @@ const jsonLd = {
   author: {
     '@type': 'Organization',
     name: 'LipSync Team',
-    url: '/author/lipsync-team'
+    url: 'https://lipsync.pro/author/lipsync-team'
   },
   publisher: {
     '@type': 'Organization',
@@ -59,7 +63,7 @@ const jsonLd = {
   },
   mainEntityOfPage: {
     '@type': 'WebPage',
-    '@id': '/ai-lip-sync-for-social-media'
+    '@id': 'https://lipsync.pro/ai-lip-sync-for-social-media'
   }
 };
 

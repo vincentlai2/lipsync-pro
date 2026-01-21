@@ -12,17 +12,63 @@ export const metadata: Metadata = {
   description: 'Master cultural adaptation in video localization with expert tips. Learn how to adapt content for global audiences while maintaining cultural sensitivity.',
   keywords: ['cultural adaptation', 'video localization', 'global content', 'cultural sensitivity', 'international marketing'],
   authors: [{ name: 'LipSync Team', url: '/author/lipsync-team' }],
+  alternates: {
+    canonical: 'https://lipsync.pro/cultural-adaptation-tips',
+  },
   openGraph: {
     title: 'Cultural Adaptation Tips for Video Localization',
     description: 'Master cultural adaptation in video localization with expert tips.',
     type: 'article',
+    url: 'https://lipsync.pro/cultural-adaptation-tips',
+    publishedTime: '2025-01-20T09:00:00.000Z',
+    modifiedTime: new Date().toISOString(),
+    authors: ['LipSync Team'],
+    tags: ['cultural adaptation', 'video localization', 'global content'],
     images: [{ url: '/og-image.png', width: 1200, height: 630 }]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Cultural Adaptation Tips for Video Localization',
+    description: 'Master cultural adaptation in video localization with expert tips.',
+    images: ['/og-image.png']
   }
 }
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Cultural Adaptation Tips for Video Localization',
+  description: 'Master cultural adaptation in video localization with expert tips. Learn how to adapt content for global audiences while maintaining cultural sensitivity.',
+  image: '/og-image.png',
+  datePublished: '2025-01-20T09:00:00.000Z',
+  dateModified: new Date().toISOString(),
+  author: {
+    '@type': 'Organization',
+    name: 'LipSync Team',
+    url: 'https://lipsync.pro/author/lipsync-team'
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'LipSync.pro',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://lipsync.pro/og-image.png'
+    }
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': 'https://lipsync.pro/cultural-adaptation-tips'
+  },
+  keywords: 'cultural adaptation, video localization, global content, cultural sensitivity, international marketing'
+};
 
 export default function CulturalAdaptationTipsPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
         <div className="container mx-auto px-4 py-8">

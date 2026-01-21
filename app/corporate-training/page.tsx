@@ -10,23 +10,69 @@ export const metadata: Metadata = {
   title: 'AI Lip Sync for Corporate Training | Transform Employee Learning | LipSync.pro',
   description: 'Revolutionize corporate training with AI lip sync technology. Create engaging multilingual training content that improves employee learning outcomes.',
   keywords: ['corporate training', 'AI lip sync', 'employee training', 'multilingual training', 'video training'],
+  authors: [{ name: 'LipSync Team', url: '/author/lipsync-team' }],
+  alternates: {
+    canonical: 'https://lipsync.pro/corporate-training',
+  },
   openGraph: {
     title: 'AI Lip Sync for Corporate Training | Transform Employee Learning',
     description: 'Revolutionize corporate training with AI lip sync technology.',
     type: 'article',
     url: 'https://lipsync.pro/corporate-training',
+    publishedTime: '2024-11-15T10:00:00.000Z',
+    modifiedTime: new Date().toISOString(),
+    authors: ['LipSync Team'],
+    tags: ['corporate training', 'AI lip sync', 'employee training'],
     images: [{
       url: '/og-image.png',
       width: 1200,
       height: 630,
       alt: 'AI Lip Sync for Corporate Training'
     }]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AI Lip Sync for Corporate Training | Transform Employee Learning',
+    description: 'Revolutionize corporate training with AI lip sync technology.',
+    images: ['/og-image.png']
   }
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'AI Lip Sync for Corporate Training | Transform Employee Learning',
+  description: 'Revolutionize corporate training with AI lip sync technology. Create engaging multilingual training content that improves employee learning outcomes.',
+  image: '/og-image.png',
+  datePublished: '2024-11-15T10:00:00.000Z',
+  dateModified: new Date().toISOString(),
+  author: {
+    '@type': 'Organization',
+    name: 'LipSync Team',
+    url: 'https://lipsync.pro/author/lipsync-team'
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'LipSync.pro',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://lipsync.pro/og-image.png'
+    }
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': 'https://lipsync.pro/corporate-training'
+  },
+  keywords: 'corporate training, AI lip sync, employee training, multilingual training, video training'
 };
 
 export default function CorporateTrainingPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50">
         <div className="container mx-auto px-4 py-8">

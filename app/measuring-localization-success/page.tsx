@@ -12,17 +12,63 @@ export const metadata: Metadata = {
   description: 'Learn how to measure localization success with key performance indicators, metrics, and analytics for global video content performance.',
   keywords: ['localization metrics', 'KPIs', 'global content analytics', 'video performance', 'localization ROI', 'content metrics'],
   authors: [{ name: 'LipSync Team', url: '/author/lipsync-team' }],
+  alternates: {
+    canonical: 'https://lipsync.pro/measuring-localization-success',
+  },
   openGraph: {
     title: 'Measuring Localization Success: KPIs and Metrics for Global Content',
     description: 'Learn how to measure localization success with key performance indicators and metrics.',
     type: 'article',
+    url: 'https://lipsync.pro/measuring-localization-success',
+    publishedTime: '2025-01-24T09:00:00.000Z',
+    modifiedTime: new Date().toISOString(),
+    authors: ['LipSync Team'],
+    tags: ['localization metrics', 'KPIs', 'analytics', 'ROI'],
     images: [{ url: '/og-image.png', width: 1200, height: 630 }]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Measuring Localization Success: KPIs and Metrics for Global Content',
+    description: 'Learn how to measure localization success with key performance indicators and metrics.',
+    images: ['/og-image.png']
   }
 }
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Measuring Localization Success: KPIs and Metrics for Global Content',
+  description: 'Learn how to measure localization success with key performance indicators, metrics, and analytics for global video content performance.',
+  image: '/og-image.png',
+  datePublished: '2025-01-24T09:00:00.000Z',
+  dateModified: new Date().toISOString(),
+  author: {
+    '@type': 'Organization',
+    name: 'LipSync Team',
+    url: 'https://lipsync.pro/author/lipsync-team'
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'LipSync.pro',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://lipsync.pro/og-image.png'
+    }
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': 'https://lipsync.pro/measuring-localization-success'
+  },
+  keywords: 'localization metrics, KPIs, global content analytics, video performance, localization ROI, content metrics'
+};
 
 export default function MeasuringLocalizationSuccessPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
         <div className="container mx-auto px-4 py-8">
