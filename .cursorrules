@@ -1,0 +1,40 @@
+# Project: Next.js Application
+
+## General
+
+- This is a Next.js TypeScript application with App Router.
+- Use React for components development, prefer to use functional components.
+- Use Tailwind CSS for styling.
+- Use Shadcn UI components.
+- Use sonner for toast notifications.
+- Use Zustand for global state management.
+- Component names are in camel-case.
+- Use next-auth for authentication.
+- Use next-intl for internationalization.
+- Use PayPal or Creem for payment.
+
+## File Structure
+
+- app/: Next.js App Router pages and API routes
+  - global.css: global styles
+- components/: React components
+  - ui/: **Shadcn UI components and their wrappers**
+- public/: Static assets
+- lib/: Custom libraries and functions
+- .env.local: Local environment variables (not committed to version control, and cannot be read by Cursor or most IDE/AI tools)
+
+## Coding Conventions
+
+- Use TypeScript for type safety
+- Follow React best practices and hooks
+- Implement responsive design with Tailwind CSS and Shadcn UI
+- Maintain a consistent internationalization structure
+- Keep components modular and reusable
+- Use proper type definitions for components and data
+
+## File Management
+
+- **All file deletion operations must be confirmed by the user before execution**
+- Avoid deleting files unless absolutely necessary
+- When file deletion is required, clearly explain the reason and get explicit user approval
+- Prefer modifying existing files over deleting and recreating them
