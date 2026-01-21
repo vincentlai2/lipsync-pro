@@ -67,7 +67,7 @@ export default function HomePage() {
                 <a href="#features" className="text-blue-600 hover:text-blue-700 underline"> AI lip sync generator</a> for content creators, educators, and businesses worldwide.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <a href="https://www.synthesia.io/" target="_blank" rel="nofollow noopener noreferrer">
+                <a href="https://wav2lip.pro" target="_blank">
                   <Button size="lg" className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 shadow-lg shadow-blue-500/20 hover:scale-105 transition-all text-lg px-8 py-3 w-full sm:w-auto">
                     <ExternalLink className="w-5 h-5 mr-2" />
                     Try AI Lip Sync Generator
