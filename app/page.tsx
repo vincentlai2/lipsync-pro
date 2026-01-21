@@ -423,7 +423,7 @@ export default function HomePage() {
                       </Select>
                     </div>
 
-                    <a href="https://www.synthesia.io/" target="_blank" rel="nofollow noopener noreferrer">
+                    <a href="https://wav2lip.pro" target="_blank">
                       <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-700">
                         Generate Preview
                       </Button>
