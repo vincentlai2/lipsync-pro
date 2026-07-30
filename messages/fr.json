@@ -1,0 +1,1008 @@
+{
+  "Metadata": {
+    "name": "Wav2Lip IA",
+    "title": "Wav2Lip en ligne - Synchronisation labiale IA",
+    "description": "Creez une video lip-sync avec Wav2Lip en ligne. Importez une video et un audio, puis genereez une synchronisation labiale IA sans installation."
+  },
+  "Common": {
+    "premium": "Premium",
+    "login": "Connexion",
+    "logout": "Deconnexion",
+    "signUp": "Essayer gratuitement",
+    "language": "Langue",
+    "mode": {
+      "label": "Changer le theme",
+      "light": "Clair",
+      "dark": "Sombre",
+      "system": "Systeme"
+    },
+    "copy": "Copier",
+    "saving": "Enregistrement...",
+    "save": "Enregistrer",
+    "loading": "Chargement...",
+    "cancel": "Annuler",
+    "logoutFailed": "La deconnexion a echoue",
+    "table": {
+      "totalRecords": "Total {count} records",
+      "noResults": "No results",
+      "loading": "Loading...",
+      "columns": "Columns",
+      "rowsPerPage": "Rows per page",
+      "page": "Page",
+      "firstPage": "First Page",
+      "lastPage": "Last Page",
+      "nextPage": "Next Page",
+      "previousPage": "Previous Page",
+      "ascending": "Asc",
+      "descending": "Desc",
+      "resetSorting": "Reset",
+      "hideColumn": "Hide",
+      "viewOptions": "View",
+      "toggleColumns": "Toggle columns",
+      "searchColumns": "Search columns...",
+      "noColumns": "No columns found.",
+      "clearFilters": "Clear filters"
+    }
+  },
+  "PricingPage": {
+    "title": "Prix Wav2Lip",
+    "description": "Choisissez un forfait pour creer des videos avec synchronisation labiale IA",
+    "subtitle": "Commencez gratuitement, puis passez a un forfait lorsque vous genereez plus de videos.",
+    "monthly": "Mensuel",
+    "yearly": "Annuel",
+    "PricingCard": {
+      "freePrice": "0 EUR",
+      "perMonth": "/mois",
+      "perYear": "/an",
+      "billedAnnually": "Facture annuellement ({amount}/an)",
+      "popular": "Populaire",
+      "currentPlan": "Forfait actuel",
+      "yourCurrentPlan": "Votre forfait actuel",
+      "getStartedForFree": "Commencer gratuitement",
+      "getLifetimeAccess": "Acces a vie",
+      "getStarted": "Commencer",
+      "notAvailable": "Indisponible",
+      "daysTrial": "Essai gratuit de {days} jours"
+    },
+    "CheckoutButton": {
+      "loading": "Chargement...",
+      "checkoutFailed": "Impossible d'ouvrir la page de paiement"
+    }
+  },
+  "PricePlans": {
+    "free": {
+      "name": "Gratuit",
+      "description": "Pour essayer sans engagement",
+      "features": {
+        "feature-1": "20 crédits offerts à l'inscription (1 vidéo)",
+        "feature-2": "Bonus quotidien de 20 crédits en vous connectant",
+        "feature-3": "Sans filigrane sur les vidéos",
+        "feature-4": "Traitement cloud standard"
+      }
+    },
+    "basic": {
+      "name": "Basic",
+      "description": "Pour débuter avec la synchronisation labiale",
+      "features": {
+        "feature-1": "1 000 crédits par mois (~50 vidéos)",
+        "feature-2": "Sorties vidéo standard",
+        "feature-3": "Traitement cloud rapide",
+        "feature-4": "Support client standard"
+      },
+      "limits": {
+        "limit-1": "Filigrane discret",
+        "limit-2": "Stockage temporaire 30 jours",
+        "limit-3": "Pas d'accès API"
+      }
+    },
+    "pro": {
+      "name": "Pro",
+      "description": "Idéal pour les créateurs de vidéos réguliers",
+      "features": {
+        "feature-1": "2 200 crédits par mois (~110 vidéos)",
+        "feature-2": "Rendu vidéo HD",
+        "feature-3": "Aucun filigrane",
+        "feature-4": "Historique des tâches étendu",
+        "feature-5": "Support prioritaire"
+      },
+      "limits": {
+        "limit-1": "Usage individuel",
+        "limit-2": "Pas d'accès API"
+      }
+    },
+    "lifetime": {
+      "name": "Ultra",
+      "description": "Pour les professionnels et les équipes exigeantes",
+      "features": {
+        "feature-1": "4 500 crédits par mois (~225 vidéos)",
+        "feature-2": "Rendu vidéo Ultra HD",
+        "feature-3": "Vitesse de traitement maximale",
+        "feature-4": "Accès complet aux API",
+        "feature-5": "Stockage illimité",
+        "feature-6": "Support VIP dédié",
+        "feature-7": "Licence commerciale complète"
+      }
+    }
+  },
+  "CreditPackages": {
+    "basic": {
+      "name": "Basic",
+      "description": "Basic credits package description"
+    },
+    "standard": {
+      "name": "Standard",
+      "description": "Standard credits package description"
+    },
+    "premium": {
+      "name": "Premium",
+      "description": "Premium credits package description"
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "description": "Enterprise credits package description"
+    }
+  },
+  "NotFoundPage": {
+    "title": "404",
+    "message": "La page recherchee n'existe pas.",
+    "backToHome": "Retour a l'accueil"
+  },
+  "ErrorPage": {
+    "title": "Une erreur est survenue",
+    "tryAgain": "Reessayer",
+    "backToHome": "Retour a l'accueil"
+  },
+  "AboutPage": {
+    "title": "About",
+    "description": "This is MkSaaS, an AI SaaS template built with modern technologies, helping you build your SaaS faster and better.",
+    "authorName": "MkSaaS",
+    "authorBio": "AI SaaS Boilerplate",
+    "introduction": "馃憢 Hi there! This is MkSaaS, an AI SaaS template built with modern technologies, helping you build your SaaS faster and better. If you have any questions, welcome to contact me.",
+    "talkWithMe": "Talk with me",
+    "followMe": "Follow me on X"
+  },
+  "ChangelogPage": {
+    "title": "Changelog",
+    "description": "Stay up to date with the latest changes in our product",
+    "subtitle": "Stay up to date with the latest changes in our product"
+  },
+  "RoadmapPage": {
+    "title": "Roadmap",
+    "description": "Explore our future plans and upcoming features",
+    "subtitle": "Explore our future plans and upcoming features"
+  },
+  "ContactPage": {
+    "title": "Contact",
+    "description": "Contactez Wav2Lip pour une question sur l'outil, les credits ou un probleme de generation.",
+    "subtitle": "Dites-nous ce que vous essayez de creer; nous vous repondrons par email.",
+    "form": {
+      "title": "Nous contacter",
+      "description": "Une question sur Wav2Lip en ligne, un paiement ou un resultat video ? Envoyez-nous un message.",
+      "name": "Nom",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Envoyer",
+      "submitting": "Envoi...",
+      "success": "Message envoye",
+      "fail": "Impossible d'envoyer le message",
+      "nameMinLength": "Le nom doit contenir au moins 3 caracteres",
+      "nameMaxLength": "Le nom ne doit pas depasser 30 caracteres",
+      "emailValidation": "Veuillez saisir une adresse email valide",
+      "messageMinLength": "Le message doit contenir au moins 10 caracteres",
+      "messageMaxLength": "Le message ne doit pas depasser 500 caracteres"
+    }
+  },
+  "WaitlistPage": {
+    "title": "Waitlist",
+    "description": "Join our waitlist for the launch of our product",
+    "subtitle": "Join our waitlist for the launch of our product",
+    "form": {
+      "title": "Join Our Waitlist",
+      "description": "We will notify you when we launch our product",
+      "email": "Email",
+      "subscribe": "Subscribe",
+      "subscribing": "Subscribing...",
+      "success": "Subscribed successfully",
+      "fail": "Failed to subscribe",
+      "emailValidation": "Please enter a valid email address"
+    }
+  },
+  "Newsletter": {
+    "title": "Newsletter",
+    "subtitle": "Join the community",
+    "description": "Subscribe to our newsletter for the latest news and updates",
+    "form": {
+      "email": "Email",
+      "subscribe": "Subscribe",
+      "subscribing": "Subscribing...",
+      "success": "Subscribed successfully",
+      "fail": "Failed to subscribe",
+      "emailValidation": "Please enter a valid email address"
+    }
+  },
+  "AuthPage": {
+    "login": {
+      "title": "Connexion",
+      "welcomeBack": "Bon retour",
+      "email": "Email",
+      "password": "Password",
+      "signIn": "Se connecter",
+      "signUpHint": "Pas encore de compte ? S'inscrire",
+      "forgotPassword": "Mot de passe oublie ?",
+      "signInWithGoogle": "Se connecter avec Google",
+      "signInWithGitHub": "Se connecter avec GitHub",
+      "showPassword": "Afficher le mot de passe",
+      "hidePassword": "Masquer le mot de passe",
+      "or": "Ou continuer avec",
+      "emailRequired": "Veuillez saisir votre email",
+      "passwordRequired": "Veuillez saisir votre mot de passe",
+      "captchaInvalid": "La verification captcha a echoue",
+      "captchaError": "Erreur de verification captcha"
+    },
+    "register": {
+      "title": "Inscription",
+      "createAccount": "Creer un compte",
+      "name": "Nom",
+      "email": "Email",
+      "password": "Password",
+      "signUp": "S'inscrire",
+      "signInHint": "Deja un compte ? Se connecter",
+      "checkEmail": "Veuillez verifier votre boite email",
+      "showPassword": "Afficher le mot de passe",
+      "hidePassword": "Masquer le mot de passe",
+      "nameRequired": "Veuillez saisir votre nom",
+      "emailRequired": "Veuillez saisir votre email",
+      "passwordRequired": "Veuillez saisir votre mot de passe",
+      "captchaInvalid": "La verification captcha a echoue",
+      "captchaError": "Erreur de verification captcha"
+    },
+    "forgotPassword": {
+      "title": "Forgot Password",
+      "email": "Email",
+      "send": "Send reset link",
+      "backToLogin": "Back to login",
+      "checkEmail": "Please check your email inbox",
+      "emailRequired": "Please enter your email"
+    },
+    "resetPassword": {
+      "title": "Reset Password",
+      "password": "Password",
+      "reset": "Reset password",
+      "backToLogin": "Back to login",
+      "showPassword": "Show password",
+      "hidePassword": "Hide password",
+      "minLength": "Password must be at least 8 characters"
+    },
+    "error": {
+      "title": "Oops! Something went wrong!",
+      "tryAgain": "Please try again.",
+      "backToLogin": "Back to login",
+      "checkEmail": "Please check your email inbox"
+    },
+    "common": {
+      "termsOfService": "conditions d'utilisation",
+      "privacyPolicy": "politique de confidentialite",
+      "byClickingContinue": "En continuant, vous acceptez nos ",
+      "and": " et notre "
+    }
+  },
+  "BlogPage": {
+    "title": "Blog",
+    "description": "Latest news and updates from our team",
+    "subtitle": "Latest news and updates from our team",
+    "author": "Author",
+    "categories": "Categories",
+    "tableOfContents": "Table of Contents",
+    "readTime": "{minutes} min read",
+    "all": "All",
+    "noPostsFound": "No posts found",
+    "allPosts": "All Posts",
+    "morePosts": "More Posts"
+  },
+  "DocsPage": {
+    "toc": "Table of Contents",
+    "search": "Search docs",
+    "lastUpdate": "Last updated on",
+    "searchNoResult": "No results",
+    "previousPage": "Previous",
+    "nextPage": "Next",
+    "chooseLanguage": "Select language",
+    "title": "MkSaaS Docs",
+    "homepage": "Homepage",
+    "PageActions": {
+      "copyMarkdown": "Copy Markdown",
+      "open": "Open",
+      "openInChatGPT": "Open in ChatGPT",
+      "openInClaude": "Open in Claude",
+      "queryHint": "Read {url}, I want to ask questions about it."
+    }
+  },
+  "PremiumContent": {
+    "title": "Unlock Premium Content",
+    "description": "Subscribe to our Pro plan to access all premium content and exclusive content.",
+    "upgradeCta": "Upgrade Now",
+    "benefit1": "All premium content",
+    "benefit2": "Exclusive content",
+    "benefit3": "Cancel anytime",
+    "signIn": "Sign In",
+    "loginRequired": "Sign in to continue reading",
+    "loginDescription": "This is premium content. Sign in to your account to access the full content.",
+    "checkingAccess": "Checking access...",
+    "loadingContent": "Loading full content..."
+  },
+  "Marketing": {
+    "navbar": {
+      "features": {
+        "title": "Features"
+      },
+      "pricing": {
+        "title": "Pricing"
+      },
+      "blog": {
+        "title": "Blog"
+      },
+      "docs": {
+        "title": "Docs"
+      },
+      "pages": {
+        "title": "Pages",
+        "items": {
+          "about": {
+            "title": "About",
+            "description": "Learn more about our company, mission, and values"
+          },
+          "contact": {
+            "title": "Contact",
+            "description": "Get in touch with our team for support or inquiries"
+          },
+          "waitlist": {
+            "title": "Waitlist",
+            "description": "Join our waitlist for latest news and updates"
+          },
+          "changelog": {
+            "title": "Changelog",
+            "description": "See the latest updates to our products"
+          },
+          "roadmap": {
+            "title": "Roadmap",
+            "description": "Explore our future plans and upcoming features"
+          },
+          "cookiePolicy": {
+            "title": "Cookies",
+            "description": "Comment nous utilisons les cookies sur le site"
+          },
+          "privacyPolicy": {
+            "title": "Confidentialite",
+            "description": "Comment nous traitons et protegeons vos donnees"
+          },
+          "termsOfService": {
+            "title": "Conditions",
+            "description": "Les conditions d'utilisation du service Wav2Lip"
+          }
+        }
+      }
+    },
+    "footer": {
+      "tagline": "Creez des videos lip-sync avec Wav2Lip en ligne, sans Colab ni installation locale.",
+      "product": {
+        "title": "Produit",
+        "items": {
+          "features": "Features",
+          "pricing": "Pricing",
+          "faq": "FAQ"
+        }
+      },
+      "resources": {
+        "title": "Ressources",
+        "items": {
+          "blog": "Blog",
+          "docs": "Documentation",
+          "changelog": "Changelog",
+          "roadmap": "Roadmap"
+        }
+      },
+      "company": {
+        "title": "Site",
+        "items": {
+          "about": "About",
+          "contact": "Contact",
+          "waitlist": "Waitlist"
+        }
+      },
+      "legal": {
+        "title": "Legal",
+        "items": {
+          "cookiePolicy": "Cookies",
+          "privacyPolicy": "Confidentialite",
+          "termsOfService": "Conditions"
+        }
+      }
+    },
+    "avatar": {
+      "dashboard": "Dashboard",
+      "billing": "Billing",
+      "credits": "Credits",
+      "settings": "Settings"
+    }
+  },
+  "Dashboard": {
+    "myCreations": "Mes Créations",
+    "dashboard": {
+      "title": "Dashboard"
+    },
+    "admin": {
+      "title": "Admin",
+      "users": {
+        "title": "Users",
+        "fakeData": "Note: Faked data for demonstration, some features are disabled",
+        "error": "Failed to get users",
+        "search": "Search users...",
+        "noResults": "No users found",
+        "columns": {
+          "columns": "Columns",
+          "name": "Name",
+          "email": "Email",
+          "role": "Role",
+          "createdAt": "Created At",
+          "customerId": "Customer ID",
+          "status": "Status",
+          "banReason": "Ban Reason",
+          "banExpires": "Ban Expires"
+        },
+        "admin": "Admin",
+        "user": "User",
+        "email": {
+          "verified": "Email Verified",
+          "unverified": "Email Unverified"
+        },
+        "emailCopied": "Email copied to clipboard",
+        "banned": "Banned",
+        "active": "Active",
+        "inactive": "Inactive",
+        "clearSearch": "Clear search",
+        "joined": "Joined at",
+        "updated": "Updated at",
+        "ban": {
+          "reason": "Ban Reason",
+          "reasonPlaceholder": "Enter the reason for banning this user",
+          "defaultReason": "Spamming",
+          "never": "Never",
+          "expires": "Ban Expires",
+          "selectDate": "Select Date",
+          "button": "Ban User",
+          "success": "User has been banned",
+          "error": "Failed to ban user"
+        },
+        "unban": {
+          "button": "Unban User",
+          "success": "User has been unbanned",
+          "error": "Failed to unban user"
+        },
+        "close": "Close"
+      }
+    },
+    "settings": {
+      "title": "Settings",
+      "profile": {
+        "title": "Profile",
+        "description": "Manage your account information",
+        "avatar": {
+          "title": "Avatar",
+          "description": "Click upload button to upload a custom one",
+          "recommendation": "An avatar is optional but strongly recommended",
+          "uploading": "Uploading...",
+          "uploadAvatar": "Upload Avatar",
+          "success": "Avatar updated successfully",
+          "fail": "Failed to update avatar"
+        },
+        "name": {
+          "title": "Name",
+          "description": "Please enter your display name",
+          "placeholder": "Enter your name",
+          "minLength": "Please use 3 characters at minimum",
+          "maxLength": "Please use 30 characters at maximum",
+          "hint": "Please use 3-30 characters for your name",
+          "success": "Name updated successfully",
+          "fail": "Failed to update name",
+          "saving": "Saving...",
+          "save": "Save"
+        }
+      },
+      "billing": {
+        "title": "Billing",
+        "description": "Manage your subscription and billing details",
+        "status": {
+          "active": "Active",
+          "trial": "Trial",
+          "free": "Free",
+          "lifetime": "Lifetime"
+        },
+        "interval": {
+          "month": "month",
+          "year": "year",
+          "oneTime": "one-time"
+        },
+        "currentPlan": {
+          "title": "Current Plan",
+          "description": "Your current plan details",
+          "noPlan": "You have no active plan"
+        },
+        "CustomerPortalButton": {
+          "loading": "Loading...",
+          "createCustomerPortalFailed": "Failed to open Stripe customer portal"
+        },
+        "price": "Price:",
+        "periodStartDate": "Period start date:",
+        "periodEndDate": "Period end date:",
+        "trialEnds": "Trial ends:",
+        "freePlanMessage": "You are currently on the free plan with limited features",
+        "lifetimeMessage": "You have lifetime access to all premium features",
+        "manageSubscription": "Manage Subscription and Billing",
+        "manageBilling": "Manage Billing",
+        "upgradePlan": "Upgrade Plan",
+        "retry": "Retry",
+        "errorMessage": "Failed to get data",
+        "paymentSuccess": "Payment success"
+      },
+      "payment": {
+        "processing": {
+          "title": "Processing Payment",
+          "description": "Please wait while we confirm your payment..."
+        },
+        "success": {
+          "title": "Payment Success",
+          "description": "Redirecting automatically..."
+        },
+        "failed": {
+          "title": "Payment Failed",
+          "description": "There was an issue processing your payment."
+        },
+        "timeout": {
+          "title": "Processing Timeout",
+          "description": "Payment processing is taking longer than expected."
+        },
+        "retry": "Retry"
+      },
+      "credits": {
+        "title": "Credits",
+        "description": "Manage your credit transactions",
+        "tabs": {
+          "balance": "Balance",
+          "transactions": "Transactions"
+        },
+        "balance": {
+          "title": "Credit Balance",
+          "description": "Your credit balance",
+          "credits": "Credits",
+          "creditsDescription": "You have {credits} credits",
+          "creditsExpired": "Credits expired",
+          "creditsAdded": "Credits have been added to your account",
+          "viewTransactions": "View Credit Transactions",
+          "retry": "Retry",
+          "expiringCredits": "{credits} credits expiring in the next {days} days"
+        },
+        "packages": {
+          "title": "Credit Packages",
+          "description": "Purchase additional credits to use our services",
+          "purchase": "Purchase",
+          "processing": "Processing...",
+          "popular": "Popular",
+          "completePurchase": "Complete Your Purchase",
+          "failedToFetchCredits": "Failed to fetch credits",
+          "failedToCreatePaymentIntent": "Failed to create payment intent",
+          "failedToInitiatePayment": "Failed to initiate payment",
+          "cancel": "Cancel",
+          "purchaseFailed": "Purchase credits failed",
+          "checkoutFailed": "Failed to create checkout session",
+          "loading": "Loading...",
+          "pay": "Pay"
+        },
+        "transactions": {
+          "title": "Credit Transactions",
+          "error": "Failed to get credit transactions",
+          "search": "Search credit transactions...",
+          "clearSearch": "Clear search",
+          "paymentIdCopied": "Payment ID copied to clipboard",
+          "noResults": "No results found",
+          "columns": {
+            "columns": "Columns",
+            "id": "ID",
+            "type": "Type",
+            "description": "Description",
+            "amount": "Amount",
+            "remainingAmount": "Remaining Amount",
+            "paymentId": "Payment ID",
+            "expirationDate": "Expiration Date",
+            "expirationDateProcessedAt": "Expiration Processed At",
+            "createdAt": "Created At",
+            "updatedAt": "Updated At"
+          },
+          "types": {
+            "MONTHLY_REFRESH": "Monthly Refresh",
+            "REGISTER_GIFT": "Register Gift",
+            "PURCHASE": "Purchased Credits",
+            "USAGE": "Consumed Credits",
+            "EXPIRE": "Expired Credits",
+            "SUBSCRIPTION_RENEWAL": "Subscription Renewal",
+            "LIFETIME_MONTHLY": "Lifetime Monthly"
+          },
+          "detailViewer": {
+            "title": "Credit Transaction Detail",
+            "close": "Close"
+          },
+          "expired": "Expired",
+          "never": "Never"
+        }
+      },
+      "notification": {
+        "title": "Notification",
+        "description": "Manage your notification preferences",
+        "newsletter": {
+          "title": "Newsletter Subscription",
+          "description": "Manage your newsletter subscription preferences",
+          "label": "Subscribe to newsletter",
+          "hint": "You can change your subscription preferences at any time",
+          "emailRequired": "Email is required to subscribe to the newsletter",
+          "subscribeSuccess": "Successfully subscribed to the newsletter",
+          "subscribeFail": "Failed to subscribe to the newsletter",
+          "unsubscribeSuccess": "Successfully unsubscribed from the newsletter",
+          "unsubscribeFail": "Failed to unsubscribe from the newsletter",
+          "error": "An error occurred while updating your subscription"
+        }
+      },
+      "security": {
+        "title": "Security",
+        "description": "Manage your security settings",
+        "updatePassword": {
+          "title": "Change Password",
+          "description": "Enter your current password and a new password",
+          "currentPassword": "Current Password",
+          "currentRequired": "Current password is required",
+          "newPassword": "New Password",
+          "newMinLength": "Password must be at least 8 characters",
+          "hint": "Please use at least 8 characters for password",
+          "showPassword": "Show password",
+          "hidePassword": "Hide password",
+          "success": "Password updated successfully",
+          "fail": "Failed to update password",
+          "saving": "Saving...",
+          "save": "Save"
+        },
+        "resetPassword": {
+          "title": "Reset Password",
+          "description": "Reset password to enable email login",
+          "info": "Resetting your password will allow you to sign in using your email and password in addition to your social login methods. You will receive an email with instructions to reset your password",
+          "button": "Reset Password"
+        },
+        "deleteAccount": {
+          "title": "Delete Account",
+          "description": "Permanently remove your account and all of its contents",
+          "warning": "This action is not reversible, so please continue with caution",
+          "button": "Delete Account",
+          "confirmTitle": "Delete Account",
+          "confirmDescription": "Are you sure you want to delete your account? This action cannot be undone.",
+          "confirm": "Delete",
+          "cancel": "Cancel",
+          "deleting": "Deleting...",
+          "success": "Account deleted successfully",
+          "fail": "Failed to delete account"
+        }
+      },
+      "apiKeys": {
+        "title": "API Keys",
+        "description": "Manage your API keys for authentication",
+        "createButton": "Create API Key",
+        "createDialogTitle": "Create New API Key",
+        "createDialogDescription": "Give your API key a name to identify it later",
+        "keyNameLabel": "Key Name",
+        "keyNamePlaceholder": "Please enter a name for your API key",
+        "cancel": "Cancel",
+        "create": "Create",
+        "creating": "Creating...",
+        "noResults": "No API keys found",
+        "createSuccess": "API key created successfully",
+        "createError": "Failed to create API key",
+        "deleteSuccess": "API key deleted successfully",
+        "deleteError": "Failed to delete API key",
+        "never": "Never",
+        "delete": "Delete",
+        "done": "Done",
+        "newKeyDialogTitle": "Your New API Key",
+        "newKeyDialogDescription": "Please copy and save this key now. You won't be able to see it again!",
+        "columns": {
+          "name": "Name",
+          "key": "Key",
+          "createdAt": "Created At",
+          "expiresAt": "Expires At",
+          "actions": "Actions"
+        }
+      }
+    },
+    "upgrade": {
+      "title": "Upgrade",
+      "description": "Upgrade to Pro to access all features",
+      "button": "Upgrade"
+    }
+  },
+  "Mail": {
+    "common": {
+      "team": "{name} Team",
+      "copyright": "漏锔?{year} All Rights Reserved."
+    },
+    "verifyEmail": {
+      "title": "Hi, {name}.",
+      "body": "Please click the link below to verify your email address.",
+      "confirmEmail": "Confirm email",
+      "subject": "Verify your email"
+    },
+    "forgotPassword": {
+      "title": "Hi, {name}.",
+      "body": "Please click the link below to reset your password.",
+      "resetPassword": "Reset password",
+      "subject": "Reset your password"
+    },
+    "subscribeNewsletter": {
+      "body": "Thank you for subscribing to the newsletter. We will keep you updated with the latest news and updates.",
+      "subject": "Thanks for subscribing"
+    },
+    "contactMessage": {
+      "name": "Name: {name}",
+      "email": "Email: {email}",
+      "message": "Message: {message}",
+      "subject": "Contact Message from Website"
+    },
+    "dailyCreditsReminder": {
+      "title": "Bonjour {name}, vos crédits gratuits sont arrivés !",
+      "body": "Bonne nouvelle ! Vos {amount} crédits quotidiens gratuits sont maintenant disponibles sur votre compte. Vous pouvez dès maintenant synchroniser une nouvelle vidéo.",
+      "ctaButton": "Créer une vidéo maintenant",
+      "footerNote": "Si vous souhaitez supprimer le filigrane et profiter d'un rendu ultra-rapide, consultez nos forfaits Pro.",
+      "subject": "🎁 Vos crédits quotidiens gratuits sont prêts !"
+    }
+  },
+  "HomePage": {
+    "title": "MkSaaS",
+    "description": "Make AI SaaS in days, simply and effortlessly",
+    "hero": {
+      "title": "Make AI SaaS in days, simply and effortlessly",
+      "description": "The is a demo website built with MkSaaS, a Next.js SaaS boilerplate to help you build your AI SaaS faster and better.",
+      "introduction": "Introducing MkSaaS Boilerplate",
+      "primary": "Get Started",
+      "secondary": "See Demo"
+    },
+    "logocloud": {
+      "title": "Your favorite companies are our partners"
+    },
+    "integration": {
+      "title": "Integrations",
+      "subtitle": "Integrate with your favorite tools",
+      "description": "Connect seamlessly with popular platforms and services to enhance your workflow.",
+      "learnMore": "Learn More",
+      "items": {
+        "item-1": {
+          "title": "Google Gemini",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        },
+        "item-2": {
+          "title": "Replit",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        },
+        "item-3": {
+          "title": "MagicUI",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        },
+        "item-4": {
+          "title": "VSCodium",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        },
+        "item-5": {
+          "title": "MediaWiki",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        },
+        "item-6": {
+          "title": "Google PaLM",
+          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+        }
+      }
+    },
+    "integration2": {
+      "title": "Integrate with your favorite tools",
+      "description": "Connect seamlessly with popular platforms and services to enhance your workflow.",
+      "primaryButton": "Get Started",
+      "secondaryButton": "See Demo"
+    },
+    "features": {
+      "title": "Features",
+      "subtitle": "The features of your product",
+      "description": "Write the description of your product here",
+      "items": {
+        "item-1": {
+          "title": "Product Feature One",
+          "description": "Please write the detailed description of feature one here, make it as detailed as possible, make it more attractive to users"
+        },
+        "item-2": {
+          "title": "Product Feature Two",
+          "description": "Please write the detailed description of feature two here, make it as detailed as possible, make it more attractive to users"
+        },
+        "item-3": {
+          "title": "Product Feature Three",
+          "description": "Please write the detailed description of feature three here, make it as detailed as possible, make it more attractive to users"
+        },
+        "item-4": {
+          "title": "Product Feature Four",
+          "description": "Please write the detailed description of feature four here, make it as detailed as possible, make it more attractive to users"
+        }
+      }
+    },
+    "features2": {
+      "title": "Features2",
+      "subtitle": "The features of your product",
+      "description": "Write the description of your product here",
+      "feature-1": "Product Feature One",
+      "feature-2": "Product Feature Two",
+      "feature-3": "Product Feature Three",
+      "feature-4": "Product Feature Four"
+    },
+    "features3": {
+      "title": "Features3",
+      "subtitle": "The features of your product",
+      "description": "Write the description of your product here",
+      "items": {
+        "item-1": {
+          "title": "Product Feature One",
+          "description": "Please write the detailed description of feature one here"
+        },
+        "item-2": {
+          "title": "Product Feature Two",
+          "description": "Please write the detailed description of feature two here"
+        },
+        "item-3": {
+          "title": "Product Feature Three",
+          "description": "Please write the detailed description of feature three here"
+        },
+        "item-4": {
+          "title": "Product Feature Four",
+          "description": "Please write the detailed description of feature four here"
+        },
+        "item-5": {
+          "title": "Product Feature Five",
+          "description": "Please write the detailed description of feature five here"
+        },
+        "item-6": {
+          "title": "Product Feature Six",
+          "description": "Please write the detailed description of feature six here"
+        }
+      }
+    },
+    "pricing": {
+      "title": "Pricing",
+      "subtitle": "Pricing",
+      "description": "Choose the plan that works best for you"
+    },
+    "faqs": {
+      "title": "FAQ",
+      "subtitle": "Frequently Asked Questions",
+      "items": {
+        "item-1": {
+          "question": "Do you offer a free trial?",
+          "answer": "Yes, we offer a 7-day free trial."
+        },
+        "item-2": {
+          "question": "How do I cancel my subscription?",
+          "answer": "You can cancel your subscription by visiting the billing page."
+        },
+        "item-3": {
+          "question": "Can I change my plan?",
+          "answer": "Yes, you can change your plan at any time by visiting the billing page."
+        },
+        "item-4": {
+          "question": "What is the refund policy?",
+          "answer": "We offer a 30-day money-back guarantee if you are not happy with our product."
+        },
+        "item-5": {
+          "question": "Vous ne trouvez pas ce que vous cherchez ?",
+          "answer": "Veuillez contacter notre équipe du support client à l'adresse hi@wav2lipia.com"
+        }
+      }
+    },
+    "testimonials": {
+      "title": "Testimonials",
+      "subtitle": "What our customers are saying",
+      "items": {
+        "item-1": {
+          "name": "Jonathan Yombo",
+          "role": "Software Engineer",
+          "image": "https://randomuser.me/api/portraits/men/1.jpg",
+          "quote": "MkSaaS is really extraordinary and very practical, no need to break your head. A real gold mine."
+        },
+        "item-2": {
+          "name": "Yves Kalume",
+          "role": "GDE - Android",
+          "image": "https://randomuser.me/api/portraits/men/6.jpg",
+          "quote": "With no experience in webdesign I just redesigned my entire website in a few minutes with tailwindcss thanks to MkSaaS."
+        },
+        "item-3": {
+          "name": "Yucel Faruksahan",
+          "role": "Tailkits Creator",
+          "image": "https://randomuser.me/api/portraits/men/7.jpg",
+          "quote": "Great work on MkSaaS template. This is one of the best personal website that I have seen so far :)"
+        },
+        "item-4": {
+          "name": "Anonymous author",
+          "role": "Product Manager",
+          "image": "https://randomuser.me/api/portraits/men/8.jpg",
+          "quote": "I downloaded the one of MkSaaS template which is very clear to understand at the start and you could modify the codes/blocks to fit perfectly on your purpose of the page."
+        },
+        "item-5": {
+          "name": "Shekinah Tshiokufila",
+          "role": "Senior Software Engineer",
+          "image": "https://randomuser.me/api/portraits/men/4.jpg",
+          "quote": "MkSaaS is redefining the standard of web design, with these blocks it provides an easy and efficient way for those who love beauty but may lack the time to implement it."
+        },
+        "item-6": {
+          "name": "Oketa Fred",
+          "role": "Fullstack Developer",
+          "image": "https://randomuser.me/api/portraits/men/2.jpg",
+          "quote": "I absolutely love MkSaaS! The component blocks are beautifully designed and easy to use, which makes creating a great-looking website a breeze."
+        },
+        "item-7": {
+          "name": "Zeki",
+          "role": "Founder of ChatExtend",
+          "image": "https://randomuser.me/api/portraits/men/5.jpg",
+          "quote": "MkSaaS is the perfect fusion of simplicity and versatility, enabling us to create UIs that are as stunning as they are user-friendly."
+        },
+        "item-8": {
+          "name": "Joseph Kitheka",
+          "role": "Fullstack Developer",
+          "image": "https://randomuser.me/api/portraits/men/9.jpg",
+          "quote": "MkSaaS has transformed the way I develop web applications. Their extensive collection of UI components, blocks, and templates has significantly accelerated my workflow."
+        },
+        "item-9": {
+          "name": "Khatab Wedaa",
+          "role": "MerakiUI Creator",
+          "image": "https://randomuser.me/api/portraits/men/10.jpg",
+          "quote": "MkSaaS is an elegant, clean, and responsive tailwind css components it's very helpful to start fast with your project."
+        },
+        "item-10": {
+          "name": "Rodrigo Aguilar",
+          "role": "TailwindAwesome Creator",
+          "image": "https://randomuser.me/api/portraits/men/11.jpg",
+          "quote": "I love MkSaaS 鉂わ笍. The component blocks are well-structured, simple to use, and beautifully designed. It makes it really easy to have a good-looking website in no time."
+        },
+        "item-11": {
+          "name": "Eric Ampire",
+          "role": "@GoogleDevExpert for Android",
+          "image": "https://randomuser.me/api/portraits/men/12.jpg",
+          "quote": "MkSaaS templates are the perfect solution for anyone who wants to create a beautiful and functional website without any web design experience."
+        },
+        "item-12": {
+          "name": "Roland Tubonge",
+          "role": "Software Engineer",
+          "image": "https://randomuser.me/api/portraits/men/13.jpg",
+          "quote": "MkSaaS is so well designed that even with a very poor knowledge of web design you can do miracles. Let yourself be seduced!"
+        }
+      }
+    },
+    "stats": {
+      "title": "Stats",
+      "subtitle": "MkSaaS in numbers",
+      "description": "MkSaaS lets you make AI SaaS in days, simply and effortlessly",
+      "items": {
+        "item-1": {
+          "title": "Stars on GitHub"
+        },
+        "item-2": {
+          "title": "Active Users"
+        },
+        "item-3": {
+          "title": "Powered Apps"
+        }
+      }
+    },
+    "calltoaction": {
+      "title": "Start Building",
+      "description": "MkSaaS lets you make AI SaaS in days, simply and effortlessly",
+      "primaryButton": "Get Started",
+      "secondaryButton": "See Demo"
+    }
+  }
+}

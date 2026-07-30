@@ -1,0 +1,17 @@
+{
+  "functions": {
+    "src/app/api/**/*": {
+      "maxDuration": 300
+    }
+  },
+  "crons": [
+    {
+      "path": "/api/distribute-credits",
+      "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/api/cron/daily-credits-email",
+      "schedule": "0 9 * * *"
+    }
+  ]
+}

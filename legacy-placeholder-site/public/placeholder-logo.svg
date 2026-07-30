@@ -1,0 +1,57 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="50%" stop-color="#1E40AF" />
+      <stop offset="100%" stop-color="#1E3A8A" />
+    </linearGradient>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60A5FA" />
+      <stop offset="100%" stop-color="#3B82F6" />
+    </linearGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#1E40AF" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Main circle background -->
+  <circle
+    cx="100"
+    cy="100"
+    r="90"
+    fill="url(#logoGradient)"
+    filter="url(#shadow)"
+  />
+  
+  <!-- Lip sync wave pattern -->
+  <path
+    d="M40 100 Q55 75 70 100 T100 100 T130 100 Q145 75 160 100"
+    stroke="url(#accentGradient)"
+    stroke-width="6"
+    fill="none"
+    stroke-linecap="round"
+  />
+  
+  <!-- Secondary wave -->
+  <path
+    d="M50 120 Q65 105 80 120 T110 120 T140 120 Q150 105 155 120"
+    stroke="white"
+    stroke-width="3"
+    fill="none"
+    stroke-linecap="round"
+    opacity="0.7"
+  />
+  
+  <!-- Accent dots -->
+  <circle cx="45" cy="100" r="4" fill="white" opacity="0.9" />
+  <circle cx="100" cy="100" r="6" fill="white" />
+  <circle cx="155" cy="100" r="4" fill="white" opacity="0.9" />
+  
+  <!-- Modern geometric accents -->
+  <rect x="80" y="40" width="40" height="4" rx="2" fill="white" opacity="0.6" />
+  <rect x="70" y="156" width="60" height="4" rx="2" fill="white" opacity="0.6" />
+  
+  <!-- Corner accent elements -->
+  <circle cx="160" cy="40" r="8" fill="url(#accentGradient)" opacity="0.4" />
+  <circle cx="40" cy="160" r="6" fill="url(#accentGradient)" opacity="0.4" />
+</svg>
