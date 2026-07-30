@@ -42,7 +42,9 @@ async function CreditsCard({
   userId: string;
   callbackUrl: string;
 }) {
-  const credits = await getUserCredits(userId);
+  const headersList = await headers();
+  const tenant = getTenantByHost(headersList.get('host'));
+  const credits = await getUserCredits(userId, tenant.siteId);
 
   return (
     <Card className="border border-zinc-200/80 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900">

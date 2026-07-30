@@ -1,4 +1,4 @@
-import { boolean, index, integer, jsonb, pgTable, text, timestamp } from "drizzle-orm/pg-core";
+import { boolean, index, integer, jsonb, pgTable, text, timestamp, uniqueIndex } from "drizzle-orm/pg-core";
 
 // https://www.better-auth.com/docs/concepts/database#core-schema
 export const user = pgTable("user", {
@@ -95,6 +95,7 @@ export const apikey = pgTable("apikey", {
 
 export const payment = pgTable("payment", {
 	id: text("id").primaryKey(),
+	siteId: text('site_id').notNull().default('lipsync.pro'),
 	priceId: text('price_id').notNull(),
 	type: text('type').notNull(),
 	scene: text('scene'), // payment scene: 'lifetime', 'credit', 'subscription'
@@ -115,6 +116,8 @@ export const payment = pgTable("payment", {
 	updatedAt: timestamp('updated_at').notNull().defaultNow(),
 }, (table) => ({
 	paymentTypeIdx: index("payment_type_idx").on(table.type),
+	paymentSiteIdIdx: index("payment_site_id_idx").on(table.siteId),
+	paymentUserSiteIdx: index("payment_user_site_idx").on(table.userId, table.siteId),
 	paymentSceneIdx: index("payment_scene_idx").on(table.scene),
 	paymentPriceIdIdx: index("payment_price_id_idx").on(table.priceId),
 	paymentUserIdIdx: index("payment_user_id_idx").on(table.userId),
@@ -129,6 +132,7 @@ export const payment = pgTable("payment", {
 export const userCredit = pgTable("user_credit", {
 	id: text("id").primaryKey(),
 	userId: text("user_id").notNull().references(() => user.id, { onDelete: 'cascade' }),
+	siteId: text("site_id").notNull().default('lipsync.pro'),
 	currentCredits: integer("current_credits").notNull().default(0),
 	retentionEmailCount: integer("retention_email_count").notNull().default(0),
 	lastRetentionEmailAt: timestamp("last_retention_email_at"),
@@ -137,11 +141,14 @@ export const userCredit = pgTable("user_credit", {
 	updatedAt: timestamp("updated_at").notNull().defaultNow(),
 }, (table) => ({
 	userCreditUserIdIdx: index("user_credit_user_id_idx").on(table.userId),
+	userCreditSiteIdIdx: index("user_credit_site_id_idx").on(table.siteId),
+	userCreditUserSiteIdx: uniqueIndex("user_credit_user_site_idx").on(table.userId, table.siteId),
 }));
 
 export const creditTransaction = pgTable("credit_transaction", {
 	id: text("id").primaryKey(),
 	userId: text("user_id").notNull().references(() => user.id, { onDelete: 'cascade' }),
+	siteId: text("site_id").notNull().default('lipsync.pro'),
 	type: text("type").notNull(),
 	description: text("description"),
 	amount: integer("amount").notNull(),
@@ -153,6 +160,8 @@ export const creditTransaction = pgTable("credit_transaction", {
 	updatedAt: timestamp("updated_at").notNull().defaultNow(),
 }, (table) => ({
 	creditTransactionUserIdIdx: index("credit_transaction_user_id_idx").on(table.userId),
+	creditTransactionSiteIdIdx: index("credit_transaction_site_id_idx").on(table.siteId),
+	creditTransactionUserSiteIdx: index("credit_transaction_user_site_idx").on(table.userId, table.siteId),
 	creditTransactionTypeIdx: index("credit_transaction_type_idx").on(table.type),
 }));
 

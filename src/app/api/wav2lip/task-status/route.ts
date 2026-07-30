@@ -73,6 +73,7 @@ export async function POST(request: NextRequest) {
         await refundWav2LipTaskCredits({
           userId: session.user.id,
           taskId,
+          siteId: tenant.siteId,
           creditsUsed: task.creditsUsed,
         });
         refundedAt = new Date();

@@ -5,6 +5,7 @@ import { creditTransaction } from '@/db/schema';
 import type { User } from '@/lib/auth-types';
 import { CREDITS_EXPIRATION_DAYS } from '@/lib/constants';
 import { userActionClient } from '@/lib/safe-action';
+import { getCurrentTenantSiteId } from '@/lib/server-tenant';
 import { addDays } from 'date-fns';
 import { and, eq, gt, gte, isNotNull, lte, sum } from 'drizzle-orm';
 
@@ -15,6 +16,7 @@ export const getCreditStatsAction = userActionClient.action(async ({ ctx }) => {
   try {
     const currentUser = (ctx as { user: User }).user;
     const userId = currentUser.id;
+    const siteId = await getCurrentTenantSiteId();
 
     const db = await getDb();
     const now = new Date();
@@ -30,6 +32,7 @@ export const getCreditStatsAction = userActionClient.action(async ({ ctx }) => {
       .where(
         and(
           eq(creditTransaction.userId, userId),
+          eq(creditTransaction.siteId, siteId),
           isNotNull(creditTransaction.expirationDate),
           isNotNull(creditTransaction.remainingAmount),
           gt(creditTransaction.remainingAmount, 0),

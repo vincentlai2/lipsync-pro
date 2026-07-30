@@ -3,10 +3,11 @@
 import { getDb } from '@/db';
 import { payment } from '@/db/schema';
 import { userActionClient } from '@/lib/safe-action';
-import { eq } from 'drizzle-orm';
+import { and, eq } from 'drizzle-orm';
 import { z } from 'zod';
 import { findPlanByPriceId } from '@/lib/price-plan';
 import { websiteConfig } from '@/config/website';
+import { getCurrentTenantSiteId } from '@/lib/server-tenant';
 
 const checkPaymentCompletionSchema = z.object({
   sessionId: z.string(),
@@ -51,11 +52,12 @@ export const checkPaymentCompletionAction = userActionClient
   .schema(checkPaymentCompletionSchema)
   .action(async ({ parsedInput: { sessionId } }) => {
     try {
+      const siteId = await getCurrentTenantSiteId();
       const db = await getDb();
       const paymentRecord = await db
         .select()
         .from(payment)
-        .where(eq(payment.sessionId, sessionId))
+        .where(and(eq(payment.sessionId, sessionId), eq(payment.siteId, siteId)))
         .limit(1);
 
       const paymentData = paymentRecord[0] || null;

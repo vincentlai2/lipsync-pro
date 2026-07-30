@@ -4,6 +4,7 @@ import { websiteConfig } from '@/config/website';
 import type { User } from '@/lib/auth-types';
 import { findPlanByPlanId } from '@/lib/price-plan';
 import { userActionClient } from '@/lib/safe-action';
+import { getCurrentTenantSiteId } from '@/lib/server-tenant';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import { createCheckout } from '@/payment';
 import type { CreateCheckoutParams } from '@/payment/types';
@@ -36,6 +37,7 @@ export const createCheckoutAction = userActionClient
     try {
       // Get the current locale from the request
       const locale = await getLocale();
+      const siteId = await getCurrentTenantSiteId();
 
       // Check if plan exists
       const plan = findPlanByPlanId(planId);
@@ -51,6 +53,7 @@ export const createCheckoutAction = userActionClient
         ...metadata,
         userId: currentUser.id,
         userName: currentUser.name,
+        siteId,
       };
 
       // https://datafa.st/docs/stripe-checkout-api
@@ -76,6 +79,7 @@ export const createCheckoutAction = userActionClient
         planId,
         priceId,
         customerEmail: currentUser.email,
+        siteId,
         metadata: customMetadata,
         successUrl,
         cancelUrl,

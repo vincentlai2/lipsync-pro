@@ -7,7 +7,10 @@ import { and, desc, eq, or } from 'drizzle-orm';
 /**
  * Check premium access for a specific user ID
  */
-export async function checkPremiumAccess(userId: string): Promise<boolean> {
+export async function checkPremiumAccess(
+  userId: string,
+  siteId = 'lipsync.pro'
+): Promise<boolean> {
   try {
     const db = await getDb();
 
@@ -24,6 +27,7 @@ export async function checkPremiumAccess(userId: string): Promise<boolean> {
         and(
           eq(payment.paid, true),
           eq(payment.userId, userId),
+          eq(payment.siteId, siteId),
           or(
             // Check for completed lifetime payments
             and(

@@ -3,6 +3,7 @@
 import { consumeCredits } from '@/credits/credits';
 import type { User } from '@/lib/auth-types';
 import { userActionClient } from '@/lib/safe-action';
+import { getCurrentTenantSiteId } from '@/lib/server-tenant';
 import { z } from 'zod';
 
 // consume credits schema
@@ -21,8 +22,10 @@ export const consumeCreditsAction = userActionClient
     const currentUser = (ctx as { user: User }).user;
 
     try {
+      const siteId = await getCurrentTenantSiteId();
       await consumeCredits({
         userId: currentUser.id,
+        siteId,
         amount,
         description: description || `Consume credits: ${amount}`,
       });

@@ -4,6 +4,7 @@ import { websiteConfig } from '@/config/website';
 import { getCreditPackageById } from '@/credits/server';
 import type { User } from '@/lib/auth-types';
 import { userActionClient } from '@/lib/safe-action';
+import { getCurrentTenantSiteId } from '@/lib/server-tenant';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import { createCreditCheckout } from '@/payment';
 import type { CreateCreditCheckoutParams } from '@/payment/types';
@@ -33,6 +34,7 @@ export const createCreditCheckoutSession = userActionClient
     try {
       // Get the current locale from the request
       const locale = await getLocale();
+      const siteId = await getCurrentTenantSiteId();
 
       // Find the credit package
       const creditPackage = getCreditPackageById(packageId);
@@ -51,6 +53,7 @@ export const createCreditCheckoutSession = userActionClient
         credits: creditPackage.amount.toString(),
         userId: currentUser.id,
         userName: currentUser.name,
+        siteId,
       };
 
       // https://datafa.st/docs/stripe-checkout-api
@@ -74,6 +77,7 @@ export const createCreditCheckoutSession = userActionClient
         packageId,
         priceId,
         customerEmail: currentUser.email,
+        siteId,
         metadata: customMetadata,
         successUrl,
         cancelUrl,

@@ -389,3 +389,19 @@ Expected behavior:
 
 - `https://lipsync.pro/lip-sync-ai` shows only tasks created on `lipsync.pro`.
 - Legacy null-site tasks no longer appear in the LipSync.pro workspace.
+
+## 2026-07-31 - Tenant isolation for credits and billing
+
+Completed in this step:
+
+- Added `site_id` to `payment`, `user_credit`, and `credit_transaction`.
+- Backfilled existing credits/payment history to `wav2lipia.com`, so LipSync.pro no longer shares balances or transaction history with the older site.
+- Added tenant-aware reads and writes for workspace credits, credit transactions, generation spend/refunds, checkout metadata, webhook benefit fulfillment, payment completion polling, and current plan lookup.
+- Added a `(user_id, site_id)` unique index for `user_credit` to prevent duplicate balance rows per site.
+- Avoided `db:push`; used an explicit SQL migration because Drizzle previously tried an unsafe primary-key diff on this production database.
+
+Expected behavior:
+
+- The same Google user can use `wav2lipia.com` and `lipsync.pro` with independent credits, transaction history, and paid plan state.
+- Old wav2lipia credit rows remain attached to `wav2lipia.com`.
+- First-time LipSync.pro workspace access can initialize that site's registration credits independently.

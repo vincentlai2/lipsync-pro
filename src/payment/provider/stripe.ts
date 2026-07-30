@@ -186,6 +186,7 @@ export class StripeProvider implements PaymentProvider {
       planId,
       priceId,
       customerEmail,
+      siteId,
       successUrl,
       cancelUrl,
       metadata,
@@ -219,6 +220,7 @@ export class StripeProvider implements PaymentProvider {
         ...metadata,
         planId,
         priceId,
+        siteId: siteId || metadata?.siteId || 'lipsync.pro',
       };
 
       // Set up the line items
@@ -300,6 +302,7 @@ export class StripeProvider implements PaymentProvider {
     const {
       packageId,
       customerEmail,
+      siteId,
       successUrl,
       cancelUrl,
       metadata,
@@ -333,6 +336,7 @@ export class StripeProvider implements PaymentProvider {
         ...metadata,
         packageId,
         priceId,
+        siteId: siteId || metadata?.siteId || 'lipsync.pro',
       };
 
       // Set up the line items
@@ -708,7 +712,11 @@ export class StripeProvider implements PaymentProvider {
         .where(eq(payment.id, paymentRecord.id));
 
       // Process subscription benefits
-      await this.processSubscriptionPurchase(userId, priceId);
+      await this.processSubscriptionPurchase(
+        userId,
+        priceId,
+        paymentRecord.siteId
+      );
     } catch (error) {
       console.error('<< Update subscription payment error:', error);
       throw error;
@@ -724,12 +732,13 @@ export class StripeProvider implements PaymentProvider {
    */
   private async processSubscriptionPurchase(
     userId: string,
-    priceId: string
+    priceId: string,
+    siteId: string
   ): Promise<void> {
     console.log('>> Process subscription purchase');
 
     if (websiteConfig.credits?.enableCredits) {
-      await addSubscriptionCredits(userId, priceId);
+      await addSubscriptionCredits(userId, priceId, siteId);
       console.log('Added subscription credits for user:', userId);
     }
 
@@ -821,6 +830,7 @@ export class StripeProvider implements PaymentProvider {
     const amount = invoice.amount_paid ? invoice.amount_paid / 100 : 0;
     await addCredits({
       userId: paymentRecord.userId,
+      siteId: paymentRecord.siteId,
       amount: Number.parseInt(credits),
       type: CREDIT_TRANSACTION_TYPE.PURCHASE_PACKAGE,
       description: `+${credits} credits for package ${packageId} ($${amount.toLocaleString()})`,
@@ -846,7 +856,8 @@ export class StripeProvider implements PaymentProvider {
     if (websiteConfig.credits?.enableCredits) {
       await addLifetimeMonthlyCredits(
         paymentRecord.userId,
-        paymentRecord.priceId
+        paymentRecord.priceId,
+        paymentRecord.siteId
       );
       console.log('Added lifetime credits for user:', paymentRecord.userId);
     }
@@ -1028,6 +1039,7 @@ export class StripeProvider implements PaymentProvider {
 
     const currentDate = new Date();
     const userId = session.metadata?.userId!;
+    const siteId = session.metadata?.siteId || 'lipsync.pro';
     const customerId = session.customer as string;
 
     // No matter user uses coupon code or not, even amount=0, invoice id is available
@@ -1050,6 +1062,7 @@ export class StripeProvider implements PaymentProvider {
       await db.insert(payment).values({
         id: randomUUID(),
         priceId,
+        siteId,
         type: PaymentTypes.SUBSCRIPTION,
         scene: PaymentScenes.SUBSCRIPTION,
         userId,
@@ -1102,6 +1115,7 @@ export class StripeProvider implements PaymentProvider {
 
     const currentDate = new Date();
     const userId = session.metadata?.userId!;
+    const siteId = session.metadata?.siteId || 'lipsync.pro';
     const customerId = session.customer as string;
 
     // No matter user uses coupon code or not, even amount=0, invoice id is available
@@ -1122,6 +1136,7 @@ export class StripeProvider implements PaymentProvider {
       await db.insert(payment).values({
         id: randomUUID(),
         priceId,
+        siteId,
         type: PaymentTypes.ONE_TIME,
         scene,
         userId,

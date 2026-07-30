@@ -169,7 +169,8 @@ export async function POST(request: NextRequest) {
 
   try {
     const body = createTaskSchema.parse(await request.json());
-    const balance = await getUserCredits(session.user.id);
+    const tenant = getTenantByHost(request.headers.get('host'));
+    const balance = await getUserCredits(session.user.id, tenant.siteId);
 
     if (balance < WAV2LIP_CREDITS_PER_TASK) {
       return NextResponse.json(
@@ -211,11 +212,10 @@ export async function POST(request: NextRequest) {
       : await createDashScopeWav2LipTask(finalBody);
     await consumeCredits({
       userId: session.user.id,
+      siteId: tenant.siteId,
       amount: WAV2LIP_CREDITS_PER_TASK,
       description: `Lip Sync AI generation: ${WAV2LIP_CREDITS_PER_TASK} credits`,
     });
-
-    const tenant = getTenantByHost(request.headers.get('host'));
 
     await createWav2LipTaskRecord({
       userId: session.user.id,

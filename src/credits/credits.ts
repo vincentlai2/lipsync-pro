@@ -7,12 +7,17 @@ import { addDays, isAfter } from 'date-fns';
 import { and, asc, eq, gt, isNull, not, or, sql } from 'drizzle-orm';
 import { CREDIT_TRANSACTION_TYPE } from './types';
 
+const DEFAULT_SITE_ID = 'lipsync.pro';
+
 /**
  * Get user's current credit balance
  * @param userId - User ID
  * @returns User's current credit balance
  */
-export async function getUserCredits(userId: string): Promise<number> {
+export async function getUserCredits(
+  userId: string,
+  siteId = DEFAULT_SITE_ID
+): Promise<number> {
   try {
     const db = await getDb();
 
@@ -21,10 +26,23 @@ export async function getUserCredits(userId: string): Promise<number> {
     const record = await db
       .select({ currentCredits: userCredit.currentCredits })
       .from(userCredit)
-      .where(eq(userCredit.userId, userId))
+      .where(and(eq(userCredit.userId, userId), eq(userCredit.siteId, siteId)))
       .limit(1);
 
-    return record[0]?.currentCredits || 0;
+    if (record[0]) {
+      return record[0].currentCredits;
+    }
+
+    if (
+      websiteConfig.credits.enableCredits &&
+      websiteConfig.credits.registerGiftCredits.enable &&
+      websiteConfig.credits.registerGiftCredits.amount > 0
+    ) {
+      await addRegisterGiftCredits(userId, siteId);
+      return websiteConfig.credits.registerGiftCredits.amount;
+    }
+
+    return 0;
   } catch (error) {
     console.error('getUserCredits, error:', error);
     // Return 0 on error to prevent UI from breaking
@@ -37,13 +55,17 @@ export async function getUserCredits(userId: string): Promise<number> {
  * @param userId - User ID
  * @param credits - New credit balance
  */
-export async function updateUserCredits(userId: string, credits: number) {
+export async function updateUserCredits(
+  userId: string,
+  credits: number,
+  siteId = DEFAULT_SITE_ID
+) {
   try {
     const db = await getDb();
     await db
       .update(userCredit)
       .set({ currentCredits: credits, updatedAt: new Date() })
-      .where(eq(userCredit.userId, userId));
+      .where(and(eq(userCredit.userId, userId), eq(userCredit.siteId, siteId)));
   } catch (error) {
     console.error('updateUserCredits, error:', error);
   }
@@ -55,6 +77,7 @@ export async function updateUserCredits(userId: string, credits: number) {
  */
 export async function saveCreditTransaction({
   userId,
+  siteId = DEFAULT_SITE_ID,
   type,
   amount,
   description,
@@ -62,6 +85,7 @@ export async function saveCreditTransaction({
   expirationDate,
 }: {
   userId: string;
+  siteId?: string;
   type: string;
   amount: number;
   description: string;
@@ -85,6 +109,7 @@ export async function saveCreditTransaction({
   await db.insert(creditTransaction).values({
     id: randomUUID(),
     userId,
+    siteId,
     type,
     amount,
     // remaining amount is the same as amount for earn transactions
@@ -104,6 +129,7 @@ export async function saveCreditTransaction({
  */
 export async function addCredits({
   userId,
+  siteId = DEFAULT_SITE_ID,
   amount,
   type,
   description,
@@ -111,6 +137,7 @@ export async function addCredits({
   expireDays,
 }: {
   userId: string;
+  siteId?: string;
   amount: number;
   type: string;
   description: string;
@@ -137,7 +164,7 @@ export async function addCredits({
   const current = await db
     .select()
     .from(userCredit)
-    .where(eq(userCredit.userId, userId))
+    .where(and(eq(userCredit.userId, userId), eq(userCredit.siteId, siteId)))
     .limit(1);
   // const newBalance = (current[0]?.currentCredits || 0) + amount;
   if (current.length > 0) {
@@ -149,13 +176,14 @@ export async function addCredits({
         currentCredits: newBalance,
         updatedAt: new Date(),
       })
-      .where(eq(userCredit.userId, userId));
+      .where(and(eq(userCredit.userId, userId), eq(userCredit.siteId, siteId)));
   } else {
     const newBalance = amount;
     console.log('addCredits, insert user credit', userId, newBalance);
     await db.insert(userCredit).values({
       id: randomUUID(),
       userId,
+      siteId,
       currentCredits: newBalance,
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -164,6 +192,7 @@ export async function addCredits({
   // Write credit transaction record
   await saveCreditTransaction({
     userId,
+    siteId,
     type,
     amount,
     description,
@@ -179,12 +208,14 @@ export async function addCredits({
  */
 export async function hasEnoughCredits({
   userId,
+  siteId = DEFAULT_SITE_ID,
   requiredCredits,
 }: {
   userId: string;
+  siteId?: string;
   requiredCredits: number;
 }) {
-  const balance = await getUserCredits(userId);
+  const balance = await getUserCredits(userId, siteId);
   return balance >= requiredCredits;
 }
 
@@ -194,10 +225,12 @@ export async function hasEnoughCredits({
  */
 export async function consumeCredits({
   userId,
+  siteId = DEFAULT_SITE_ID,
   amount,
   description,
 }: {
   userId: string;
+  siteId?: string;
   amount: number;
   description: string;
 }) {
@@ -210,7 +243,7 @@ export async function consumeCredits({
     throw new Error('Invalid amount');
   }
   // Check balance
-  if (!(await hasEnoughCredits({ userId, requiredCredits: amount }))) {
+  if (!(await hasEnoughCredits({ userId, siteId, requiredCredits: amount }))) {
     console.error(
       `consumeCredits, insufficient credits for user ${userId}, required: ${amount}`
     );
@@ -225,6 +258,7 @@ export async function consumeCredits({
     .where(
       and(
         eq(creditTransaction.userId, userId),
+        eq(creditTransaction.siteId, siteId),
         // Exclude usage and expire records (these are consumption/expiration logs)
         not(eq(creditTransaction.type, CREDIT_TRANSACTION_TYPE.USAGE)),
         not(eq(creditTransaction.type, CREDIT_TRANSACTION_TYPE.EXPIRE)),
@@ -262,16 +296,17 @@ export async function consumeCredits({
   const current = await db
     .select()
     .from(userCredit)
-    .where(eq(userCredit.userId, userId))
+    .where(and(eq(userCredit.userId, userId), eq(userCredit.siteId, siteId)))
     .limit(1);
   const newBalance = (current[0]?.currentCredits || 0) - amount;
   await db
     .update(userCredit)
     .set({ currentCredits: newBalance, updatedAt: new Date() })
-    .where(eq(userCredit.userId, userId));
+    .where(and(eq(userCredit.userId, userId), eq(userCredit.siteId, siteId)));
   // Write usage record
   await saveCreditTransaction({
     userId,
+    siteId,
     type: CREDIT_TRANSACTION_TYPE.USAGE,
     amount: -amount,
     description,
@@ -283,7 +318,10 @@ export async function consumeCredits({
  * @param userId - User ID
  * @deprecated This function is no longer used, see distribute.ts instead
  */
-export async function processExpiredCredits(userId: string) {
+export async function processExpiredCredits(
+  userId: string,
+  siteId = DEFAULT_SITE_ID
+) {
   const now = new Date();
   // Get all credit transactions that can expire (have expirationDate and not yet processed)
   const db = await getDb();
@@ -293,6 +331,7 @@ export async function processExpiredCredits(userId: string) {
     .where(
       and(
         eq(creditTransaction.userId, userId),
+        eq(creditTransaction.siteId, siteId),
         // Exclude usage and expire records (these are consumption/expiration logs)
         not(eq(creditTransaction.type, CREDIT_TRANSACTION_TYPE.USAGE)),
         not(eq(creditTransaction.type, CREDIT_TRANSACTION_TYPE.EXPIRE)),
@@ -331,7 +370,7 @@ export async function processExpiredCredits(userId: string) {
     const current = await db
       .select()
       .from(userCredit)
-      .where(eq(userCredit.userId, userId))
+      .where(and(eq(userCredit.userId, userId), eq(userCredit.siteId, siteId)))
       .limit(1);
     const newBalance = Math.max(
       0,
@@ -340,10 +379,11 @@ export async function processExpiredCredits(userId: string) {
     await db
       .update(userCredit)
       .set({ currentCredits: newBalance, updatedAt: now })
-      .where(eq(userCredit.userId, userId));
+      .where(and(eq(userCredit.userId, userId), eq(userCredit.siteId, siteId)));
     // Write expire record
     await saveCreditTransaction({
       userId,
+      siteId,
       type: CREDIT_TRANSACTION_TYPE.EXPIRE,
       amount: -expiredTotal,
       description: `Expire credits: ${expiredTotal}`,
@@ -360,7 +400,11 @@ export async function processExpiredCredits(userId: string) {
  * @param userId - User ID
  * @param creditType - Type of credit transaction to check
  */
-export async function canAddCreditsByType(userId: string, creditType: string) {
+export async function canAddCreditsByType(
+  userId: string,
+  creditType: string,
+  siteId = DEFAULT_SITE_ID
+) {
   const db = await getDb();
   const now = new Date();
   const currentMonth = now.getMonth();
@@ -373,6 +417,7 @@ export async function canAddCreditsByType(userId: string, creditType: string) {
     .where(
       and(
         eq(creditTransaction.userId, userId),
+        eq(creditTransaction.siteId, siteId),
         eq(creditTransaction.type, creditType),
         // Check if transaction was created in the current month and year
         sql`EXTRACT(MONTH FROM ${creditTransaction.createdAt}) = ${currentMonth + 1}`,
@@ -393,7 +438,10 @@ export async function canAddCreditsByType(userId: string, creditType: string) {
  * Add register gift credits
  * @param userId - User ID
  */
-export async function addRegisterGiftCredits(userId: string) {
+export async function addRegisterGiftCredits(
+  userId: string,
+  siteId = DEFAULT_SITE_ID
+) {
   // Check if user has already received register gift credits
   const db = await getDb();
   const record = await db
@@ -402,6 +450,7 @@ export async function addRegisterGiftCredits(userId: string) {
     .where(
       and(
         eq(creditTransaction.userId, userId),
+        eq(creditTransaction.siteId, siteId),
         eq(creditTransaction.type, CREDIT_TRANSACTION_TYPE.REGISTER_GIFT)
       )
     )
@@ -413,6 +462,7 @@ export async function addRegisterGiftCredits(userId: string) {
     const expireDays = websiteConfig.credits.registerGiftCredits.expireDays;
     await addCredits({
       userId,
+      siteId,
       amount: credits,
       type: CREDIT_TRANSACTION_TYPE.REGISTER_GIFT,
       description: `Register gift credits: ${credits}`,
@@ -430,7 +480,11 @@ export async function addRegisterGiftCredits(userId: string) {
  * @param userId - User ID
  * @param planId - Plan ID
  */
-export async function addMonthlyFreeCredits(userId: string, planId: string) {
+export async function addMonthlyFreeCredits(
+  userId: string,
+  planId: string,
+  siteId = DEFAULT_SITE_ID
+) {
   // NOTICE: make sure the free plan is not disabled and has credits enabled
   const pricePlan = findPlanByPlanId(planId);
   if (
@@ -448,7 +502,8 @@ export async function addMonthlyFreeCredits(userId: string, planId: string) {
 
   const canAdd = await canAddCreditsByType(
     userId,
-    CREDIT_TRANSACTION_TYPE.MONTHLY_REFRESH
+    CREDIT_TRANSACTION_TYPE.MONTHLY_REFRESH,
+    siteId
   );
   const now = new Date();
 
@@ -458,6 +513,7 @@ export async function addMonthlyFreeCredits(userId: string, planId: string) {
     const expireDays = pricePlan.credits?.expireDays || 0;
     await addCredits({
       userId,
+      siteId,
       amount: credits,
       type: CREDIT_TRANSACTION_TYPE.MONTHLY_REFRESH,
       description: `Free monthly credits: ${credits} for ${now.getFullYear()}-${now.getMonth() + 1}`,
@@ -479,7 +535,11 @@ export async function addMonthlyFreeCredits(userId: string, planId: string) {
  * @param userId - User ID
  * @param priceId - Price ID
  */
-export async function addSubscriptionCredits(userId: string, priceId: string) {
+export async function addSubscriptionCredits(
+  userId: string,
+  priceId: string,
+  siteId = DEFAULT_SITE_ID
+) {
   // NOTICE: the price plan maybe disabled, but we still need to add credits for existing users
   const pricePlan = findPlanByPriceId(priceId);
   if (
@@ -496,7 +556,8 @@ export async function addSubscriptionCredits(userId: string, priceId: string) {
 
   const canAdd = await canAddCreditsByType(
     userId,
-    CREDIT_TRANSACTION_TYPE.SUBSCRIPTION_RENEWAL
+    CREDIT_TRANSACTION_TYPE.SUBSCRIPTION_RENEWAL,
+    siteId
   );
   const now = new Date();
 
@@ -507,6 +568,7 @@ export async function addSubscriptionCredits(userId: string, priceId: string) {
 
     await addCredits({
       userId,
+      siteId,
       amount: credits,
       type: CREDIT_TRANSACTION_TYPE.SUBSCRIPTION_RENEWAL,
       description: `Subscription renewal credits: ${credits} for ${now.getFullYear()}-${now.getMonth() + 1}`,
@@ -530,7 +592,8 @@ export async function addSubscriptionCredits(userId: string, priceId: string) {
  */
 export async function addLifetimeMonthlyCredits(
   userId: string,
-  priceId: string
+  priceId: string,
+  siteId = DEFAULT_SITE_ID
 ) {
   // NOTICE: make sure the lifetime plan is not disabled and has credits enabled
   const pricePlan = findPlanByPriceId(priceId);
@@ -549,7 +612,8 @@ export async function addLifetimeMonthlyCredits(
 
   const canAdd = await canAddCreditsByType(
     userId,
-    CREDIT_TRANSACTION_TYPE.LIFETIME_MONTHLY
+    CREDIT_TRANSACTION_TYPE.LIFETIME_MONTHLY,
+    siteId
   );
   const now = new Date();
 
@@ -560,6 +624,7 @@ export async function addLifetimeMonthlyCredits(
 
     await addCredits({
       userId,
+      siteId,
       amount: credits,
       type: CREDIT_TRANSACTION_TYPE.LIFETIME_MONTHLY,
       description: `Lifetime monthly credits: ${credits} for ${now.getFullYear()}-${now.getMonth() + 1}`,
@@ -596,7 +661,8 @@ export async function addLifetimeMonthlyCredits(
  *          'disabled' if feature is off
  */
 export async function claimDailyLoginCredits(
-  userId: string
+  userId: string,
+  siteId = DEFAULT_SITE_ID
 ): Promise<
   | 'claimed'
   | 'already_claimed_today'
@@ -623,6 +689,7 @@ export async function claimDailyLoginCredits(
       .where(
         and(
           eq(creditTransaction.userId, userId),
+          eq(creditTransaction.siteId, siteId),
           eq(creditTransaction.type, CREDIT_TRANSACTION_TYPE.DAILY_LOGIN),
           // Only count positive (earning) transactions, not corrections
           gt(creditTransaction.amount, 0)
@@ -649,6 +716,7 @@ export async function claimDailyLoginCredits(
       .where(
         and(
           eq(creditTransaction.userId, userId),
+          eq(creditTransaction.siteId, siteId),
           eq(creditTransaction.type, CREDIT_TRANSACTION_TYPE.DAILY_LOGIN),
           gt(creditTransaction.createdAt, startOfToday)
         )
@@ -663,7 +731,7 @@ export async function claimDailyLoginCredits(
     // Only grant when the user actually needs credits (balance < 1 task cost).
     // If their previous grant is still sitting unused, skip this login so we
     // don't pile up credits that dilute the upgrade funnel.
-    const currentBalance = await getUserCredits(userId);
+    const currentBalance = await getUserCredits(userId, siteId);
     if (currentBalance >= config.amount) {
       console.log(
         `claimDailyLoginCredits, sufficient balance (${currentBalance} >= ${config.amount}) for user ${userId}, skipping`
@@ -674,6 +742,7 @@ export async function claimDailyLoginCredits(
     // ─── 4. Grant daily credits ──────────────────────────────────────────────
     await addCredits({
       userId,
+      siteId,
       amount: config.amount,
       type: CREDIT_TRANSACTION_TYPE.DAILY_LOGIN,
       description: `Connexion quotidienne: +${config.amount} crédits (jour ${allClaims.length + 1}/${config.maxLifetimeClaims})`,

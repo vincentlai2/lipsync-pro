@@ -143,6 +143,7 @@ export interface CreateCheckoutParams {
   planId: string;
   priceId: string;
   customerEmail: string;
+  siteId?: string;
   successUrl?: string;
   cancelUrl?: string;
   metadata?: Record<string, string>;
@@ -156,6 +157,7 @@ export interface CreateCreditCheckoutParams {
   packageId: string;
   priceId: string;
   customerEmail: string;
+  siteId?: string;
   successUrl?: string;
   cancelUrl?: string;
   metadata?: Record<string, string>;

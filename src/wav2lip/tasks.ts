@@ -179,10 +179,12 @@ export async function transferWav2LipOutputToStorage({
 export async function refundWav2LipTaskCredits({
   userId,
   taskId,
+  siteId,
   creditsUsed,
 }: {
   userId: string;
   taskId: string;
+  siteId?: string;
   creditsUsed: number;
 }) {
   if (creditsUsed <= 0) {
@@ -191,6 +193,7 @@ export async function refundWav2LipTaskCredits({
 
   await addCredits({
     userId,
+    siteId,
     amount: creditsUsed,
     type: 'WAV2LIP_REFUND',
     description: `Refund failed Lip Sync AI task: ${taskId}`,

@@ -4,6 +4,7 @@ import { getDb } from '@/db';
 import { creditTransaction } from '@/db/schema';
 import type { User } from '@/lib/auth-types';
 import { userActionClient } from '@/lib/safe-action';
+import { getCurrentTenantSiteId } from '@/lib/server-tenant';
 import { and, asc, count as countFn, desc, eq, ilike, or } from 'drizzle-orm';
 import { z } from 'zod';
 
@@ -52,9 +53,13 @@ export const getCreditTransactionsAction = userActionClient
     try {
       const { pageIndex, pageSize, search, sorting, filters } = parsedInput;
       const currentUser = (ctx as { user: User }).user;
+      const siteId = await getCurrentTenantSiteId();
 
       // Build where conditions
-      const whereConditions = [eq(creditTransaction.userId, currentUser.id)];
+      const whereConditions = [
+        eq(creditTransaction.userId, currentUser.id),
+        eq(creditTransaction.siteId, siteId),
+      ];
 
       // Search logic: text fields use ilike, and if search is a number, also search amount fields
       if (search) {

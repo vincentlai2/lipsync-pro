@@ -5,6 +5,7 @@ import { payment } from '@/db/schema';
 import type { User } from '@/lib/auth-types';
 import { findPlanByPriceId, getAllPricePlans } from '@/lib/price-plan';
 import { userActionClient } from '@/lib/safe-action';
+import { getCurrentTenantSiteId } from '@/lib/server-tenant';
 import {
   PaymentScenes,
   type PaymentStatus,
@@ -30,6 +31,7 @@ export const getCurrentPlanAction = userActionClient
     const userId = currentUser.id;
 
     try {
+      const siteId = await getCurrentTenantSiteId();
       console.log('Check current plan start for userId:', userId);
 
       const db = await getDb();
@@ -61,6 +63,7 @@ export const getCurrentPlanAction = userActionClient
           and(
             eq(payment.paid, true),
             eq(payment.userId, userId),
+            eq(payment.siteId, siteId),
             or(
               // Check for completed lifetime payments
               and(
