@@ -3,7 +3,7 @@ import { addCredits } from '@/credits/credits';
 import { getDb } from '@/db';
 import { wav2lipTask } from '@/db/schema';
 import { uploadFile } from '@/storage';
-import { and, desc, eq, isNull, or } from 'drizzle-orm';
+import { and, desc, eq } from 'drizzle-orm';
 import type { Wav2LipStatusResult, Wav2LipTaskStatus } from './types';
 
 export const WAV2LIP_CREDITS_PER_TASK = Number(
@@ -78,10 +78,6 @@ export async function getUserWav2LipTask({
 function taskSiteFilter(siteId?: string) {
   if (!siteId) {
     return undefined;
-  }
-
-  if (siteId === 'lipsync.pro') {
-    return or(eq(wav2lipTask.siteId, siteId), isNull(wav2lipTask.siteId));
   }
 
   return eq(wav2lipTask.siteId, siteId);

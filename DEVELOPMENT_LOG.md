@@ -372,3 +372,20 @@ Verification:
 - Restarted the local dev server on `http://localhost:3001`.
 - `/api/wav2lip/health` reports `auth: true`.
 - Google login completed successfully and redirected back to `/lip-sync-ai`.
+
+## 2026-07-31 - Strict workspace task isolation
+
+Observed on production:
+
+- A user who had older wav2lipia.com generations saw those historical tasks in the LipSync.pro workspace.
+- The leaked rows had `wav2lip_task.site_id = NULL`, created before the multi-domain `site_id` field existed.
+
+Completed in this step:
+
+- Removed the LipSync.pro fallback that included legacy `site_id IS NULL` tasks in recent videos.
+- `listUserWav2LipTasks` now filters strictly by the current tenant `site_id` when a tenant is resolved.
+
+Expected behavior:
+
+- `https://lipsync.pro/lip-sync-ai` shows only tasks created on `lipsync.pro`.
+- Legacy null-site tasks no longer appear in the LipSync.pro workspace.
