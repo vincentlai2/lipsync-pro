@@ -194,6 +194,7 @@ export function Wav2LipUploader({
   const [outputUrl, setOutputUrl] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [creditsUsed, setCreditsUsed] = useState<number | null>(null);
+  const [isDownloading, setIsDownloading] = useState(false);
   // Persistent face detection error - only cleared when user picks a new video
   const [isFaceDetectionError, setIsFaceDetectionError] = useState(false);
   const [isLoadingPreset, setIsLoadingPreset] = useState(false);
@@ -444,6 +445,34 @@ export function Wav2LipUploader({
     resetResult();
     setStatus('idle');
     setCurrentStep('video');
+  };
+
+  const handleDownloadResult = async () => {
+    if (!outputUrl || isDownloading) return;
+
+    try {
+      setIsDownloading(true);
+      const response = await fetch(outputUrl);
+      if (!response.ok) {
+        throw new Error('Download failed.');
+      }
+
+      const blob = await response.blob();
+      const blobUrl = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.download = `lipsync-result-${taskId || Date.now()}.mp4`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(blobUrl);
+    } catch {
+      setErrorMessage(
+        'Download could not start automatically. Please open the video and save it from the browser.'
+      );
+    } finally {
+      setIsDownloading(false);
+    }
   };
 
   const pollTaskStatus = (nextTaskId: string) => {
@@ -1650,7 +1679,7 @@ export function Wav2LipUploader({
               </div>
             )}
 
-            <div className="flex gap-3">
+            <div className="grid gap-3 sm:grid-cols-[1fr_1.4fr]">
               <Button
                 variant="outline"
                 onClick={handleRestart}
@@ -1658,18 +1687,25 @@ export function Wav2LipUploader({
               >
                 Create another video
               </Button>
-              <Button className="h-11 flex-1" asChild>
-                <a
-                  href={outputUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  download="lipsync_result.mp4"
-                >
+              <Button
+                className="h-11 bg-blue-600 font-semibold text-white hover:bg-blue-700"
+                onClick={handleDownloadResult}
+                disabled={isDownloading || !outputUrl}
+              >
+                {isDownloading ? (
+                  <Loader2Icon className="mr-2 size-4 animate-spin" />
+                ) : (
                   <DownloadIcon className="mr-2 size-4" />
-                  Download HD
-                </a>
+                )}
+                {isDownloading ? 'Preparing download...' : 'Download MP4'}
               </Button>
             </div>
+
+            <Button variant="ghost" size="sm" className="w-full" asChild>
+              <a href={outputUrl} target="_blank" rel="noreferrer">
+                Open video in new tab
+              </a>
+            </Button>
           </div>
         )}
 
