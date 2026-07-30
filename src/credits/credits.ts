@@ -33,6 +33,36 @@ export async function getUserCredits(
       return record[0].currentCredits;
     }
 
+    const existingTransactions = await db
+      .select({
+        transactionCount: sql<number>`COUNT(*)`,
+        totalAmount: sql<number>`COALESCE(SUM(${creditTransaction.amount}), 0)`,
+      })
+      .from(creditTransaction)
+      .where(
+        and(
+          eq(creditTransaction.userId, userId),
+          eq(creditTransaction.siteId, siteId)
+        )
+      );
+    const transactionCount = Number(
+      existingTransactions[0]?.transactionCount || 0
+    );
+    const totalAmount = Number(existingTransactions[0]?.totalAmount || 0);
+
+    if (transactionCount > 0) {
+      const currentCredits = Math.max(0, totalAmount);
+      await db.insert(userCredit).values({
+        id: randomUUID(),
+        userId,
+        siteId,
+        currentCredits,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      });
+      return currentCredits;
+    }
+
     if (
       websiteConfig.credits.enableCredits &&
       websiteConfig.credits.registerGiftCredits.enable &&

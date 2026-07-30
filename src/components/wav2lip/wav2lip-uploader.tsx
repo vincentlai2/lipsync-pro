@@ -17,6 +17,7 @@ import { useSession } from '@/hooks/use-session';
 import { useCreditBalance } from '@/hooks/use-credits';
 import { useQueryClient } from '@tanstack/react-query';
 import { cn } from '@/lib/utils';
+import { useRouter } from 'next/navigation';
 import {
   AudioLinesIcon,
   CheckCircle2Icon,
@@ -164,6 +165,7 @@ export function Wav2LipUploader({
 }: Wav2LipUploaderProps) {
   const session = useSession();
   const queryClient = useQueryClient();
+  const router = useRouter();
   const pollTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const isTtsFirst = mode === 'text-to-lipsync';
@@ -479,6 +481,7 @@ export function Wav2LipUploader({
               queryKey: ['credits', 'balance', session.user.id],
             });
           }
+          router.refresh();
         } else if (data.status === 'failed') {
           if (pollTimerRef.current) {
             clearInterval(pollTimerRef.current);
@@ -496,6 +499,7 @@ export function Wav2LipUploader({
               queryKey: ['credits', 'balance', session.user.id],
             });
           }
+          router.refresh();
         } else {
           setStatus('running');
         }

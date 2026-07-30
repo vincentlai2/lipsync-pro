@@ -405,3 +405,21 @@ Expected behavior:
 - The same Google user can use `wav2lipia.com` and `lipsync.pro` with independent credits, transaction history, and paid plan state.
 - Old wav2lipia credit rows remain attached to `wav2lipia.com`.
 - First-time LipSync.pro workspace access can initialize that site's registration credits independently.
+
+## 2026-07-31 - Post-migration credit display hardening
+
+Observed on production:
+
+- A generation completed during the deployment window after the database migration.
+- The task and usage transaction were written to `lipsync.pro`, but the per-site `user_credit` row was missing, so the workspace could keep showing the old server-rendered balance until refresh.
+
+Completed in this step:
+
+- Repaired `oprom0004@gmail.com` on `lipsync.pro` to `0` credits after one successful generation.
+- Hardened credit reads: if a site has credit transactions but no `user_credit` row, the balance row is rebuilt from transactions instead of granting a new signup gift.
+- Refreshed the current route after generation success/failure so the server-rendered side panel updates credits and recent videos.
+
+Verification:
+
+- `pnpm exec tsc --noEmit` passed.
+- `pnpm exec next build` passed.
