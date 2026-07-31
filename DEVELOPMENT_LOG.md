@@ -448,3 +448,20 @@ Verification:
 - `pnpm exec tsc --noEmit` passed.
 - `pnpm exec next build` passed.
 - Last 24 hours after backfill: 4 registrations, all attributed to `wav2lipia.com` from existing activity.
+
+## 2026-07-31 - Repair deployment-window task attribution
+
+Observed on production:
+
+- `sueurcatholique@gmail.com` had a `lipsync.pro` usage transaction and credit balance update, but the matching `wav2lip_task` row had `site_id = NULL`.
+- This happened during the tenant-isolation deployment window: credits were already tenant-aware, while one task row was still written without task-site attribution.
+
+Completed in this step:
+
+- Repaired the affected production task by assigning `site_id = lipsync.pro`.
+- Repaired the user's `first_site_id` and `signup_host` to `lipsync.pro`.
+- Added `src/db/migrations/0013_repair_null_task_sites.sql` to document and automate the same class of repair: match null-site tasks to nearby tenant-aware usage transactions, then backfill missing user signup source from tenant activity.
+
+Result:
+
+- `lipsync.pro` now has 2 succeeded task records in production.
