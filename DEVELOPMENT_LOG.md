@@ -55,6 +55,28 @@ Production follow-up:
 - Manually triggered `Recover Lip Sync Tasks #1`; GitHub Actions completed successfully on commit `3880e47`.
 - Result: GitHub Actions can now call the production task recovery endpoint.
 
+## 2026-08-01 - Admin health dashboard
+
+User asked to do the admin/operations health page before continuing with the topic-cluster blog architecture.
+
+Implementation intent:
+
+- Reuse the new tenant health checks in a human-readable admin page.
+- Let the operator answer common questions quickly:
+  - are there new users in the last 24 hours?
+  - which site did users/tasks belong to?
+  - are any tasks stuck and recoverable?
+  - are there null-site or cross-site data problems?
+  - are payments and credits visible by site?
+
+Completed in this step:
+
+- Added `/admin/health` as an admin-only protected page.
+- Added the page to the dashboard sidebar under Admin.
+- Added per-site metrics for users, 24h users, tasks, 24h tasks, succeeded/failed/running tasks, credits, paid payments, and paid revenue.
+- Added tenant isolation checks for null `site_id`, cross-site task/usage matches, and orphan Lip Sync AI usage transactions.
+- Added recoverable task and recent failed task panels.
+
 ## 2026-07-30 - Wav2Lipia architecture alignment
 
 User clarified the intended baseline:
