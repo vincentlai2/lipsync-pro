@@ -15,6 +15,7 @@ import { admin, apiKey } from 'better-auth/plugins';
 import { parse as parseCookies } from 'cookie';
 import type { Locale } from 'next-intl';
 import { getAllPricePlans } from './price-plan';
+import { getTenantByHost } from './tenant';
 import { getBaseUrl, getUrlWithLocaleInCallbackUrl } from './urls/urls';
 
 /**
@@ -110,6 +111,16 @@ export const auth = betterAuth({
         type: 'string',
         required: false,
       },
+      firstSiteId: {
+        type: 'string',
+        required: false,
+        input: false,
+      },
+      signupHost: {
+        type: 'string',
+        required: false,
+        input: false,
+      },
     },
     // https://www.better-auth.com/docs/concepts/users-accounts#delete-user
     deleteUser: {
@@ -120,8 +131,18 @@ export const auth = betterAuth({
     // https://www.better-auth.com/docs/concepts/database#database-hooks
     user: {
       create: {
+        before: async (user, context) => {
+          const siteAttribution = getSignupSiteAttribution(context);
+          return {
+            data: {
+              ...user,
+              firstSiteId: siteAttribution.siteId,
+              signupHost: siteAttribution.host,
+            },
+          };
+        },
         after: async (user) => {
-          await onCreateUser(user);
+          await onCreateUser(user as User & { firstSiteId?: string });
         },
       },
     },
@@ -174,7 +195,9 @@ export function getLocaleFromRequest(request?: Request): Locale {
  *
  * @param user - The user to create
  */
-async function onCreateUser(user: User) {
+async function onCreateUser(user: User & { firstSiteId?: string }) {
+  const siteId = user.firstSiteId || 'lipsync.pro';
+
   // Auto subscribe user to newsletter after sign up if enabled in website config
   // Add a delay to avoid hitting Resend's 1 email per second limit
   if (
@@ -206,7 +229,7 @@ async function onCreateUser(user: User) {
     websiteConfig.credits.registerGiftCredits.amount > 0
   ) {
     try {
-      await addRegisterGiftCredits(user.id);
+      await addRegisterGiftCredits(user.id, siteId);
       console.log(`added register gift credits for user ${user.id}`);
     } catch (error) {
       console.error('Register gift credits error:', error);
@@ -222,11 +245,21 @@ async function onCreateUser(user: User) {
     );
     if (freePlan) {
       try {
-        await addMonthlyFreeCredits(user.id, freePlan.id);
+        await addMonthlyFreeCredits(user.id, freePlan.id, siteId);
         console.log(`added Free monthly credits for user ${user.id}`);
       } catch (error) {
         console.error('Free monthly credits error:', error);
       }
     }
   }
+}
+
+function getSignupSiteAttribution(context?: { request?: Request } | null) {
+  const host = context?.request?.headers.get('host') || null;
+  const tenant = getTenantByHost(host);
+
+  return {
+    siteId: tenant.siteId,
+    host: host?.split(':')[0].toLowerCase().replace(/^www\./, '') || null,
+  };
 }

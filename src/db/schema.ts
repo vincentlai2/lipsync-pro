@@ -15,9 +15,12 @@ export const user = pgTable("user", {
 	banReason: text('ban_reason'),
 	banExpires: timestamp('ban_expires'),
 	customerId: text('customer_id'),
+	firstSiteId: text('first_site_id'),
+	signupHost: text('signup_host'),
 }, (table) => ({
 	userIdIdx: index("user_id_idx").on(table.id),
 	userCustomerIdIdx: index("user_customer_id_idx").on(table.customerId),
+	userFirstSiteIdIdx: index("user_first_site_id_idx").on(table.firstSiteId),
 	userRoleIdx: index("user_role_idx").on(table.role),
 }));
 

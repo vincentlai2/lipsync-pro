@@ -423,3 +423,28 @@ Verification:
 
 - `pnpm exec tsc --noEmit` passed.
 - `pnpm exec next build` passed.
+
+## 2026-07-31 - User signup source attribution
+
+Observed on production:
+
+- User-level records did not store which domain created the account.
+- Credits, payments, and task history are now tenant-isolated, but 24-hour signup reports still had to infer site from later activity.
+
+Completed in this step:
+
+- Added `first_site_id` and `signup_host` to the `user` table.
+- Added a user signup hook that records the current tenant from the request host.
+- Registration gift credits and monthly free credits now use the signup tenant instead of the default site.
+- Backfilled historical users from their earliest tenant-scoped credit, task, or payment activity.
+
+Production migration:
+
+- Applied `src/db/migrations/0012_user_signup_site.sql` manually to the production database.
+- Added `user_first_site_id_idx`.
+
+Verification:
+
+- `pnpm exec tsc --noEmit` passed.
+- `pnpm exec next build` passed.
+- Last 24 hours after backfill: 4 registrations, all attributed to `wav2lipia.com` from existing activity.
