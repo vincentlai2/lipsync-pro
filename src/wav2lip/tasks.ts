@@ -3,7 +3,7 @@ import { addCredits } from '@/credits/credits';
 import { getDb } from '@/db';
 import { wav2lipTask } from '@/db/schema';
 import { uploadFile } from '@/storage';
-import { and, desc, eq } from 'drizzle-orm';
+import { and, asc, desc, eq, inArray } from 'drizzle-orm';
 import type { Wav2LipStatusResult, Wav2LipTaskStatus } from './types';
 
 export const WAV2LIP_CREDITS_PER_TASK = Number(
@@ -106,6 +106,28 @@ export async function listUserWav2LipTasks({
     .limit(20);
 }
 
+export async function listRecoverableWav2LipTasks({
+  limit = 20,
+  siteId = 'lipsync.pro',
+}: {
+  limit?: number;
+  siteId?: string;
+} = {}) {
+  const db = await getDb();
+
+  return db
+    .select()
+    .from(wav2lipTask)
+    .where(
+      and(
+        eq(wav2lipTask.siteId, siteId),
+        inArray(wav2lipTask.status, ['pending', 'running', 'unknown'])
+      )
+    )
+    .orderBy(asc(wav2lipTask.createdAt))
+    .limit(limit);
+}
+
 export async function updateWav2LipTaskFromProvider({
   userId,
   siteId,
@@ -162,7 +184,9 @@ export async function transferWav2LipOutputToStorage({
 }) {
   const response = await fetch(outputUrl);
   if (!response.ok) {
-    throw new Error(`Failed to download Lip Sync AI result: ${response.status}`);
+    throw new Error(
+      `Failed to download Lip Sync AI result: ${response.status}`
+    );
   }
 
   const contentType = response.headers.get('content-type') || 'video/mp4';

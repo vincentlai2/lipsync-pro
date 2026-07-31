@@ -1,5 +1,51 @@
 # LipSync.pro Development Log
 
+## 2026-08-01 - Next architecture targets from wav2lipia comparison
+
+User clarified the next LipSync.pro gaps compared with wav2lipia.com:
+
+- Add task recovery/health work first:
+  - background recovery for provider tasks that continue after the user leaves the page
+  - tenant/site health checks for null `site_id`, cross-site credits/history/payments, and task/credit mismatches
+- Blog/content architecture should move toward physical topic clusters, not only `/blog/[slug]`:
+  - `/lip-sync-ai/what-is`
+  - `/lip-sync-ai/how-to-use`
+  - `/lip-sync-ai/free`
+  - `/lip-sync-ai/application`
+  - `/text-to-lipsync-ai/what-is`
+  - `/text-to-lipsync-ai/how-to-use`
+  - unresolved/uncategorized posts can stay as standalone blog URLs temporarily
+- `/blog` should become a navigation/index surface for all blog/detail content, not the only parent path for every SEO article.
+- Topic detail pages should include:
+  - a parent topic breadcrumb
+  - a hero or equivalent conversion block that sends users back to the parent tool/topic page
+  - page titles containing the target primary keyword
+- Header/footer question:
+  - logged-in workspace pages intentionally hide the public marketing header/footer
+  - logged-out marketing and content pages should keep the public header/footer
+  - audit needed to make sure this distinction is still correct after the workspace layout changes
+
+Implementation preference:
+
+- Keep AG's current marketing UI/copy as the main visual/content baseline.
+- Reuse wav2lipia's architecture and production safeguards where useful.
+- Do not bulk-generate topic pages until the URL/template model is agreed.
+
+Completed in this step:
+
+- Added `/api/cron/wav2lip-tasks` for background recovery of pending/running/unknown Lip Sync AI provider tasks.
+- Added English failure/timeout messages for recovered failed tasks and automatic refunds.
+- Added `/api/cron/tenant-health` to report null `site_id`, cross-site task/credit matches, orphan Lip Sync AI usage transactions, and currently recoverable tasks.
+- Added shared cron authentication helper supporting Vercel Cron headers, `CRON_SECRET` bearer auth, Basic auth, and local development.
+- Added a GitHub Actions workflow that can call the recovery endpoint every 10 minutes when `CRON_SECRET` is configured.
+
+Verification:
+
+- `pnpm exec tsc --noEmit` passed.
+- `pnpm build` passed and listed the new cron API routes.
+- Local route invocation for `/api/cron/tenant-health` returned `ok: true`, `issueCount: 0`, and no null `site_id` rows.
+- Local route invocation for `/api/cron/wav2lip-tasks?siteId=lipsync.pro&limit=20` returned `checked: 0`, which is expected when no recoverable tasks are pending.
+
 ## 2026-07-30 - Wav2Lipia architecture alignment
 
 User clarified the intended baseline:

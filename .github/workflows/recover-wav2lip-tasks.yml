@@ -1,0 +1,24 @@
+name: Recover Lip Sync Tasks
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Recover pending provider tasks
+        env:
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+          SITE_URL: ${{ vars.SITE_URL || 'https://lipsync.pro' }}
+        run: |
+          if [ -z "$CRON_SECRET" ]; then
+            echo "CRON_SECRET is not configured; skipping task recovery."
+            exit 0
+          fi
+
+          curl --fail --show-error --silent \
+            -H "Authorization: Bearer $CRON_SECRET" \
+            "$SITE_URL/api/cron/wav2lip-tasks?siteId=lipsync.pro&limit=20"
