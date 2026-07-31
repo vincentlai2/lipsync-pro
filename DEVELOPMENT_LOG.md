@@ -46,6 +46,15 @@ Verification:
 - Local route invocation for `/api/cron/tenant-health` returned `ok: true`, `issueCount: 0`, and no null `site_id` rows.
 - Local route invocation for `/api/cron/wav2lip-tasks?siteId=lipsync.pro&limit=20` returned `checked: 0`, which is expected when no recoverable tasks are pending.
 
+Production follow-up:
+
+- Generated a new `CRON_SECRET` locally and added it to `.env.local`.
+- Added the same `CRON_SECRET` to Vercel Production Environment Variables.
+- Triggered a Vercel Production redeploy; latest deployment became `Ready`.
+- User added the same `CRON_SECRET` to GitHub repository Actions secrets.
+- Manually triggered `Recover Lip Sync Tasks #1`; GitHub Actions completed successfully on commit `3880e47`.
+- Result: GitHub Actions can now call the production task recovery endpoint.
+
 ## 2026-07-30 - Wav2Lipia architecture alignment
 
 User clarified the intended baseline:
