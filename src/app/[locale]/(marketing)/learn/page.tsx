@@ -97,15 +97,6 @@ const learnCategories: LearnCategorySection[] = [
         icon: CheckCircle2Icon,
       },
       {
-        title: 'Top 5 AI Lip Sync & Video Realignment Tools Comparison (2026)',
-        excerpt:
-          'In-depth review and objective benchmark of the top AI lip sync platforms. Compare speed, lip-matching fidelity, and credit costs.',
-        href: '/lip-sync-ai/best-ai-lip-sync-tools',
-        tag: 'Featured Review',
-        readTime: '6 min read',
-        icon: SparklesIcon,
-      },
-      {
         title:
           'How to Fix Vocal Audio Desync & Improve Viseme Precision in AI Lip Sync',
         excerpt:
@@ -263,6 +254,15 @@ const learnCategories: LearnCategorySection[] = [
     pillarLabel: 'Browse All Guides',
     icon: CompassIcon,
     articles: [
+      {
+        title: 'Top 5 AI Lip Sync & Video Realignment Tools Comparison (2026)',
+        excerpt:
+          'In-depth review and objective benchmark of the top AI lip sync platforms. Compare speed, lip-matching fidelity, and credit costs.',
+        href: '/learn/best-ai-lip-sync-tools',
+        tag: 'Market Review',
+        readTime: '6 min read',
+        icon: SparklesIcon,
+      },
       {
         title:
           'The Complete 2026 AI Video Localization Guide for Global SaaS & E-Commerce',

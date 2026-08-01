@@ -506,14 +506,14 @@ export default async function LipSyncAiPage() {
         </div>
       </section>
 
-      {/* SECTION 6: Compact Bottom Guides Anchor (Featured Core Guides + Latest Articles) */}
+      {/* SECTION 6: Compact Bottom Guides Anchor (High-Utility Educational Guides) */}
       <section className="py-8 border-t border-zinc-200/60 dark:border-zinc-800/60 bg-zinc-50/50 dark:bg-zinc-950/40">
         <div className="mx-auto max-w-5xl px-4">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <span className="inline-flex size-2 rounded-full bg-blue-500 animate-pulse" />
               <h3 className="text-xs font-bold tracking-wider uppercase text-zinc-600 dark:text-zinc-300">
-                Lip Sync AI Featured Guides & Latest Knowledge
+                Lip Sync AI Technical & Creator Guides
               </h3>
             </div>
             <a
@@ -524,37 +524,23 @@ export default async function LipSyncAiPage() {
             </a>
           </div>
 
-          <div className="grid gap-2.5 sm:grid-cols-2 md:grid-cols-3">
+          <div className="grid gap-2.5 sm:grid-cols-2 md:grid-cols-4">
             {[
-              {
-                title: 'Free AI Lip Sync Generator',
-                href: '/lip-sync-ai/free',
-                isFeatured: true,
-              },
               {
                 title: 'How to Create AI Lip Sync Videos',
                 href: '/lip-sync-ai/how-to-use',
-                isFeatured: true,
               },
               {
-                title: 'Top 5 AI Lip Sync Tools (2026)',
-                href: '/lip-sync-ai/best-ai-lip-sync-tools',
-                isFeatured: true,
-              },
-              {
-                title: 'What is AI Lip Sync?',
-                href: '/lip-sync-ai/what-is',
-                isFeatured: false,
-              },
-              {
-                title: 'Fix Vocal Audio Desync',
+                title: 'Fix Vocal Audio Desync & Jitter',
                 href: '/lip-sync-ai/phoneme-viseme-matching-guide',
-                isFeatured: false,
+              },
+              {
+                title: 'What is AI Lip Sync Technology?',
+                href: '/lip-sync-ai/what-is',
               },
               {
                 title: 'AI Lip Sync vs Traditional Dubbing',
                 href: '/lip-sync-ai/vs-traditional-dubbing',
-                isFeatured: false,
               },
             ].map((guide) => (
               <a
@@ -562,16 +548,9 @@ export default async function LipSyncAiPage() {
                 href={guide.href}
                 className="group flex items-center justify-between rounded-xl border border-zinc-200/70 bg-white px-3.5 py-2.5 text-xs shadow-2xs transition-colors hover:border-blue-500/40 hover:bg-blue-500/5 dark:border-zinc-800 dark:bg-zinc-900"
               >
-                <div className="flex items-center gap-1.5 min-w-0">
-                  {guide.isFeatured && (
-                    <span className="shrink-0 rounded-md bg-amber-500/10 px-1.5 py-0.5 text-[10px] font-bold text-amber-600 dark:text-amber-400">
-                      ★ Featured
-                    </span>
-                  )}
-                  <span className="font-semibold text-zinc-800 dark:text-zinc-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors truncate">
-                    {guide.title}
-                  </span>
-                </div>
+                <span className="font-semibold text-zinc-800 dark:text-zinc-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors truncate">
+                  {guide.title}
+                </span>
                 <span className="shrink-0 text-muted-foreground group-hover:translate-x-0.5 transition-transform ml-1">
                   →
                 </span>
