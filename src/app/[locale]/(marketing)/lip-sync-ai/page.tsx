@@ -506,7 +506,7 @@ export default async function LipSyncAiPage() {
         </div>
       </section>
 
-      {/* SECTION 6: Compact Bottom Guides Anchor (Strictly Lip Sync AI Topic) */}
+      {/* SECTION 6: Compact Bottom Guides Anchor (Strictly /lip-sync-ai/* Directory) */}
       <section className="py-10 border-t border-zinc-200/60 dark:border-zinc-800/60 bg-zinc-50/50 dark:bg-zinc-950/40">
         <div className="mx-auto max-w-5xl px-4 space-y-6">
           <div className="flex items-center justify-between border-b border-zinc-200/60 dark:border-zinc-800/60 pb-3">
@@ -522,7 +522,7 @@ export default async function LipSyncAiPage() {
           </div>
 
           <div className="space-y-6">
-            {/* Recommended Guides Sub-Section */}
+            {/* Recommended Technical Guides Sub-Section */}
             <div className="space-y-3">
               <p className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">
                 Recommended Guides
@@ -562,24 +562,24 @@ export default async function LipSyncAiPage() {
               </div>
             </div>
 
-            {/* Latest Articles Sub-Section */}
+            {/* More Lip Sync AI Topics Sub-Section */}
             <div className="space-y-3 pt-2">
               <p className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">
-                Latest Lip Sync AI Articles
+                More Lip Sync AI Topics
               </p>
               <div className="grid gap-2.5 sm:grid-cols-3">
                 {[
                   {
-                    title: 'Top 5 AI Lip Sync Tools Comparison (2026)',
-                    href: '/learn/best-ai-lip-sync-tools',
+                    title: 'Top 5 AI Lip Sync Tools Comparison',
+                    href: '/lip-sync-ai/best-ai-lip-sync-tools',
                   },
                   {
-                    title: 'AI Video Localization & Dubbing Guide',
-                    href: '/learn/ai-video-localization-guide-2026',
+                    title: 'Industry & Enterprise Applications',
+                    href: '/lip-sync-ai/applications',
                   },
                   {
-                    title: 'Video Re-Dubbing Workflow Optimization',
-                    href: '/learn/video-re-dubbing-workflow-optimization',
+                    title: 'Free AI Lip Sync Trial & Credits',
+                    href: '/lip-sync-ai/free',
                   },
                 ].map((article) => (
                   <a

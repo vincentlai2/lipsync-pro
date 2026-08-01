@@ -482,7 +482,7 @@ export default async function TextToLipSyncPage() {
         items={textToLipSyncFaqs}
       />
 
-      {/* SECTION 7: Compact Bottom Guides Anchor (Strictly Text to Lip Sync Topic) */}
+      {/* SECTION 7: Compact Bottom Guides Anchor (Strictly /text-to-lip-sync/* Directory) */}
       <section className="py-10 border-t border-zinc-200/60 dark:border-zinc-800/60 bg-zinc-50/50 dark:bg-zinc-950/40">
         <div className="mx-auto max-w-5xl px-4 space-y-6">
           <div className="flex items-center justify-between border-b border-zinc-200/60 dark:border-zinc-800/60 pb-3">
@@ -538,16 +538,16 @@ export default async function TextToLipSyncPage() {
               </div>
             </div>
 
-            {/* Latest Text to Lip Sync Articles Sub-Section */}
+            {/* More Text to Lip Sync Topics Sub-Section */}
             <div className="space-y-3 pt-2">
               <p className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">
-                Latest Text to Lip Sync Articles
+                More Text to Lip Sync Topics
               </p>
               <div className="grid gap-2.5 sm:grid-cols-2">
                 {[
                   {
-                    title: 'Multilingual E-Learning & Voice Dubbing',
-                    href: '/learn/multilingual-elearning-video-dubbing',
+                    title: 'Text to Speech Showcase & Examples',
+                    href: '/text-to-lip-sync/examples',
                   },
                   {
                     title: 'Free Text to Lip Sync Credits & Trial',
