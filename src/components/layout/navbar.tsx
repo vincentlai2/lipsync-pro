@@ -18,7 +18,11 @@ import {
 } from '@/components/ui/navigation-menu';
 import { useNavbarLinks } from '@/config/navbar-config';
 import { useScroll } from '@/hooks/use-scroll';
-import { LocaleLink, useLocalePathname, useRouter } from '@/i18n/navigation';
+import {
+  LocaleLink,
+  useLocalePathname,
+  useLocaleRouter,
+} from '@/i18n/navigation';
 import { authClient } from '@/lib/auth-client';
 import { cn } from '@/lib/utils';
 import { Routes } from '@/routes';
@@ -105,7 +109,7 @@ export function Navbar({ scroll }: NavBarProps) {
   const scrolled = useScroll(50);
   const menuLinks = useNavbarLinks();
   const localePathname = useLocalePathname();
-  const router = useRouter();
+  const router = useLocaleRouter();
 
   return (
     <section
