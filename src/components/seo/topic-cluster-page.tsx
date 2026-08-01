@@ -8,7 +8,9 @@ import { Routes } from '@/routes';
 import {
   ArrowRightIcon,
   CheckCircle2Icon,
+  ChevronRightIcon,
   HelpCircleIcon,
+  HomeIcon,
   SparklesIcon,
   ZapIcon,
 } from 'lucide-react';
@@ -73,22 +75,60 @@ export function TopicClusterPage({ content }: { content: ClusterPageContent }) {
         <div className="aspect-[1108/632] w-[69.25rem] flex-none bg-gradient-to-r from-blue-600/15 via-indigo-600/10 to-purple-600/15 opacity-40 dark:opacity-30" />
       </div>
 
+      {/* Google Schema.org BreadcrumbList JSON-LD */}
+      <script
+        type="application/ld+json"
+        /* biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data for Google SEO */
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://lipsync.pro',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: content.pillarTitle,
+                item: `https://lipsync.pro${content.pillarRoute}`,
+              },
+              {
+                '@type': 'ListItem',
+                position: 3,
+                name: content.badge,
+              },
+            ],
+          }),
+        }}
+      />
+
       <Container className="max-w-4xl px-4 sm:px-6">
-        {/* Header Breadcrumb & Badge */}
-        <div className="mb-6 flex flex-wrap items-center gap-2 text-xs font-semibold text-muted-foreground">
-          <LocaleLink href="/" className="hover:text-foreground">
-            Home
+        {/* Header Breadcrumbs Bar */}
+        <nav
+          aria-label="Breadcrumb"
+          className="mb-6 inline-flex flex-wrap items-center gap-2 rounded-full border border-border bg-card/80 px-4 py-2 text-xs font-semibold text-muted-foreground backdrop-blur-md shadow-xs"
+        >
+          <LocaleLink
+            href="/"
+            className="flex items-center gap-1 hover:text-foreground transition-colors"
+          >
+            <HomeIcon className="size-3.5" />
+            <span>Home</span>
           </LocaleLink>
-          <span>/</span>
+          <ChevronRightIcon className="size-3 text-muted-foreground/60" />
           <LocaleLink
             href={content.pillarRoute as any}
-            className="hover:text-foreground"
+            className="hover:text-foreground transition-colors"
           >
             {content.pillarTitle}
           </LocaleLink>
-          <span>/</span>
-          <span className="text-foreground">{content.badge}</span>
-        </div>
+          <ChevronRightIcon className="size-3 text-muted-foreground/60" />
+          <span className="font-bold text-foreground">{content.badge}</span>
+        </nav>
 
         {/* Hero Section */}
         <div className="mb-12 space-y-4">
