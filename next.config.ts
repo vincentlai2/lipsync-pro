@@ -91,28 +91,53 @@ const nextConfig: NextConfig = {
     return [
       ...baseRedirects,
       {
+        source: '/what-is-ai-lip-sync',
+        destination: '/lip-sync-ai/what-is',
+        permanent: true,
+      },
+      {
+        source: '/how-to-create-lip-sync-videos',
+        destination: '/lip-sync-ai/how-to-use',
+        permanent: true,
+      },
+      {
+        source: '/ai-lip-sync-vs-traditional-dubbing',
+        destination: '/lip-sync-ai/vs-traditional-dubbing',
+        permanent: true,
+      },
+      {
+        source: '/video-translation-dubbing',
+        destination: '/learn/ai-video-localization-guide-2026',
+        permanent: true,
+      },
+      {
+        source: '/animer-photo-ia',
+        destination: '/photo-to-lip-sync',
+        permanent: true,
+      },
+      {
         source: '/alternative-wav2lip',
-        destination: '/ai-lip-sync-vs-traditional-dubbing',
+        destination: '/lip-sync-ai/vs-traditional-dubbing',
         permanent: true,
       },
       {
         source: '/comment-utiliser-wav2lip',
-        destination: '/how-to-create-lip-sync-videos',
+        destination: '/lip-sync-ai/how-to-use',
         permanent: true,
       },
       {
         source: '/qu-est-ce-que-wav2lip',
-        destination: '/what-is-ai-lip-sync',
+        destination: '/lip-sync-ai/what-is',
         permanent: true,
       },
       {
         source: '/wav2lip-en-ligne-vs-local',
-        destination: '/ai-lip-sync-vs-traditional-dubbing',
+        destination: '/lip-sync-ai/vs-traditional-dubbing',
         permanent: true,
       },
       {
         source: '/wav2lip-google-colab',
-        destination: '/video-translation-dubbing',
+        destination: '/learn/ai-video-localization-guide-2026',
         permanent: true,
       },
       {
@@ -152,22 +177,22 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/en/comment-utiliser-wav2lip',
-        destination: '/how-to-create-lip-sync-videos',
+        destination: '/lip-sync-ai/how-to-use',
         permanent: true,
       },
       {
         source: '/en/qu-est-ce-que-wav2lip',
-        destination: '/what-is-ai-lip-sync',
+        destination: '/lip-sync-ai/what-is',
         permanent: true,
       },
       {
         source: '/en/wav2lip-en-ligne-vs-local',
-        destination: '/ai-lip-sync-vs-traditional-dubbing',
+        destination: '/lip-sync-ai/vs-traditional-dubbing',
         permanent: true,
       },
       {
         source: '/en/wav2lip-google-colab',
-        destination: '/video-translation-dubbing',
+        destination: '/learn/ai-video-localization-guide-2026',
         permanent: true,
       },
       {
@@ -192,12 +217,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/ai-lip-sync-guide',
-        destination: '/how-to-create-lip-sync-videos',
+        destination: '/lip-sync-ai/how-to-use',
         permanent: true,
       },
       {
         source: '/ai-lip-sync-for-elearning',
-        destination: '/video-translation-dubbing',
+        destination: '/learn/multilingual-elearning-video-dubbing',
         permanent: true,
       },
       {
@@ -207,22 +232,22 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/corporate-training',
-        destination: '/video-translation-dubbing',
+        destination: '/learn/video-re-dubbing-workflow-optimization',
         permanent: true,
       },
       {
         source: '/cultural-adaptation-tips',
-        destination: '/video-translation-dubbing',
+        destination: '/learn/ai-video-localization-guide-2026',
         permanent: true,
       },
       {
         source: '/measuring-localization-success',
-        destination: '/video-translation-dubbing',
+        destination: '/learn/ai-video-localization-guide-2026',
         permanent: true,
       },
       {
         source: '/video-localization-best-practices',
-        destination: '/video-translation-dubbing',
+        destination: '/learn/ai-video-localization-guide-2026',
         permanent: true,
       },
       {
