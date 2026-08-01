@@ -228,32 +228,31 @@ export default async function LearnHubPage({
   return (
     <main className="border-t bg-background min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden border-b bg-zinc-50/70 dark:bg-zinc-950/40 py-16 md:py-20">
+      <section className="relative overflow-hidden border-b bg-zinc-50/70 dark:bg-zinc-950/40 py-14 md:py-18">
         <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 flex transform-gpu justify-center overflow-hidden blur-3xl">
           <div className="aspect-[1108/632] w-[69.25rem] flex-none bg-gradient-to-r from-blue-600/15 via-indigo-600/10 to-purple-600/15 opacity-40 dark:opacity-30" />
         </div>
 
-        <div className="mx-auto max-w-6xl px-4 text-center">
+        <div className="mx-auto max-w-5xl px-4 text-center">
           <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 text-xs font-bold text-blue-600 dark:text-blue-400">
             <CompassIcon className="size-4" />
             <span>LIPSYNC.PRO LEARN ACADEMY</span>
           </div>
-          <h1 className="mt-6 text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl">
+          <h1 className="mt-5 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl md:text-5xl">
             AI Video Synchronization Knowledge Base
           </h1>
-          <p className="mx-auto mt-5 max-w-3xl text-base sm:text-lg text-muted-foreground leading-relaxed">
-            Browse structured tutorial categories, technical definitions,
-            creator workflows, and comparison guides for AI lip syncing and
-            avatar animation.
+          <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground leading-relaxed">
+            Browse technical guides, creator workflows, definitions, and
+            comparison articles across all AI video synchronization tools.
           </p>
 
           {/* Quick Category Navigation Bar */}
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <div className="mt-7 flex flex-wrap justify-center gap-2.5">
             {learnCategories.map((cat) => (
               <a
                 key={cat.id}
                 href={`#${cat.id}`}
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-xs font-semibold text-foreground shadow-xs transition-all hover:border-blue-500/50 hover:bg-muted"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs font-semibold text-foreground shadow-xs transition-all hover:border-blue-500/50 hover:bg-muted"
               >
                 <cat.icon className="size-3.5 text-blue-500" />
                 <span>
@@ -265,32 +264,32 @@ export default async function LearnHubPage({
         </div>
       </section>
 
-      {/* Structured Category Sections (分区板块列表) */}
-      <section className="py-12 md:py-16 space-y-16">
-        <div className="mx-auto max-w-6xl px-4">
+      {/* Option A: Minimalist Modern List Layout (极简无边框列表) */}
+      <section className="py-12 md:py-16">
+        <div className="mx-auto max-w-5xl px-4 space-y-16">
           {learnCategories.map((category) => {
             const CategoryIcon = category.icon;
             return (
               <div
                 key={category.id}
                 id={category.id}
-                className="mb-16 scroll-mt-24 border-b border-border/60 pb-14 last:border-0 last:pb-0"
+                className="scroll-mt-24 border-b border-border/60 pb-12 last:border-0 last:pb-0"
               >
-                {/* Category Header Bar */}
-                <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+                {/* Category Header */}
+                <div className="mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
                   <div>
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="flex size-10 items-center justify-center rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400">
-                        <CategoryIcon className="size-5" />
+                    <div className="flex items-center gap-2.5 mb-1.5">
+                      <div className="flex size-8 items-center justify-center rounded-lg bg-blue-500/10 text-blue-600 dark:text-blue-400">
+                        <CategoryIcon className="size-4" />
                       </div>
-                      <span className="rounded-full bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-600 dark:text-blue-400">
+                      <span className="rounded-full bg-blue-500/10 px-2.5 py-0.5 text-[11px] font-semibold text-blue-600 dark:text-blue-400">
                         {category.badge}
                       </span>
                     </div>
-                    <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+                    <h2 className="text-2xl font-bold tracking-tight text-foreground">
                       {category.title}
                     </h2>
-                    <p className="mt-1.5 text-sm sm:text-base text-muted-foreground max-w-3xl">
+                    <p className="mt-1 text-sm text-muted-foreground max-w-2xl">
                       {category.subtitle}
                     </p>
                   </div>
@@ -304,44 +303,44 @@ export default async function LearnHubPage({
                   </LocaleLink>
                 </div>
 
-                {/* Category Articles List Grid (平铺展现各文章内容卡片) */}
-                <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {/* Minimalist Article Row List (无边框极简行列表) */}
+                <div className="divide-y divide-border/50 rounded-2xl border border-border/40 bg-card/50 overflow-hidden shadow-2xs">
                   {category.articles.map((article) => {
                     const ArticleIcon = article.icon;
                     return (
                       <LocaleLink
                         key={article.href}
                         href={article.href as any}
-                        className="group flex flex-col justify-between rounded-2xl border border-border bg-card p-6 shadow-xs transition-all hover:-translate-y-0.5 hover:border-blue-500/40 hover:shadow-md hover:shadow-blue-500/5"
+                        className="group flex flex-col md:flex-row md:items-center justify-between p-4 sm:p-5 gap-3 hover:bg-blue-500/5 dark:hover:bg-blue-500/10 transition-colors"
                       >
-                        <div>
-                          <div className="flex items-center justify-between gap-2 mb-3">
-                            <span className="rounded-md bg-muted/80 px-2.5 py-0.5 text-[11px] font-semibold text-muted-foreground">
-                              {article.tag}
-                            </span>
-                            <div className="flex items-center gap-1 text-[11px] text-muted-foreground">
-                              <ClockIcon className="size-3" />
-                              <span>{article.readTime}</span>
-                            </div>
+                        <div className="flex items-start gap-3.5 flex-1 min-w-0">
+                          <div className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground group-hover:bg-blue-500/10 group-hover:text-blue-600 transition-colors">
+                            <ArticleIcon className="size-4" />
                           </div>
-
-                          <div className="flex items-start gap-3">
-                            <div className="mt-1 flex size-7 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground group-hover:bg-blue-500/10 group-hover:text-blue-600 transition-colors">
-                              <ArticleIcon className="size-4" />
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2 mb-1 flex-wrap">
+                              <span className="rounded-md bg-muted/80 px-2 py-0.5 text-[10px] font-semibold text-muted-foreground">
+                                {article.tag}
+                              </span>
+                              <h3 className="text-base font-bold text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                                {article.title}
+                              </h3>
                             </div>
-                            <h3 className="text-base font-bold text-foreground leading-snug group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                              {article.title}
-                            </h3>
+                            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed line-clamp-1">
+                              {article.excerpt}
+                            </p>
                           </div>
-
-                          <p className="mt-3 text-xs sm:text-sm text-muted-foreground leading-relaxed line-clamp-3">
-                            {article.excerpt}
-                          </p>
                         </div>
 
-                        <div className="mt-6 flex items-center justify-between border-t border-border/50 pt-3.5 text-xs font-semibold text-blue-600 dark:text-blue-400">
-                          <span>Read Full Guide</span>
-                          <ArrowRightIcon className="size-3.5 group-hover:translate-x-1 transition-transform" />
+                        <div className="flex items-center justify-between md:justify-end gap-4 shrink-0 pl-11 md:pl-0 pt-1 md:pt-0">
+                          <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                            <ClockIcon className="size-3" />
+                            <span>{article.readTime}</span>
+                          </div>
+                          <div className="flex items-center gap-1 text-xs font-semibold text-blue-600 dark:text-blue-400">
+                            <span className="hidden sm:inline">Read Guide</span>
+                            <ArrowRightIcon className="size-3.5 group-hover:translate-x-1 transition-transform" />
+                          </div>
                         </div>
                       </LocaleLink>
                     );
