@@ -108,7 +108,7 @@ export async function generateMetadata({
   const { locale } = await params;
 
   return constructMetadata({
-    title: 'LipSync.pro Learn Hub | AI Lip Sync Academy & Topic Clusters',
+    title: 'LipSync.pro Learn Hub | AI Lip Sync Academy & Creator Guides',
     description:
       'Explore deep-dive guides, workflow tutorials, and neural AI video synchronization principles at LipSync.pro Learn Academy.',
     locale,
@@ -138,8 +138,8 @@ export default async function LearnHubPage({
           </h1>
           <p className="mx-auto mt-6 max-w-3xl text-lg text-muted-foreground leading-relaxed">
             Master the art of AI lip-syncing, text-driven video generation, and
-            photo avatar animation. Explore structured topic clusters and
-            step-by-step creator guides.
+            photo avatar animation. Explore structured creator guides,
+            workflows, and step-by-step video tutorials.
           </p>
         </div>
       </section>

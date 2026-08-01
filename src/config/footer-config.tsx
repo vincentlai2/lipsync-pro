@@ -41,7 +41,7 @@ export function useFooterLinks(): NestedMenuItem[] {
       ],
     },
     {
-      title: 'Learn & Clusters',
+      title: 'Learn & Guides',
       items: [
         {
           title: 'Learn Academy Hub',

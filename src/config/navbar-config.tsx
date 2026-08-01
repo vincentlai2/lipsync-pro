@@ -43,7 +43,7 @@ export function useNavbarLinks(): NestedMenuItem[] {
         {
           title: 'Learn Academy Hub',
           description:
-            'Explore all 3 Topic Clusters, workflows, definitions, and tutorials.',
+            'Explore AI video workflows, step-by-step guides, and tutorials.',
           icon: <BookOpenIcon className="size-4 shrink-0 text-blue-500" />,
           href: '/learn' as any,
           external: false,
