@@ -91,6 +91,109 @@ export interface ClusterPageContent {
   ctaText?: string;
 }
 
+interface RelatedArticleItem {
+  title: string;
+  href: string;
+}
+
+const lipSyncAiArticles: RelatedArticleItem[] = [
+  {
+    title: 'How to Create AI Lip Sync Videos',
+    href: '/lip-sync-ai/how-to-use',
+  },
+  {
+    title: 'Fix Vocal Audio Desync & Viseme Jitter',
+    href: '/lip-sync-ai/phoneme-viseme-matching-guide',
+  },
+  { title: 'What is AI Lip Sync Technology?', href: '/lip-sync-ai/what-is' },
+  {
+    title: 'AI Lip Sync vs Traditional Dubbing',
+    href: '/lip-sync-ai/vs-traditional-dubbing',
+  },
+  {
+    title: 'Top 5 AI Lip Sync Tools Comparison (2026)',
+    href: '/learn/best-ai-lip-sync-tools',
+  },
+  {
+    title: 'AI Video Localization & Dubbing Guide',
+    href: '/learn/ai-video-localization-guide-2026',
+  },
+  {
+    title: 'Video Re-Dubbing Workflow Optimization',
+    href: '/learn/video-re-dubbing-workflow-optimization',
+  },
+];
+
+const textToLipSyncArticles: RelatedArticleItem[] = [
+  {
+    title: 'Convert Written Scripts to HD Video',
+    href: '/text-to-lip-sync/how-to-use',
+  },
+  {
+    title: 'AI Video Scriptwriting Tips',
+    href: '/text-to-lip-sync/script-writing-tips',
+  },
+  {
+    title: 'Choosing Right AI Voice Persona',
+    href: '/text-to-lip-sync/voice-selection-guide',
+  },
+  { title: 'What is Text to Lip Sync?', href: '/text-to-lip-sync/what-is' },
+  {
+    title: 'Multilingual E-Learning & Voice Dubbing',
+    href: '/learn/multilingual-elearning-video-dubbing',
+  },
+];
+
+const photoToLipSyncArticles: RelatedArticleItem[] = [
+  {
+    title: 'Animate Photos into Talking Avatars',
+    href: '/photo-to-lip-sync/how-to-use',
+  },
+  {
+    title: 'Photo Lighting & Framing Optimization',
+    href: '/photo-to-lip-sync/portrait-image-optimization',
+  },
+  {
+    title: 'Build Virtual AI Brand Presenter',
+    href: '/photo-to-lip-sync/virtual-avatar-marketing',
+  },
+  { title: 'What is Photo to Lip Sync?', href: '/photo-to-lip-sync/what-is' },
+  {
+    title: 'How Faceless YouTube Channels Use AI Avatars',
+    href: '/learn/how-faceless-youtube-channels-use-ai-avatars',
+  },
+  {
+    title: 'AI Avatar Commercial Copyright & Ethics',
+    href: '/learn/ai-avatar-copyright-ethics-best-practices',
+  },
+];
+
+function getRelatedArticles(
+  pillarRoute: string,
+  pathname?: string
+): RelatedArticleItem[] {
+  const path = (pathname || '').toLowerCase();
+  let pool = lipSyncAiArticles;
+
+  if (
+    pillarRoute.includes('text-to-lip-sync') ||
+    path.includes('text-to-lip-sync') ||
+    path.includes('elearning')
+  ) {
+    pool = textToLipSyncArticles;
+  } else if (
+    pillarRoute.includes('photo-to-lip-sync') ||
+    path.includes('photo-to-lip-sync') ||
+    path.includes('faceless') ||
+    path.includes('copyright')
+  ) {
+    pool = photoToLipSyncArticles;
+  }
+
+  const filtered = pool.filter((item) => item.href.toLowerCase() !== path);
+  return filtered.slice(0, 3);
+}
+
 export function TopicClusterPage({ content }: { content: ClusterPageContent }) {
   return (
     <div className="relative overflow-hidden py-10 sm:py-16">
@@ -346,9 +449,67 @@ export function TopicClusterPage({ content }: { content: ClusterPageContent }) {
           </div>
         )}
 
+        {/* Related Articles Section */}
+        {(() => {
+          const related = getRelatedArticles(
+            content.pillarRoute,
+            content.pathname
+          );
+          if (related.length === 0) return null;
+          return (
+            <div className="mt-14 border-t border-border pt-10">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                  Related Guides & Reading
+                </h3>
+                <LocaleLink
+                  href={(content.pillarRoute || '/learn') as any}
+                  className="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
+                >
+                  <span>More in {content.pillarTitle}</span>
+                  <ChevronRightIcon className="size-3" />
+                </LocaleLink>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-3">
+                {related.map((article) => (
+                  <LocaleLink
+                    key={article.href}
+                    href={article.href as any}
+                    className="group flex flex-col justify-between rounded-xl border border-border bg-card p-4 transition-all hover:border-blue-500/40 hover:shadow-md"
+                  >
+                    <span className="text-xs font-bold text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                      {article.title}
+                    </span>
+                    <span className="mt-3 flex items-center text-[11px] font-semibold text-muted-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                      Read Guide{' '}
+                      <ArrowRightIcon className="ml-1 size-3 transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </LocaleLink>
+                ))}
+              </div>
+            </div>
+          );
+        })()}
+
+        {/* Bottom Parent Topic Center Navigation Bar */}
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border bg-muted/40 p-4 text-xs">
+          <LocaleLink
+            href={(content.pillarRoute || '/learn') as any}
+            className="flex items-center gap-1.5 font-bold text-foreground hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+          >
+            <span>← Return to {content.pillarTitle} Topic Hub</span>
+          </LocaleLink>
+          <LocaleLink
+            href="/learn"
+            className="font-semibold text-muted-foreground hover:text-foreground transition-colors"
+          >
+            View All Academy Guides →
+          </LocaleLink>
+        </div>
+
         {/* FAQ Section */}
         {content.faqs && content.faqs.length > 0 && (
-          <div className="mt-16 border-t border-border pt-12">
+          <div className="mt-14 border-t border-border pt-10">
             <div className="mb-8 flex items-center gap-3">
               <HelpCircleIcon className="size-6 text-blue-600 dark:text-blue-400" />
               <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
