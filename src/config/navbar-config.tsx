@@ -40,41 +40,34 @@ export function useNavbarLinks(): NestedMenuItem[] {
       title: 'Guides',
       items: [
         {
-          title: 'AI lip sync guides',
+          title: 'What is AI lip sync?',
           description:
-            'Practical workflows for creators, teams, and localization.',
-          icon: <BookOpenIcon className="size-4 shrink-0" />,
-          href: Routes.Blog,
+            'A plain-English definition, neural Viseme alignment & use cases.',
+          icon: <HelpCircleIcon className="size-4 shrink-0" />,
+          href: '/lip-sync-ai/what-is' as any,
           external: false,
         },
         {
           title: 'How to create lip sync videos',
-          description: 'A step-by-step guide from upload to export.',
+          description:
+            'A step-by-step creator guide from video upload to HD export.',
           icon: <BookOpenIcon className="size-4 shrink-0" />,
-          href: Routes.Wav2LipHowTo,
+          href: '/lip-sync-ai/how-to-use' as any,
           external: false,
         },
         {
-          title: 'AI vs traditional dubbing',
-          description:
-            'When AI lip sync fits better than classic dubbing workflows.',
+          title: 'Text to lip sync guide',
+          description: 'How to convert written scripts into speaking video.',
           icon: <ClapperboardIcon className="size-4 shrink-0" />,
-          href: Routes.Wav2LipAlternative,
+          href: '/text-to-lip-sync/how-to-use' as any,
           external: false,
         },
         {
-          title: 'Video translation and dubbing',
+          title: 'Photo animation guide',
           description:
-            'Plan multilingual video updates without losing performance.',
+            'How to turn still portrait pictures into talking avatars.',
           icon: <ClapperboardIcon className="size-4 shrink-0" />,
-          href: Routes.Wav2LipColab,
-          external: false,
-        },
-        {
-          title: 'What is AI lip sync?',
-          description: 'A plain-English definition, use cases, and limits.',
-          icon: <HelpCircleIcon className="size-4 shrink-0" />,
-          href: Routes.Wav2LipWhatIs,
+          href: '/photo-to-lip-sync/how-to-use' as any,
           external: false,
         },
       ],
