@@ -75,32 +75,66 @@ export function TopicClusterPage({ content }: { content: ClusterPageContent }) {
         <div className="aspect-[1108/632] w-[69.25rem] flex-none bg-gradient-to-r from-blue-600/15 via-indigo-600/10 to-purple-600/15 opacity-40 dark:opacity-30" />
       </div>
 
-      {/* Google Schema.org BreadcrumbList JSON-LD */}
+      {/* GEO & Google Schema.org Graph JSON-LD */}
       <script
         type="application/ld+json"
-        /* biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data for Google SEO */
+        /* biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data for GEO & Google Search */
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'BreadcrumbList',
-            itemListElement: [
+            '@graph': [
               {
-                '@type': 'ListItem',
-                position: 1,
-                name: 'Home',
-                item: 'https://lipsync.pro',
+                '@type': 'BreadcrumbList',
+                itemListElement: [
+                  {
+                    '@type': 'ListItem',
+                    position: 1,
+                    name: 'Home',
+                    item: 'https://lipsync.pro',
+                  },
+                  {
+                    '@type': 'ListItem',
+                    position: 2,
+                    name: content.pillarTitle,
+                    item: `https://lipsync.pro${content.pillarRoute}`,
+                  },
+                  {
+                    '@type': 'ListItem',
+                    position: 3,
+                    name: content.badge,
+                  },
+                ],
               },
               {
-                '@type': 'ListItem',
-                position: 2,
-                name: content.pillarTitle,
-                item: `https://lipsync.pro${content.pillarRoute}`,
+                '@type': 'SoftwareApplication',
+                name: 'LipSync.pro',
+                applicationCategory: 'MultimediaApplication',
+                operatingSystem: 'Web',
+                url: 'https://lipsync.pro',
+                description:
+                  'LipSync.pro is an AI-powered web platform for automated Wav2Lip video synchronization, text-to-speech lip matching, and photo avatar animation.',
+                offers: {
+                  '@type': 'Offer',
+                  price: '0.00',
+                  priceCurrency: 'USD',
+                  description: 'Free trial welcome credits available.',
+                },
               },
-              {
-                '@type': 'ListItem',
-                position: 3,
-                name: content.badge,
-              },
+              ...(content.faqs && content.faqs.length > 0
+                ? [
+                    {
+                      '@type': 'FAQPage',
+                      mainEntity: content.faqs.map((faq) => ({
+                        '@type': 'Question',
+                        name: faq.question,
+                        acceptedAnswer: {
+                          '@type': 'Answer',
+                          text: faq.answer,
+                        },
+                      })),
+                    },
+                  ]
+                : []),
             ],
           }),
         }}

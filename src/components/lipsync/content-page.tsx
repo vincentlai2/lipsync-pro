@@ -1,6 +1,12 @@
 import { Button } from '@/components/ui/button';
+import { LocaleLink } from '@/i18n/navigation';
 import { Routes } from '@/routes';
-import { ArrowRightIcon, CheckCircle2Icon } from 'lucide-react';
+import {
+  ArrowRightIcon,
+  CheckCircle2Icon,
+  ChevronRightIcon,
+  HomeIcon,
+} from 'lucide-react';
 import Link from 'next/link';
 
 interface LipSyncContentPageProps {
@@ -29,21 +35,80 @@ export function LipSyncContentPage({
 }: LipSyncContentPageProps) {
   return (
     <article className="min-h-screen bg-background text-foreground">
-      <section className="border-b bg-zinc-50 py-16 dark:bg-zinc-950/20 md:py-20">
+      {/* Google Schema.org BreadcrumbList JSON-LD for GEO */}
+      <script
+        type="application/ld+json"
+        /* biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD for GEO and Google Search */
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://lipsync.pro',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Guides',
+                item: 'https://lipsync.pro/how-to-create-lip-sync-videos',
+              },
+              {
+                '@type': 'ListItem',
+                position: 3,
+                name: title,
+              },
+            ],
+          }),
+        }}
+      />
+
+      <section className="border-b bg-zinc-50 py-12 dark:bg-zinc-950/20 md:py-16">
         <div className="mx-auto max-w-4xl px-4">
-          <span className="inline-flex rounded-md border border-primary/20 bg-primary/10 px-3 py-1 font-medium text-primary text-xs">
-            {eyebrow}
-          </span>
-          <h1 className="mt-6 text-4xl font-semibold leading-tight tracking-tight text-zinc-950 dark:text-white md:text-5xl">
+          {/* Breadcrumbs Navigation Bar */}
+          <nav
+            aria-label="Breadcrumb"
+            className="mb-6 inline-flex flex-wrap items-center gap-2 rounded-full border border-zinc-200 bg-white/80 px-4 py-1.5 text-xs font-medium text-zinc-600 shadow-xs dark:border-zinc-800 dark:bg-zinc-900/80 dark:text-zinc-400"
+          >
+            <LocaleLink
+              href="/"
+              className="flex items-center gap-1 hover:text-zinc-950 transition-colors dark:hover:text-white"
+            >
+              <HomeIcon className="size-3.5" />
+              <span>Home</span>
+            </LocaleLink>
+            <ChevronRightIcon className="size-3 text-zinc-400" />
+            <LocaleLink
+              href="/how-to-create-lip-sync-videos"
+              className="hover:text-zinc-950 transition-colors dark:hover:text-white"
+            >
+              Guides
+            </LocaleLink>
+            <ChevronRightIcon className="size-3 text-zinc-400" />
+            <span className="font-semibold text-zinc-900 dark:text-zinc-100">
+              {eyebrow}
+            </span>
+          </nav>
+
+          <div>
+            <span className="inline-flex rounded-md border border-primary/20 bg-primary/10 px-3 py-1 font-medium text-primary text-xs">
+              {eyebrow}
+            </span>
+          </div>
+
+          <h1 className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-zinc-950 dark:text-white md:text-5xl">
             {title}
           </h1>
-          <p className="mt-5 max-w-3xl text-muted-foreground text-lg leading-relaxed">
+          <p className="mt-4 max-w-3xl text-muted-foreground text-lg leading-relaxed">
             {description}
           </p>
-          <div className="mt-8">
+          <div className="mt-6">
             <Button asChild size="lg">
               <Link href={Routes.LipSyncAI}>
-                Try Lip Sync AI
+                Try LipSync.pro AI Free
                 <ArrowRightIcon className="ml-2 size-4" />
               </Link>
             </Button>
