@@ -559,11 +559,11 @@ export function TopicClusterPage({ content }: { content: ClusterPageContent }) {
                 )}
               >
                 <span>
-                  Launch{' '}
-                  {content.pillarTitle && content.pillarTitle !== 'Academy Hub'
-                    ? content.pillarTitle
-                    : 'AI Lip Sync'}{' '}
-                  Tool
+                  {content.pillarRoute === '/text-to-lip-sync'
+                    ? 'Try Text to Lip Sync Free'
+                    : content.pillarRoute === '/photo-to-lip-sync'
+                      ? 'Try Photo to Lip Sync Free'
+                      : 'Try AI Lip Sync Free'}
                 </span>
                 <ArrowRightIcon className="ml-2 size-4" />
               </LocaleLink>
