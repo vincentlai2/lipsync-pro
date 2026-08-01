@@ -12,6 +12,12 @@ type Href = Parameters<typeof getLocalePathname>[0]['href'];
 /**
  * static routes for sitemap, you may change the routes for your own
  */
+import { getAllArticles } from '@/lib/articles';
+
+const dynamicContentArticles = getAllArticles(false).map(
+  (a) => `/learn/${a.slug}`
+);
+
 const staticRoutes = [
   '/',
   '/lip-sync-ai',
@@ -47,6 +53,7 @@ const staticRoutes = [
   '/learn/multilingual-elearning-video-dubbing',
   '/learn/ai-avatar-copyright-ethics-best-practices',
   '/learn/video-re-dubbing-workflow-optimization',
+  ...dynamicContentArticles,
   ...(websiteConfig.blog.enable ? ['/blog'] : []),
   ...(websiteConfig.docs.enable ? ['/docs'] : []),
 ];
