@@ -22,7 +22,7 @@ export const TENANT_CONFIGS: Record<string, TenantConfig> = {
     logoUrl: '/logo.png',
     defaultLocale: 'en',
     defaultPath: '/lip-sync-ai',
-    supportEmail: 'support@lipsync.pro',
+    supportEmail: 'hi@lipsync.pro',
     currency: 'USD',
   },
   'wav2lipia.com': {

@@ -67,7 +67,7 @@ export const websiteConfig: WebsiteConfig = {
   mail: {
     provider: 'resend',
     fromEmail: 'LipSync.pro <hi@lipsync.pro>',
-    supportEmail: 'LipSync.pro <support@lipsync.pro>',
+    supportEmail: 'LipSync.pro <hi@lipsync.pro>',
   },
   newsletter: {
     enable: true,
