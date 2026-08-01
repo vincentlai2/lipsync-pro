@@ -1,14 +1,15 @@
 import { LocaleLink } from '@/i18n/navigation';
 import { LOCALES } from '@/i18n/routing';
 import { constructMetadata } from '@/lib/metadata';
-import { Routes } from '@/routes';
 import {
   ArrowRightIcon,
+  BookOpenIcon,
   BookOpenTextIcon,
+  CheckCircle2Icon,
   ClapperboardIcon,
+  ClockIcon,
   CompassIcon,
   HelpCircleIcon,
-  LanguagesIcon,
   MonitorPlayIcon,
   SparklesIcon,
   WorkflowIcon,
@@ -17,80 +18,180 @@ import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 
-type TopicPillarCard = {
+type ArticleItem = {
   title: string;
-  badge: string;
-  description: string;
-  pillarHref: string;
-  links: { label: string; href: string }[];
+  excerpt: string;
+  href: string;
+  tag: string;
+  readTime: string;
   icon: any;
 };
 
-const pillarHubs: TopicPillarCard[] = [
+type LearnCategorySection = {
+  id: string;
+  title: string;
+  subtitle: string;
+  badge: string;
+  pillarHref: string;
+  pillarLabel: string;
+  icon: any;
+  articles: ArticleItem[];
+};
+
+const learnCategories: LearnCategorySection[] = [
   {
-    title: 'AI Lip Sync',
+    id: 'lip-sync-ai',
+    title: 'AI Lip Sync Video Synchronization Guides',
+    subtitle:
+      'Master neural viseme alignment, video re-dubbing, audio-to-video matching, and localization workflows.',
     badge: 'Video Synchronization',
-    description:
-      'Match visible speech in source videos with localized audio, narration, and translated dialogue tracks.',
     pillarHref: '/lip-sync-ai',
+    pillarLabel: 'Launch Lip Sync AI Tool',
     icon: SparklesIcon,
-    links: [
-      { label: 'What is AI Lip Sync?', href: '/lip-sync-ai/what-is' },
+    articles: [
       {
-        label: 'How to Create Lip Sync Videos',
+        title:
+          'What is AI Lip Sync? Technical Principles & Neural Viseme Alignment',
+        excerpt:
+          'A plain-English breakdown of neural audio-viseme matching, automatic lip movement alignment, and video re-dubbing.',
+        href: '/lip-sync-ai/what-is',
+        tag: 'Technical Principles',
+        readTime: '4 min read',
+        icon: HelpCircleIcon,
+      },
+      {
+        title: 'How to Create AI Lip Sync Videos: Step-by-Step Creator Guide',
+        excerpt:
+          'Learn how to upload source video files, align audio tracks, and export high-definition natural speaking videos in minutes.',
         href: '/lip-sync-ai/how-to-use',
+        tag: 'Creator Tutorial',
+        readTime: '6 min read',
+        icon: WorkflowIcon,
       },
-      { label: 'Free AI Lip Sync Generator', href: '/lip-sync-ai/free' },
       {
-        label: 'AI Lip Sync vs Traditional Dubbing',
+        title: 'Free AI Lip Sync Generator: Online Trial & Feature Overview',
+        excerpt:
+          'Try AI lip synchronization online without software installation. Explore complimentary processing credits and output quality.',
+        href: '/lip-sync-ai/free',
+        tag: 'Free Lead Magnet',
+        readTime: '3 min read',
+        icon: BookOpenIcon,
+      },
+      {
+        title:
+          'AI Lip Sync vs Traditional Voiceover Dubbing: Cost & Speed Comparison',
+        excerpt:
+          'In-depth breakdown of speed, budget efficiency, localization scalability, and natural visual match between AI and voice actors.',
         href: '/lip-sync-ai/vs-traditional-dubbing',
+        tag: 'Deep Comparison',
+        readTime: '7 min read',
+        icon: BookOpenTextIcon,
       },
       {
-        label: 'Industry Use Cases & Applications',
+        title: 'Industry Use Cases & Commercial Applications for AI Lip Sync',
+        excerpt:
+          'How video localization, e-learning academies, film dubbing studios, and digital marketing agencies leverage neural lip sync.',
         href: '/lip-sync-ai/applications',
+        tag: 'Use Cases',
+        readTime: '5 min read',
+        icon: CheckCircle2Icon,
       },
     ],
   },
   {
-    title: 'Text to Lip Sync',
+    id: 'text-to-lip-sync',
+    title: 'Text to Lip Sync & Script-Driven Video Tutorials',
+    subtitle:
+      'Learn how to convert raw text scripts into realistic speaking avatars with automated neural text-to-speech alignment.',
     badge: 'Script to Video',
-    description:
-      'Convert written scripts into natural speaking avatars with automated neural text-to-speech alignment.',
     pillarHref: '/text-to-lip-sync',
+    pillarLabel: 'Launch Text to Lip Sync Tool',
     icon: ClapperboardIcon,
-    links: [
-      { label: 'What is Text to Lip Sync?', href: '/text-to-lip-sync/what-is' },
+    articles: [
       {
-        label: 'How to Convert Text to Video',
-        href: '/text-to-lip-sync/how-to-use',
+        title: 'What is Text to Lip Sync? Script-to-Speaking Avatar Explained',
+        excerpt:
+          'Understand how neural text-to-speech models pair with facial animation pipelines to generate speaking videos from written text.',
+        href: '/text-to-lip-sync/what-is',
+        tag: 'Definition & Overview',
+        readTime: '4 min read',
+        icon: HelpCircleIcon,
       },
-      { label: 'Free Text to Lip Sync Trial', href: '/text-to-lip-sync/free' },
       {
-        label: 'Multilingual Voice Examples',
+        title: 'How to Convert Written Scripts into HD Speaking Videos',
+        excerpt:
+          'Step-by-step workflow for writing video scripts, selecting realistic neural voices, and outputting HD lip-synced videos.',
+        href: '/text-to-lip-sync/how-to-use',
+        tag: 'Step-by-Step Guide',
+        readTime: '5 min read',
+        icon: WorkflowIcon,
+      },
+      {
+        title: 'Free Text to Lip Sync Online Trial: Features & Free Credits',
+        excerpt:
+          'Test script-driven video generation for free. Evaluate voice options, language availability, and lip movement precision.',
+        href: '/text-to-lip-sync/free',
+        tag: 'Free Trial Guide',
+        readTime: '3 min read',
+        icon: BookOpenIcon,
+      },
+      {
+        title: 'Multilingual Voice Examples & Language Alignment Showcase',
+        excerpt:
+          'Explore script-to-video capabilities across English, Spanish, Japanese, German, Mandarin, and 29+ global languages.',
         href: '/text-to-lip-sync/examples',
+        tag: 'Voice Showcase',
+        readTime: '4 min read',
+        icon: BookOpenTextIcon,
       },
     ],
   },
   {
-    title: 'Photo to Lip Sync',
+    id: 'photo-to-lip-sync',
+    title: 'Photo to Lip Sync & Talking Portrait Guides',
+    subtitle:
+      'Turn 2D portrait images and still headshots into expressive, vocal-driven talking avatars and animated videos.',
     badge: 'Talking Portrait Avatar',
-    description:
-      'Animate 2D portrait images into expressive 3D talking avatars powered by vocal audio files.',
     pillarHref: '/photo-to-lip-sync',
+    pillarLabel: 'Launch Photo Animation Tool',
     icon: MonitorPlayIcon,
-    links: [
+    articles: [
       {
-        label: 'What is Photo to Lip Sync?',
+        title: 'What is Photo to Lip Sync? 2D Portrait Animation Technology',
+        excerpt:
+          'Discover how single-image facial landmark detection and neural animation turn still photographs into realistic talking avatars.',
         href: '/photo-to-lip-sync/what-is',
+        tag: 'Technology Guide',
+        readTime: '4 min read',
+        icon: HelpCircleIcon,
       },
       {
-        label: 'How to Animate Still Photos',
+        title: 'How to Animate Still Photos into Expressive Talking Avatars',
+        excerpt:
+          'Complete creator tutorial: upload headshot images, attach custom audio tracks or scripts, and generate animated portrait videos.',
         href: '/photo-to-lip-sync/how-to-use',
+        tag: 'Creator Tutorial',
+        readTime: '5 min read',
+        icon: WorkflowIcon,
       },
-      { label: 'Free Photo Generator Online', href: '/photo-to-lip-sync/free' },
       {
-        label: 'Avatar Showcase & Examples',
+        title:
+          'Free Online Photo Talking Avatar Generator: Step-by-Step Overview',
+        excerpt:
+          'Animate your first portrait photo for free online. Learn image framing best practices, audio formatting, and credit usage.',
+        href: '/photo-to-lip-sync/free',
+        tag: 'Free Generator Guide',
+        readTime: '3 min read',
+        icon: BookOpenIcon,
+      },
+      {
+        title: 'Photo Avatar Showcase & Commercial Production Examples',
+        excerpt:
+          'Browse real-world examples of photo talking avatars used in customer support bots, marketing promos, and virtual avatars.',
         href: '/photo-to-lip-sync/examples',
+        tag: 'Avatar Showcase',
+        readTime: '4 min read',
+        icon: BookOpenTextIcon,
       },
     ],
   },
@@ -108,9 +209,9 @@ export async function generateMetadata({
   const { locale } = await params;
 
   return constructMetadata({
-    title: 'LipSync.pro Learn Hub | AI Lip Sync Academy & Creator Guides',
+    title: 'LipSync.pro Learn Hub | AI Lip Sync Academy & Knowledge Base',
     description:
-      'Explore deep-dive guides, workflow tutorials, and neural AI video synchronization principles at LipSync.pro Learn Academy.',
+      'Master AI lip-syncing, text-to-video generation, and photo avatar animation. Browse structured guides, workflow tutorials, and technical principles.',
     locale,
     pathname: '/learn',
   });
@@ -125,95 +226,130 @@ export default async function LearnHubPage({
   setRequestLocale(locale);
 
   return (
-    <main className="border-t bg-background">
+    <main className="border-t bg-background min-h-screen">
       {/* Hero Section */}
-      <section className="border-b bg-zinc-50 dark:bg-zinc-950/40 py-16 md:py-24">
+      <section className="relative overflow-hidden border-b bg-zinc-50/70 dark:bg-zinc-950/40 py-16 md:py-20">
+        <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 flex transform-gpu justify-center overflow-hidden blur-3xl">
+          <div className="aspect-[1108/632] w-[69.25rem] flex-none bg-gradient-to-r from-blue-600/15 via-indigo-600/10 to-purple-600/15 opacity-40 dark:opacity-30" />
+        </div>
+
         <div className="mx-auto max-w-6xl px-4 text-center">
           <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 text-xs font-bold text-blue-600 dark:text-blue-400">
             <CompassIcon className="size-4" />
             <span>LIPSYNC.PRO LEARN ACADEMY</span>
           </div>
           <h1 className="mt-6 text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl">
-            AI Video Synchronization & Localization Hub
+            AI Video Synchronization Knowledge Base
           </h1>
-          <p className="mx-auto mt-6 max-w-3xl text-lg text-muted-foreground leading-relaxed">
-            Master the art of AI lip-syncing, text-driven video generation, and
-            photo avatar animation. Explore structured creator guides,
-            workflows, and step-by-step video tutorials.
+          <p className="mx-auto mt-5 max-w-3xl text-base sm:text-lg text-muted-foreground leading-relaxed">
+            Browse structured tutorial categories, technical definitions,
+            creator workflows, and comparison guides for AI lip syncing and
+            avatar animation.
           </p>
+
+          {/* Quick Category Navigation Bar */}
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            {learnCategories.map((cat) => (
+              <a
+                key={cat.id}
+                href={`#${cat.id}`}
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-xs font-semibold text-foreground shadow-xs transition-all hover:border-blue-500/50 hover:bg-muted"
+              >
+                <cat.icon className="size-3.5 text-blue-500" />
+                <span>
+                  {cat.title.split(' ')[0]} {cat.title.split(' ')[1]}
+                </span>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* 3 Pillars & Clusters Grid */}
-      <section className="py-16 md:py-20">
+      {/* Structured Category Sections (分区板块列表) */}
+      <section className="py-12 md:py-16 space-y-16">
         <div className="mx-auto max-w-6xl px-4">
-          <div className="mb-12 text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground">
-              Featured Learning Categories
-            </h2>
-            <p className="mt-2 text-muted-foreground">
-              Select a feature category to master step-by-step guides,
-              definitions, and tutorials.
-            </p>
-          </div>
-
-          <div className="grid gap-8 md:grid-cols-3">
-            {pillarHubs.map((hub) => {
-              const Icon = hub.icon;
-              return (
-                <div
-                  key={hub.title}
-                  className="flex flex-col justify-between rounded-2xl border border-border bg-card p-6 shadow-xs transition-all hover:border-blue-500/40 hover:shadow-md"
-                >
+          {learnCategories.map((category) => {
+            const CategoryIcon = category.icon;
+            return (
+              <div
+                key={category.id}
+                id={category.id}
+                className="mb-16 scroll-mt-24 border-b border-border/60 pb-14 last:border-0 last:pb-0"
+              >
+                {/* Category Header Bar */}
+                <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
                   <div>
-                    <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-3 mb-2">
                       <div className="flex size-10 items-center justify-center rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400">
-                        <Icon className="size-5" />
+                        <CategoryIcon className="size-5" />
                       </div>
-                      <span className="rounded-full bg-muted px-3 py-1 text-[11px] font-semibold text-muted-foreground">
-                        {hub.badge}
+                      <span className="rounded-full bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-600 dark:text-blue-400">
+                        {category.badge}
                       </span>
                     </div>
-
-                    <h3 className="text-xl font-bold text-foreground">
-                      {hub.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                      {hub.description}
+                    <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+                      {category.title}
+                    </h2>
+                    <p className="mt-1.5 text-sm sm:text-base text-muted-foreground max-w-3xl">
+                      {category.subtitle}
                     </p>
-
-                    <div className="my-6 border-t border-border/60" />
-
-                    <ul className="space-y-2.5 text-sm">
-                      {hub.links.map((link) => (
-                        <li key={link.href}>
-                          <LocaleLink
-                            href={link.href as any}
-                            className="group flex items-center justify-between text-muted-foreground hover:text-foreground font-medium transition-colors"
-                          >
-                            <span className="group-hover:translate-x-0.5 transition-transform">
-                              {link.label}
-                            </span>
-                            <ArrowRightIcon className="size-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-blue-500" />
-                          </LocaleLink>
-                        </li>
-                      ))}
-                    </ul>
                   </div>
 
-                  <div className="mt-8 pt-4 border-t border-border/40">
-                    <LocaleLink
-                      href={hub.pillarHref as any}
-                      className="inline-flex w-full items-center justify-center rounded-xl bg-primary px-4 py-2.5 font-semibold text-primary-foreground text-sm hover:bg-primary/90 transition-colors"
-                    >
-                      Explore {hub.title}
-                      <ArrowRightIcon className="ml-2 size-4" />
-                    </LocaleLink>
-                  </div>
+                  <LocaleLink
+                    href={category.pillarHref as any}
+                    className="inline-flex shrink-0 items-center gap-1.5 text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline"
+                  >
+                    <span>{category.pillarLabel}</span>
+                    <ArrowRightIcon className="size-3.5" />
+                  </LocaleLink>
                 </div>
-              );
-            })}
-          </div>
+
+                {/* Category Articles List Grid (平铺展现各文章内容卡片) */}
+                <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                  {category.articles.map((article) => {
+                    const ArticleIcon = article.icon;
+                    return (
+                      <LocaleLink
+                        key={article.href}
+                        href={article.href as any}
+                        className="group flex flex-col justify-between rounded-2xl border border-border bg-card p-6 shadow-xs transition-all hover:-translate-y-0.5 hover:border-blue-500/40 hover:shadow-md hover:shadow-blue-500/5"
+                      >
+                        <div>
+                          <div className="flex items-center justify-between gap-2 mb-3">
+                            <span className="rounded-md bg-muted/80 px-2.5 py-0.5 text-[11px] font-semibold text-muted-foreground">
+                              {article.tag}
+                            </span>
+                            <div className="flex items-center gap-1 text-[11px] text-muted-foreground">
+                              <ClockIcon className="size-3" />
+                              <span>{article.readTime}</span>
+                            </div>
+                          </div>
+
+                          <div className="flex items-start gap-3">
+                            <div className="mt-1 flex size-7 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground group-hover:bg-blue-500/10 group-hover:text-blue-600 transition-colors">
+                              <ArticleIcon className="size-4" />
+                            </div>
+                            <h3 className="text-base font-bold text-foreground leading-snug group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                              {article.title}
+                            </h3>
+                          </div>
+
+                          <p className="mt-3 text-xs sm:text-sm text-muted-foreground leading-relaxed line-clamp-3">
+                            {article.excerpt}
+                          </p>
+                        </div>
+
+                        <div className="mt-6 flex items-center justify-between border-t border-border/50 pt-3.5 text-xs font-semibold text-blue-600 dark:text-blue-400">
+                          <span>Read Full Guide</span>
+                          <ArrowRightIcon className="size-3.5 group-hover:translate-x-1 transition-transform" />
+                        </div>
+                      </LocaleLink>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
     </main>
