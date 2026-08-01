@@ -21,6 +21,7 @@ const content: ClusterPageContent = {
     'High-volume video publishers require automated batch pipelines to dub hundreds of assets monthly. Discover how cloud-native API integrations streamline video re-dubbing from script ingest to final MP4 rendering.',
   pillarTitle: 'AI Lip Sync',
   pillarRoute: '/lip-sync-ai',
+  pathname: '/learn/video-re-dubbing-workflow-optimization',
   ctaText: 'Try AI Lip Sync Tool Online',
   sections: [
     {

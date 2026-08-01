@@ -15,6 +15,8 @@ import {
   ZapIcon,
 } from 'lucide-react';
 import {
+  EnterpriseWorkflowDiagram,
+  MarketBenchmarkDiagram,
   PhotoToAvatarDiagram,
   TextToSpeechPipelineDiagram,
   UseCasesGridDiagram,
@@ -22,13 +24,34 @@ import {
   WorkflowStepsDiagram,
 } from './topic-cluster-visuals';
 
-function renderSectionVisual(pillarRoute: string, idx: number) {
-  if (pillarRoute.includes('photo-to-lip-sync')) {
+function renderSectionVisual(
+  pillarRoute: string,
+  pathname?: string,
+  idx: number = 0
+) {
+  const path = (pathname || pillarRoute).toLowerCase();
+
+  if (path.includes('best-ai-lip-sync-tools')) {
+    if (idx === 0) return <MarketBenchmarkDiagram />;
+    if (idx === 1) return <WorkflowStepsDiagram />;
+    return <UseCasesGridDiagram />;
+  }
+  if (
+    path.includes('workflow') ||
+    path.includes('localization') ||
+    path.includes('dubbing') ||
+    path.includes('copyright')
+  ) {
+    if (idx === 0) return <EnterpriseWorkflowDiagram />;
+    if (idx === 1) return <WorkflowStepsDiagram />;
+    return <UseCasesGridDiagram />;
+  }
+  if (path.includes('photo-to-lip-sync')) {
     if (idx === 0) return <PhotoToAvatarDiagram />;
     if (idx === 1) return <WorkflowStepsDiagram />;
     return <UseCasesGridDiagram />;
   }
-  if (pillarRoute.includes('text-to-lip-sync')) {
+  if (path.includes('text-to-lip-sync')) {
     if (idx === 0) return <TextToSpeechPipelineDiagram />;
     if (idx === 1) return <WorkflowStepsDiagram />;
     return <UseCasesGridDiagram />;
@@ -51,6 +74,7 @@ export interface ClusterPageContent {
   description: string;
   pillarTitle: string;
   pillarRoute: string;
+  pathname?: string;
   heroImage?: ClusterPageImage;
   sections: {
     heading: string;
@@ -216,29 +240,29 @@ export function TopicClusterPage({ content }: { content: ClusterPageContent }) {
             )}
           </div>
         ) : (
-          <div className="my-8 relative overflow-hidden rounded-3xl border border-blue-500/20 bg-gradient-to-br from-zinc-900 via-slate-900 to-black p-8 text-white shadow-2xl">
+          <div className="my-8 relative overflow-hidden rounded-3xl border border-blue-500/20 bg-gradient-to-br from-blue-50/80 via-indigo-50/40 to-slate-50 dark:from-zinc-900 dark:via-slate-900 dark:to-black p-8 text-foreground dark:text-white shadow-xl">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="space-y-2">
-                <div className="inline-flex items-center gap-2 rounded-md bg-blue-500/20 px-2.5 py-1 text-xs font-bold text-blue-400">
+                <div className="inline-flex items-center gap-2 rounded-md bg-blue-500/15 dark:bg-blue-500/20 px-2.5 py-1 text-xs font-bold text-blue-600 dark:text-blue-400 border border-blue-500/20">
                   <span>AI NEURAL ENGINE VISUALIZATION</span>
                 </div>
-                <h3 className="text-xl font-bold text-white">
+                <h3 className="text-xl font-bold text-foreground dark:text-white">
                   Audio-Driven Viseme & Lip Sync Pipeline
                 </h3>
-                <p className="text-xs text-zinc-400">
+                <p className="text-xs text-muted-foreground dark:text-zinc-400">
                   Sub-frame acoustic spectral matching with automatic phoneme
                   alignment.
                 </p>
               </div>
-              <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-md">
+              <div className="flex items-center gap-3 rounded-2xl border border-border/80 bg-background/80 dark:bg-white/5 dark:border-white/10 p-4 backdrop-blur-md shadow-xs">
                 <div className="flex size-12 items-center justify-center rounded-xl bg-blue-600 text-white font-bold">
                   99.4%
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-white">
+                  <div className="text-xs font-bold text-foreground dark:text-white">
                     Viseme Sync Precision
                   </div>
-                  <div className="text-[10px] text-emerald-400">
+                  <div className="text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold">
                     Sub-frame alignment
                   </div>
                 </div>
@@ -274,7 +298,7 @@ export function TopicClusterPage({ content }: { content: ClusterPageContent }) {
                   )}
                 </div>
               ) : (
-                renderSectionVisual(content.pillarRoute, idx)
+                renderSectionVisual(content.pillarRoute, content.pathname, idx)
               )}
 
               {section.content.map((paragraph, pIdx) => (
