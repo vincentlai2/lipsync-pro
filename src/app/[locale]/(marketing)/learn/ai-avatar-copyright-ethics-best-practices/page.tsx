@@ -7,7 +7,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = constructMetadata({
   title:
-    'AI Generated Avatars & Commercial Copyright: Best Practices for Businesses',
+    'AI Lip Sync & Avatar Commercial Copyright: Best Practices for Businesses',
   description:
     'Navigate the legal, ethical, and commercial copyright frameworks governing AI generated avatar videos and voice dubbing for corporate brands.',
   pathname: '/learn/ai-avatar-copyright-ethics-best-practices',
@@ -15,7 +15,7 @@ export const metadata: Metadata = constructMetadata({
 
 const content: ClusterPageContent = {
   title:
-    'AI Generated Avatars & Commercial Copyright: Best Practices for Businesses',
+    'AI Lip Sync & Avatar Commercial Copyright: Best Practices for Businesses',
   badge: 'Legal & Ethics',
   description:
     'As synthetic video technology becomes mainstream, enterprise marketing and legal teams must ensure compliance with likeness rights, commercial licensing, and AI disclosure regulations.',

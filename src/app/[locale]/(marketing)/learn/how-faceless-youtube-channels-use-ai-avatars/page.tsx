@@ -7,7 +7,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = constructMetadata({
   title:
-    'How Faceless YouTube & TikTok Creators Scale Video Output using AI Avatars',
+    'How Faceless YouTube Channels Scale Video Output with AI Lip Sync Avatars',
   description:
     'Learn how top faceless content creators leverage AI talking photos and text-to-speech avatars to publish 10+ high-retention short-form videos daily.',
   pathname: '/learn/how-faceless-youtube-channels-use-ai-avatars',
@@ -15,7 +15,7 @@ export const metadata: Metadata = constructMetadata({
 
 const content: ClusterPageContent = {
   title:
-    'How Faceless YouTube & TikTok Creators Scale Video Output using AI Avatars',
+    'How Faceless YouTube Channels Scale Video Output with AI Lip Sync Avatars',
   badge: 'Creator Guide',
   description:
     'Faceless video creation is one of the fastest-growing digital media business models. Discover how creators build recurring revenue channels without camera anxiety using AI avatar automation.',

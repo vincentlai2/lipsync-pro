@@ -166,7 +166,7 @@ const learnCategories: LearnCategorySection[] = [
       },
       {
         title:
-          'Choosing the Right AI Neural Voice Persona for Script-Driven Videos',
+          'Choosing the Right AI Neural Voice Persona for Text to Lip Sync Videos',
         excerpt:
           'Match your brand identity with the ideal AI neural voice persona: tone, regional accents, and emotional warmth.',
         href: '/text-to-lip-sync/voice-selection-guide',
@@ -225,7 +225,7 @@ const learnCategories: LearnCategorySection[] = [
       },
       {
         title:
-          'Best Photo Lighting & Angle Practices for High-Quality Talking Portraits',
+          'Best Photo Lighting & Angle Practices for Photo to Lip Sync Talking Portraits',
         excerpt:
           'Optimize source photos for Photo-to-Lip-Sync: framing specs, direct frontal angles, and un-occluded mouth guidelines.',
         href: '/photo-to-lip-sync/portrait-image-optimization',
@@ -234,7 +234,8 @@ const learnCategories: LearnCategorySection[] = [
         icon: WorkflowIcon,
       },
       {
-        title: 'How to Build a Virtual AI Brand Presenter Using a Single Photo',
+        title:
+          'How to Build a Virtual AI Brand Presenter with Photo to Lip Sync',
         excerpt:
           'Scale video marketing without cameras or studios. Learn how e-commerce brands create virtual spokespeople from headshots.',
         href: '/photo-to-lip-sync/virtual-avatar-marketing',
@@ -275,7 +276,7 @@ const learnCategories: LearnCategorySection[] = [
       },
       {
         title:
-          'How Faceless YouTube & TikTok Creators Scale Video Output using AI Avatars',
+          'How Faceless YouTube Channels Scale Video Output with AI Lip Sync Avatars',
         excerpt:
           'Learn how top faceless content creators leverage AI talking photos and text-to-speech avatars to publish daily Short content.',
         href: '/learn/how-faceless-youtube-channels-use-ai-avatars',
@@ -285,7 +286,7 @@ const learnCategories: LearnCategorySection[] = [
       },
       {
         title:
-          'How E-Learning Academies Cut Video Translation Costs by 80% with Neural Dubbing',
+          'How E-Learning Academies Cut Translation Costs with AI Lip Sync Dubbing',
         excerpt:
           'Case study and implementation guide for online course platforms translating video lectures into multi-language catalogs.',
         href: '/learn/multilingual-elearning-video-dubbing',
@@ -295,7 +296,7 @@ const learnCategories: LearnCategorySection[] = [
       },
       {
         title:
-          'AI Generated Avatars & Commercial Copyright: Best Practices for Businesses',
+          'AI Lip Sync & Avatar Commercial Copyright: Best Practices for Businesses',
         excerpt:
           'Navigate the legal, ethical, and commercial copyright frameworks governing AI generated avatar videos and voice dubbing.',
         href: '/learn/ai-avatar-copyright-ethics-best-practices',

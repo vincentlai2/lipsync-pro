@@ -6,14 +6,16 @@ import {
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = constructMetadata({
-  title: 'Choosing the Right AI Neural Voice Persona for Script-Driven Videos',
+  title:
+    'Choosing the Right AI Neural Voice Persona for Text to Lip Sync Videos',
   description:
     'Match your brand identity with the ideal AI neural voice persona. Evaluate tone, regional accents, age demographics, and multilingual voice synthesis for text to lip sync.',
   pathname: '/text-to-lip-sync/voice-selection-guide',
 });
 
 const content: ClusterPageContent = {
-  title: 'Choosing the Right AI Neural Voice Persona for Script-Driven Videos',
+  title:
+    'Choosing the Right AI Neural Voice Persona for Text to Lip Sync Videos',
   badge: 'Voice Persona',
   description:
     'A comprehensive guide to selecting neural text-to-speech voices that resonate with your target audience. Discover how vocal timbre, emotional warmth, and accent accuracy elevate video credibility.',

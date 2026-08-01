@@ -7,7 +7,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = constructMetadata({
   title:
-    'How E-Learning Academies Cut Video Translation Costs by 80% with Neural Dubbing',
+    'How E-Learning Academies Cut Translation Costs with AI Lip Sync Dubbing',
   description:
     'Case study and implementation guide for online course platforms and universities using AI lip sync to translate educational video lectures into multi-language catalogs.',
   pathname: '/learn/multilingual-elearning-video-dubbing',
@@ -15,7 +15,7 @@ export const metadata: Metadata = constructMetadata({
 
 const content: ClusterPageContent = {
   title:
-    'How E-Learning Academies Cut Video Translation Costs by 80% with Neural Dubbing',
+    'How E-Learning Academies Cut Translation Costs with AI Lip Sync Dubbing',
   badge: 'EdTech Case Study',
   description:
     'Online learning platforms face immense pressure to offer courses globally. Discover how automated neural lip sync and voice dubbing allow course creators to expand student enrollment worldwide at a fraction of traditional dubbing costs.',

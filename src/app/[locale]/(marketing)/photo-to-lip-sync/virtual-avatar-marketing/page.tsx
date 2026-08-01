@@ -6,14 +6,14 @@ import {
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = constructMetadata({
-  title: 'How to Build a Virtual AI Brand Presenter Using a Single Photo',
+  title: 'How to Build a Virtual AI Brand Presenter with Photo to Lip Sync',
   description:
     'Scale your video marketing without cameras or studios. Learn how e-commerce brands and agencies create virtual AI brand presenters from a single headshot image.',
   pathname: '/photo-to-lip-sync/virtual-avatar-marketing',
 });
 
 const content: ClusterPageContent = {
-  title: 'How to Build a Virtual AI Brand Presenter Using a Single Photo',
+  title: 'How to Build a Virtual AI Brand Presenter with Photo to Lip Sync',
   badge: 'Branding',
   description:
     'Creating consistent video spokespeople used to require expensive talent contracts and monthly filming sessions. Discover how Photo-to-Lip-Sync lets brands turn a single high-quality portrait into an evergreen, multilingual video presenter.',

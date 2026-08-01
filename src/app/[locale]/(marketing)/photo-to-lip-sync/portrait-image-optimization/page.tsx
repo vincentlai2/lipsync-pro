@@ -7,7 +7,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = constructMetadata({
   title:
-    'Best Photo Lighting & Angle Practices for High-Quality Talking Portraits',
+    'Best Photo Lighting & Angle Practices for Photo to Lip Sync Talking Portraits',
   description:
     'Optimize your source photos for stunning Photo-to-Lip-Sync rendering. Learn image framing, lighting setups, resolution specs, and landmark alignment guidelines.',
   pathname: '/photo-to-lip-sync/portrait-image-optimization',
@@ -15,7 +15,7 @@ export const metadata: Metadata = constructMetadata({
 
 const content: ClusterPageContent = {
   title:
-    'Best Photo Lighting & Angle Practices for High-Quality Talking Portraits',
+    'Best Photo Lighting & Angle Practices for Photo to Lip Sync Talking Portraits',
   badge: 'Photo Prep',
   description:
     'The quality of your photo avatar depends heavily on input image specs. Discover how front-facing lighting, neutral facial expressions, and un-occluded mouth framing produce ultra-realistic portrait animation.',
