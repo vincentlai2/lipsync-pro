@@ -19,8 +19,9 @@ const content: ClusterPageContent = {
   badge: 'Enterprise Workflow',
   description:
     'High-volume video publishers require automated batch pipelines to dub hundreds of assets monthly. Discover how cloud-native API integrations streamline video re-dubbing from script ingest to final MP4 rendering.',
-  pillarTitle: 'Academy Hub',
-  pillarRoute: '/learn',
+  pillarTitle: 'AI Lip Sync',
+  pillarRoute: '/lip-sync-ai',
+  ctaText: 'Try AI Lip Sync Tool Online',
   sections: [
     {
       heading: 'Architecture of an Automated Dubbing Pipeline',

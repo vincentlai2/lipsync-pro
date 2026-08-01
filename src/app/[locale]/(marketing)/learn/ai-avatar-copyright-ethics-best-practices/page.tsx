@@ -19,8 +19,9 @@ const content: ClusterPageContent = {
   badge: 'Legal & Ethics',
   description:
     'As synthetic video technology becomes mainstream, enterprise marketing and legal teams must ensure compliance with likeness rights, commercial licensing, and AI disclosure regulations.',
-  pillarTitle: 'Academy Hub',
-  pillarRoute: '/learn',
+  pillarTitle: 'AI Lip Sync',
+  pillarRoute: '/lip-sync-ai',
+  ctaText: 'Try AI Lip Sync Tool Online',
   sections: [
     {
       heading: 'Understanding Image Likeness & Commercial Rights',

@@ -19,8 +19,9 @@ const content: ClusterPageContent = {
   badge: 'Global Strategy',
   description:
     'Traditional video translation was restricted to subtitling or expensive voiceover re-recordings that broke visual immersion. Explore how neural lip sync transforms global content expansion in 2026.',
-  pillarTitle: 'Academy Hub',
-  pillarRoute: '/learn',
+  pillarTitle: 'AI Lip Sync',
+  pillarRoute: '/lip-sync-ai',
+  ctaText: 'Try AI Lip Sync Tool Online',
   sections: [
     {
       heading: 'The Shift from Subtitles to Native Visual Dubbing',

@@ -180,23 +180,23 @@ export function TopicClusterPage({ content }: { content: ClusterPageContent }) {
           {/* Quick CTA Banner */}
           <div className="pt-2 flex flex-wrap items-center gap-4">
             <LocaleLink
-              href={content.pillarRoute as any}
+              href={
+                (content.pillarRoute && content.pillarRoute !== '/learn'
+                  ? content.pillarRoute
+                  : '/lip-sync-ai') as any
+              }
               className={cn(
                 buttonVariants({ size: 'lg' }),
                 'rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 font-bold text-white shadow-lg shadow-blue-500/20 hover:scale-105 transition-transform'
               )}
             >
               <ZapIcon className="mr-2 size-4" />
-              <span>{content.ctaText || 'Try Tool Online Now'}</span>
-            </LocaleLink>
-            <LocaleLink
-              href="/pricing"
-              className={cn(
-                buttonVariants({ variant: 'outline', size: 'lg' }),
-                'rounded-xl font-semibold'
-              )}
-            >
-              <span>View Free Credits</span>
+              <span>
+                {content.ctaText ||
+                  (content.pillarTitle && content.pillarTitle !== 'Academy Hub'
+                    ? `Try ${content.pillarTitle} Tool Online`
+                    : 'Try AI Lip Sync Tool Online')}
+              </span>
             </LocaleLink>
           </div>
         </div>
@@ -362,13 +362,23 @@ export function TopicClusterPage({ content }: { content: ClusterPageContent }) {
             </p>
             <div className="pt-2 flex flex-wrap gap-4">
               <LocaleLink
-                href={content.pillarRoute as any}
+                href={
+                  (content.pillarRoute && content.pillarRoute !== '/learn'
+                    ? content.pillarRoute
+                    : '/lip-sync-ai') as any
+                }
                 className={cn(
                   buttonVariants({ size: 'lg' }),
                   'rounded-xl bg-white font-bold text-zinc-950 hover:bg-zinc-100 transition-all'
                 )}
               >
-                <span>Launch {content.pillarTitle} Tool</span>
+                <span>
+                  Launch{' '}
+                  {content.pillarTitle && content.pillarTitle !== 'Academy Hub'
+                    ? content.pillarTitle
+                    : 'AI Lip Sync'}{' '}
+                  Tool
+                </span>
                 <ArrowRightIcon className="ml-2 size-4" />
               </LocaleLink>
             </div>

@@ -17,8 +17,9 @@ const content: ClusterPageContent = {
   badge: 'Market Review',
   description:
     'Comparing the top AI lip synchronization software platforms for video creators, localization agencies, and marketing teams. Benchmark speed, lip-matching fidelity, multilingual voice integration, and cost per minute.',
-  pillarTitle: 'Academy Hub',
-  pillarRoute: '/learn',
+  pillarTitle: 'AI Lip Sync',
+  pillarRoute: '/lip-sync-ai',
+  ctaText: 'Try AI Lip Sync Tool Online',
   sections: [
     {
       heading: 'The State of AI Lip Sync Technology in 2026',
