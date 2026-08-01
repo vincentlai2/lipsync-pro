@@ -19,6 +19,7 @@ const staticRoutes = [
   '/lip-sync-ai/how-to-use',
   '/lip-sync-ai/free',
   '/lip-sync-ai/applications',
+  '/lip-sync-ai/vs-traditional-dubbing',
   '/text-to-lip-sync',
   '/text-to-lip-sync/what-is',
   '/text-to-lip-sync/how-to-use',

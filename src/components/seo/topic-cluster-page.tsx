@@ -307,7 +307,7 @@ export function TopicClusterPage({ content }: { content: ClusterPageContent }) {
         {content.lsiKeywords && content.lsiKeywords.length > 0 && (
           <div className="mt-12 rounded-2xl border border-border bg-muted/30 p-6">
             <h3 className="mb-3 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-              Related Concepts & Search Intent Topics
+              Explore Related AI Concepts & Capabilities
             </h3>
             <div className="flex flex-wrap gap-2">
               {content.lsiKeywords.map((kw, idx) => (
