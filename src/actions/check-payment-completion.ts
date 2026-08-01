@@ -57,7 +57,9 @@ export const checkPaymentCompletionAction = userActionClient
       const paymentRecord = await db
         .select()
         .from(payment)
-        .where(and(eq(payment.sessionId, sessionId), eq(payment.siteId, siteId)))
+        .where(
+          and(eq(payment.sessionId, sessionId), eq(payment.siteId, siteId))
+        )
         .limit(1);
 
       const paymentData = paymentRecord[0] || null;

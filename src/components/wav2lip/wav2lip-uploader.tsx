@@ -71,10 +71,7 @@ interface StatusResponse {
 const CREDITS_PER_TASK = 20;
 const SERVER_UPLOAD_FALLBACK_LIMIT = 4 * 1024 * 1024;
 
-async function uploadWav2LipFileViaServer(
-  file: File,
-  kind: 'video' | 'audio'
-) {
+async function uploadWav2LipFileViaServer(file: File, kind: 'video' | 'audio') {
   const formData = new FormData();
   formData.append('file', file);
   formData.append('kind', kind);

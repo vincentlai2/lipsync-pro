@@ -260,10 +260,7 @@ export default async function LipSyncAiPage() {
                   defaultTtsText="Upload a presenter video or portrait photo to create a natural Lip Sync AI video."
                 />
               </div>
-              <WorkspaceSidePanel
-                userId={userId}
-                callbackUrl="/lip-sync-ai"
-              />
+              <WorkspaceSidePanel userId={userId} callbackUrl="/lip-sync-ai" />
             </div>
           </div>
         </SidebarInset>

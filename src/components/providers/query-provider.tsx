@@ -10,8 +10,7 @@ interface QueryProviderProps {
 }
 
 export function QueryProvider({ children }: QueryProviderProps) {
-  const showDevtools =
-    process.env.NEXT_PUBLIC_ENABLE_QUERY_DEVTOOLS === 'true';
+  const showDevtools = process.env.NEXT_PUBLIC_ENABLE_QUERY_DEVTOOLS === 'true';
 
   const [queryClient] = useState(
     () =>

@@ -260,6 +260,10 @@ function getSignupSiteAttribution(context?: { request?: Request } | null) {
 
   return {
     siteId: tenant.siteId,
-    host: host?.split(':')[0].toLowerCase().replace(/^www\./, '') || null,
+    host:
+      host
+        ?.split(':')[0]
+        .toLowerCase()
+        .replace(/^www\./, '') || null,
   };
 }
