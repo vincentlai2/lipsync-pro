@@ -19,8 +19,8 @@ const content: ClusterPageContent = {
   badge: 'Global Strategy',
   description:
     'Traditional video translation was restricted to subtitling or expensive voiceover re-recordings that broke visual immersion. Explore how neural lip sync transforms global content expansion in 2026.',
-  pillarTitle: 'AI Lip Sync',
-  pillarRoute: '/lip-sync-ai',
+  pillarTitle: 'Learn Academy',
+  pillarRoute: '/learn',
   pathname: '/learn/ai-video-localization-guide-2026',
   ctaText: 'Try AI Lip Sync Tool Online',
   sections: [

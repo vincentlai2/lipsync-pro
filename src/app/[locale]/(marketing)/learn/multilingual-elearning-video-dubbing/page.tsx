@@ -19,8 +19,8 @@ const content: ClusterPageContent = {
   badge: 'EdTech Case Study',
   description:
     'Online learning platforms face immense pressure to offer courses globally. Discover how automated neural lip sync and voice dubbing allow course creators to expand student enrollment worldwide at a fraction of traditional dubbing costs.',
-  pillarTitle: 'AI Lip Sync',
-  pillarRoute: '/lip-sync-ai',
+  pillarTitle: 'Learn Academy',
+  pillarRoute: '/learn',
   pathname: '/learn/multilingual-elearning-video-dubbing',
   ctaText: 'Try AI Lip Sync Tool Online',
   sections: [

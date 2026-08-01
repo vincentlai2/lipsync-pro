@@ -19,8 +19,8 @@ const content: ClusterPageContent = {
   badge: 'Creator Guide',
   description:
     'Faceless video creation is one of the fastest-growing digital media business models. Discover how creators build recurring revenue channels without camera anxiety using AI avatar automation.',
-  pillarTitle: 'AI Lip Sync',
-  pillarRoute: '/lip-sync-ai',
+  pillarTitle: 'Learn Academy',
+  pillarRoute: '/learn',
   pathname: '/learn/how-faceless-youtube-channels-use-ai-avatars',
   ctaText: 'Try AI Lip Sync Tool Online',
   sections: [
