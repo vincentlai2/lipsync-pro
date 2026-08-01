@@ -506,16 +506,13 @@ export default async function LipSyncAiPage() {
         </div>
       </section>
 
-      {/* SECTION 6: Compact Bottom Guides Anchor (High-Utility Educational Guides) */}
-      <section className="py-8 border-t border-zinc-200/60 dark:border-zinc-800/60 bg-zinc-50/50 dark:bg-zinc-950/40">
-        <div className="mx-auto max-w-5xl px-4">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-2">
-              <span className="inline-flex size-2 rounded-full bg-blue-500 animate-pulse" />
-              <h3 className="text-xs font-bold tracking-wider uppercase text-zinc-600 dark:text-zinc-300">
-                Lip Sync AI Technical & Creator Guides
-              </h3>
-            </div>
+      {/* SECTION 6: Compact Bottom Guides Anchor (Strictly Lip Sync AI Topic) */}
+      <section className="py-10 border-t border-zinc-200/60 dark:border-zinc-800/60 bg-zinc-50/50 dark:bg-zinc-950/40">
+        <div className="mx-auto max-w-5xl px-4 space-y-6">
+          <div className="flex items-center justify-between border-b border-zinc-200/60 dark:border-zinc-800/60 pb-3">
+            <h3 className="text-xs font-bold tracking-wider uppercase text-zinc-700 dark:text-zinc-300">
+              Lip Sync AI Knowledge Hub
+            </h3>
             <a
               href="/learn"
               className="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline"
@@ -524,38 +521,82 @@ export default async function LipSyncAiPage() {
             </a>
           </div>
 
-          <div className="grid gap-2.5 sm:grid-cols-2 md:grid-cols-4">
-            {[
-              {
-                title: 'How to Create AI Lip Sync Videos',
-                href: '/lip-sync-ai/how-to-use',
-              },
-              {
-                title: 'Fix Vocal Audio Desync & Jitter',
-                href: '/lip-sync-ai/phoneme-viseme-matching-guide',
-              },
-              {
-                title: 'What is AI Lip Sync Technology?',
-                href: '/lip-sync-ai/what-is',
-              },
-              {
-                title: 'AI Lip Sync vs Traditional Dubbing',
-                href: '/lip-sync-ai/vs-traditional-dubbing',
-              },
-            ].map((guide) => (
-              <a
-                key={guide.href}
-                href={guide.href}
-                className="group flex items-center justify-between rounded-xl border border-zinc-200/70 bg-white px-3.5 py-2.5 text-xs shadow-2xs transition-colors hover:border-blue-500/40 hover:bg-blue-500/5 dark:border-zinc-800 dark:bg-zinc-900"
-              >
-                <span className="font-semibold text-zinc-800 dark:text-zinc-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors truncate">
-                  {guide.title}
-                </span>
-                <span className="shrink-0 text-muted-foreground group-hover:translate-x-0.5 transition-transform ml-1">
-                  →
-                </span>
-              </a>
-            ))}
+          <div className="space-y-6">
+            {/* Recommended Guides Sub-Section */}
+            <div className="space-y-3">
+              <p className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">
+                Recommended Guides
+              </p>
+              <div className="grid gap-2.5 sm:grid-cols-2 md:grid-cols-4">
+                {[
+                  {
+                    title: 'How to Create AI Lip Sync Videos',
+                    href: '/lip-sync-ai/how-to-use',
+                  },
+                  {
+                    title: 'Fix Vocal Audio Desync & Jitter',
+                    href: '/lip-sync-ai/phoneme-viseme-matching-guide',
+                  },
+                  {
+                    title: 'What is AI Lip Sync Technology?',
+                    href: '/lip-sync-ai/what-is',
+                  },
+                  {
+                    title: 'AI Lip Sync vs Traditional Dubbing',
+                    href: '/lip-sync-ai/vs-traditional-dubbing',
+                  },
+                ].map((guide) => (
+                  <a
+                    key={guide.href}
+                    href={guide.href}
+                    className="group flex items-center justify-between rounded-xl border border-zinc-200/70 bg-white px-3.5 py-2.5 text-xs shadow-2xs transition-colors hover:border-blue-500/40 hover:bg-blue-500/5 dark:border-zinc-800 dark:bg-zinc-900"
+                  >
+                    <span className="font-semibold text-zinc-800 dark:text-zinc-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors truncate">
+                      {guide.title}
+                    </span>
+                    <span className="shrink-0 text-muted-foreground group-hover:translate-x-0.5 transition-transform ml-1">
+                      →
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Latest Articles Sub-Section */}
+            <div className="space-y-3 pt-2">
+              <p className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">
+                Latest Lip Sync AI Articles
+              </p>
+              <div className="grid gap-2.5 sm:grid-cols-3">
+                {[
+                  {
+                    title: 'Top 5 AI Lip Sync Tools Comparison (2026)',
+                    href: '/learn/best-ai-lip-sync-tools',
+                  },
+                  {
+                    title: 'AI Video Localization & Dubbing Guide',
+                    href: '/learn/ai-video-localization-guide-2026',
+                  },
+                  {
+                    title: 'Video Re-Dubbing Workflow Optimization',
+                    href: '/learn/video-re-dubbing-workflow-optimization',
+                  },
+                ].map((article) => (
+                  <a
+                    key={article.href}
+                    href={article.href}
+                    className="group flex items-center justify-between rounded-xl border border-zinc-200/70 bg-white px-3.5 py-2.5 text-xs shadow-2xs transition-colors hover:border-blue-500/40 hover:bg-blue-500/5 dark:border-zinc-800 dark:bg-zinc-900"
+                  >
+                    <span className="font-semibold text-zinc-800 dark:text-zinc-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors truncate">
+                      {article.title}
+                    </span>
+                    <span className="shrink-0 text-muted-foreground group-hover:translate-x-0.5 transition-transform ml-1">
+                      →
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
