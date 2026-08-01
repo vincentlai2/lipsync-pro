@@ -132,7 +132,7 @@ if (!fs.existsSync(articlesDir)) {
 }
 
 const startDate = new Date('2026-08-02T00:00:00Z');
-const totalDays = 90;
+const totalDays = 180;
 
 let generatedCount = 0;
 
