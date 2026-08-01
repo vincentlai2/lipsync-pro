@@ -112,32 +112,32 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/animer-photo-ia',
-        destination: '/photo-to-lip-sync',
+        destination: '/lip-sync-ai',
         permanent: true,
       },
       {
         source: '/alternative-wav2lip',
-        destination: '/lip-sync-ai/vs-traditional-dubbing',
+        destination: '/lip-sync-ai',
         permanent: true,
       },
       {
         source: '/comment-utiliser-wav2lip',
-        destination: '/lip-sync-ai/how-to-use',
+        destination: '/lip-sync-ai',
         permanent: true,
       },
       {
         source: '/qu-est-ce-que-wav2lip',
-        destination: '/lip-sync-ai/what-is',
+        destination: '/lip-sync-ai',
         permanent: true,
       },
       {
         source: '/wav2lip-en-ligne-vs-local',
-        destination: '/lip-sync-ai/vs-traditional-dubbing',
+        destination: '/lip-sync-ai',
         permanent: true,
       },
       {
         source: '/wav2lip-google-colab',
-        destination: '/learn/ai-video-localization-guide-2026',
+        destination: '/lip-sync-ai',
         permanent: true,
       },
       {
@@ -177,22 +177,22 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/en/comment-utiliser-wav2lip',
-        destination: '/lip-sync-ai/how-to-use',
+        destination: '/lip-sync-ai',
         permanent: true,
       },
       {
         source: '/en/qu-est-ce-que-wav2lip',
-        destination: '/lip-sync-ai/what-is',
+        destination: '/lip-sync-ai',
         permanent: true,
       },
       {
         source: '/en/wav2lip-en-ligne-vs-local',
-        destination: '/lip-sync-ai/vs-traditional-dubbing',
+        destination: '/lip-sync-ai',
         permanent: true,
       },
       {
         source: '/en/wav2lip-google-colab',
-        destination: '/learn/ai-video-localization-guide-2026',
+        destination: '/lip-sync-ai',
         permanent: true,
       },
       {
