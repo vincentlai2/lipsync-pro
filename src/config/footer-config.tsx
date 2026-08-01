@@ -41,26 +41,26 @@ export function useFooterLinks(): NestedMenuItem[] {
       ],
     },
     {
-      title: 'Guides',
+      title: 'Learn & Clusters',
       items: [
         {
-          title: 'AI lip sync guides',
-          href: Routes.Blog,
+          title: 'Learn Academy Hub',
+          href: '/learn' as any,
+          external: false,
+        },
+        {
+          title: 'What is AI lip sync?',
+          href: '/lip-sync-ai/what-is' as any,
           external: false,
         },
         {
           title: 'How to create lip sync videos',
-          href: Routes.Wav2LipHowTo,
-          external: false,
-        },
-        {
-          title: 'Video translation and dubbing',
-          href: Routes.Wav2LipColab,
+          href: '/lip-sync-ai/how-to-use' as any,
           external: false,
         },
         {
           title: 'AI vs traditional dubbing',
-          href: Routes.Wav2LipAlternative,
+          href: '/lip-sync-ai/vs-traditional-dubbing' as any,
           external: false,
         },
       ],
@@ -69,8 +69,13 @@ export function useFooterLinks(): NestedMenuItem[] {
       title: 'Resources',
       items: [
         {
-          title: 'What is AI lip sync?',
-          href: Routes.Wav2LipWhatIs,
+          title: 'Text to Lip Sync Guide',
+          href: '/text-to-lip-sync/how-to-use' as any,
+          external: false,
+        },
+        {
+          title: 'Photo Avatar Guide',
+          href: '/photo-to-lip-sync/how-to-use' as any,
           external: false,
         },
         {

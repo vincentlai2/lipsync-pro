@@ -39,6 +39,7 @@ const staticRoutes = [
   '/privacy',
   '/terms',
   '/cookie',
+  '/learn',
   ...(websiteConfig.blog.enable ? ['/blog'] : []),
   ...(websiteConfig.docs.enable ? ['/docs'] : []),
 ];

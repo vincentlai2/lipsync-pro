@@ -37,8 +37,16 @@ export function useNavbarLinks(): NestedMenuItem[] {
       external: false,
     },
     {
-      title: 'Guides',
+      title: 'Learn',
       items: [
+        {
+          title: 'Learn Academy Hub',
+          description:
+            'Explore all 3 Topic Clusters, workflows, definitions, and tutorials.',
+          icon: <BookOpenIcon className="size-4 shrink-0 text-blue-500" />,
+          href: '/learn' as any,
+          external: false,
+        },
         {
           title: 'What is AI lip sync?',
           description:
