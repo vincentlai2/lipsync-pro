@@ -38,6 +38,7 @@ export function useNavbarLinks(): NestedMenuItem[] {
     },
     {
       title: 'Learn',
+      href: '/learn' as any,
       items: [
         {
           title: 'Learn Academy Hub',

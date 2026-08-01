@@ -149,10 +149,10 @@ export default async function LearnHubPage({
         <div className="mx-auto max-w-6xl px-4">
           <div className="mb-12 text-center">
             <h2 className="text-3xl font-bold tracking-tight text-foreground">
-              Core Topic Clusters
+              Featured Learning Categories
             </h2>
             <p className="mt-2 text-muted-foreground">
-              Select a feature pillar to explore dedicated workflows,
+              Select a feature category to master step-by-step guides,
               definitions, and tutorials.
             </p>
           </div>
@@ -206,7 +206,7 @@ export default async function LearnHubPage({
                       href={hub.pillarHref as any}
                       className="inline-flex w-full items-center justify-center rounded-xl bg-primary px-4 py-2.5 font-semibold text-primary-foreground text-sm hover:bg-primary/90 transition-colors"
                     >
-                      Explore {hub.title} Hub
+                      Explore {hub.title}
                       <ArrowRightIcon className="ml-2 size-4" />
                     </LocaleLink>
                   </div>
