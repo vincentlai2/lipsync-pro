@@ -490,7 +490,7 @@ export default async function TextToLipSyncPage() {
               Text to Lip Sync Knowledge Hub
             </h3>
             <a
-              href="/learn"
+              href="/learn#text-to-lip-sync"
               className="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline"
             >
               View All Academy Guides →

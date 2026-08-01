@@ -514,7 +514,7 @@ export default async function LipSyncAiPage() {
               Lip Sync AI Knowledge Hub
             </h3>
             <a
-              href="/learn"
+              href="/learn#lip-sync-ai"
               className="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline"
             >
               View All Academy Guides →

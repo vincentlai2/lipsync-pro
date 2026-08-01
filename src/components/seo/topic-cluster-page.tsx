@@ -458,17 +458,10 @@ export function TopicClusterPage({ content }: { content: ClusterPageContent }) {
           if (related.length === 0) return null;
           return (
             <div className="mt-14 border-t border-border pt-10">
-              <div className="flex items-center justify-between mb-4">
+              <div className="mb-4">
                 <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
                   Related Guides & Reading
                 </h3>
-                <LocaleLink
-                  href={(content.pillarRoute || '/learn') as any}
-                  className="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
-                >
-                  <span>More in {content.pillarTitle}</span>
-                  <ChevronRightIcon className="size-3" />
-                </LocaleLink>
               </div>
               <div className="grid gap-3 sm:grid-cols-3">
                 {related.map((article) => (
@@ -500,7 +493,15 @@ export function TopicClusterPage({ content }: { content: ClusterPageContent }) {
             <span>← Return to {content.pillarTitle} Topic Hub</span>
           </LocaleLink>
           <LocaleLink
-            href="/learn"
+            href={
+              (content.pillarRoute === '/lip-sync-ai'
+                ? '/learn#lip-sync-ai'
+                : content.pillarRoute === '/text-to-lip-sync'
+                  ? '/learn#text-to-lip-sync'
+                  : content.pillarRoute === '/photo-to-lip-sync'
+                    ? '/learn#photo-to-lip-sync'
+                    : '/learn#industry-strategy') as any
+            }
             className="font-semibold text-muted-foreground hover:text-foreground transition-colors"
           >
             View All Academy Guides →
