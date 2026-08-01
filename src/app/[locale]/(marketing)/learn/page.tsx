@@ -96,6 +96,25 @@ const learnCategories: LearnCategorySection[] = [
         readTime: '5 min read',
         icon: CheckCircle2Icon,
       },
+      {
+        title: 'Top 5 AI Lip Sync & Video Realignment Tools Comparison (2026)',
+        excerpt:
+          'In-depth review and objective benchmark of the top AI lip sync platforms. Compare speed, lip-matching fidelity, and credit costs.',
+        href: '/lip-sync-ai/best-ai-lip-sync-tools',
+        tag: 'Featured Review',
+        readTime: '6 min read',
+        icon: SparklesIcon,
+      },
+      {
+        title:
+          'How to Fix Vocal Audio Desync & Improve Viseme Precision in AI Lip Sync',
+        excerpt:
+          'Master audio pre-processing, sample rate normalization, and vocal isolation techniques to eliminate mouth jitter.',
+        href: '/lip-sync-ai/phoneme-viseme-matching-guide',
+        tag: 'Tutorial',
+        readTime: '5 min read',
+        icon: WorkflowIcon,
+      },
     ],
   },
   {
@@ -143,6 +162,26 @@ const learnCategories: LearnCategorySection[] = [
         tag: 'Voice Showcase',
         readTime: '4 min read',
         icon: BookOpenTextIcon,
+      },
+      {
+        title:
+          'How to Write AI Video Scripts for Natural Text to Speech Lip Sync',
+        excerpt:
+          'Master scriptwriting techniques optimized for text-to-speech AI avatars: punctuation, cadence markers, and phonetic spelling.',
+        href: '/text-to-lip-sync/script-writing-tips',
+        tag: 'Scriptwriting',
+        readTime: '5 min read',
+        icon: WorkflowIcon,
+      },
+      {
+        title:
+          'Choosing the Right AI Neural Voice Persona for Script-Driven Videos',
+        excerpt:
+          'Match your brand identity with the ideal AI neural voice persona: tone, regional accents, and emotional warmth.',
+        href: '/text-to-lip-sync/voice-selection-guide',
+        tag: 'Voice Persona',
+        readTime: '4 min read',
+        icon: SparklesIcon,
       },
     ],
   },
@@ -192,6 +231,87 @@ const learnCategories: LearnCategorySection[] = [
         tag: 'Avatar Showcase',
         readTime: '4 min read',
         icon: BookOpenTextIcon,
+      },
+      {
+        title:
+          'Best Photo Lighting & Angle Practices for High-Quality Talking Portraits',
+        excerpt:
+          'Optimize source photos for Photo-to-Lip-Sync: framing specs, direct frontal angles, and un-occluded mouth guidelines.',
+        href: '/photo-to-lip-sync/portrait-image-optimization',
+        tag: 'Photo Prep',
+        readTime: '4 min read',
+        icon: WorkflowIcon,
+      },
+      {
+        title: 'How to Build a Virtual AI Brand Presenter Using a Single Photo',
+        excerpt:
+          'Scale video marketing without cameras or studios. Learn how e-commerce brands create virtual spokespeople from headshots.',
+        href: '/photo-to-lip-sync/virtual-avatar-marketing',
+        tag: 'Branding',
+        readTime: '5 min read',
+        icon: SparklesIcon,
+      },
+    ],
+  },
+  {
+    id: 'general-strategy',
+    title: 'AI Video Strategy & Global Creator Guides',
+    subtitle:
+      'General insights, localization blueprints, legal copyright guidelines, and enterprise video production workflows.',
+    badge: 'General & Industry',
+    pillarHref: '/learn',
+    pillarLabel: 'Browse All Guides',
+    icon: CompassIcon,
+    articles: [
+      {
+        title:
+          'The Complete 2026 AI Video Localization Guide for Global SaaS & E-Commerce',
+        excerpt:
+          'Comprehensive strategy for scaling video localization into 29+ languages using AI lip sync and automated audio matching.',
+        href: '/learn/ai-video-localization-guide-2026',
+        tag: 'Global Strategy',
+        readTime: '8 min read',
+        icon: CompassIcon,
+      },
+      {
+        title:
+          'How Faceless YouTube & TikTok Creators Scale Video Output using AI Avatars',
+        excerpt:
+          'Learn how top faceless content creators leverage AI talking photos and text-to-speech avatars to publish daily Short content.',
+        href: '/learn/how-faceless-youtube-channels-use-ai-avatars',
+        tag: 'Creator Guide',
+        readTime: '6 min read',
+        icon: WorkflowIcon,
+      },
+      {
+        title:
+          'How E-Learning Academies Cut Video Translation Costs by 80% with Neural Dubbing',
+        excerpt:
+          'Case study and implementation guide for online course platforms translating video lectures into multi-language catalogs.',
+        href: '/learn/multilingual-elearning-video-dubbing',
+        tag: 'EdTech Case Study',
+        readTime: '6 min read',
+        icon: CheckCircle2Icon,
+      },
+      {
+        title:
+          'AI Generated Avatars & Commercial Copyright: Best Practices for Businesses',
+        excerpt:
+          'Navigate the legal, ethical, and commercial copyright frameworks governing AI generated avatar videos and voice dubbing.',
+        href: '/learn/ai-avatar-copyright-ethics-best-practices',
+        tag: 'Legal & Ethics',
+        readTime: '5 min read',
+        icon: BookOpenTextIcon,
+      },
+      {
+        title:
+          'Enterprise Video Re-Dubbing Workflow: From Script Translation to Neural Lip Sync',
+        excerpt:
+          'A step-by-step technical blueprint for enterprise media teams automating video re-dubbing workflows with REST APIs.',
+        href: '/learn/video-re-dubbing-workflow-optimization',
+        tag: 'Enterprise Workflow',
+        readTime: '7 min read',
+        icon: SparklesIcon,
       },
     ],
   },
