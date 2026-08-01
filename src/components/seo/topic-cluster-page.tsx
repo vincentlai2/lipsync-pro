@@ -500,7 +500,7 @@ export function TopicClusterPage({ content }: { content: ClusterPageContent }) {
                   ? '/learn#text-to-lip-sync'
                   : content.pillarRoute === '/photo-to-lip-sync'
                     ? '/learn#photo-to-lip-sync'
-                    : '/learn#industry-strategy') as any
+                    : '/learn#general-strategy') as any
             }
             className="font-semibold text-muted-foreground hover:text-foreground transition-colors"
           >
