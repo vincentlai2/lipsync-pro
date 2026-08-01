@@ -474,6 +474,93 @@ export default async function LipSyncAiPage() {
         </div>
       </section>
 
+      {/* SECTION 4.5: Related Guides & Knowledge Matrix (下级文章入口) */}
+      <section className="py-12 md:py-16 bg-white/70 dark:bg-zinc-900/40 border-b border-zinc-200/80 dark:border-zinc-800">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
+            <p className="font-bold text-xs tracking-wider uppercase text-blue-600 dark:text-blue-400">
+              Knowledge & Guides
+            </p>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-zinc-950 dark:text-white">
+              AI Lip Sync Creator Guides & Deep Dives
+            </h2>
+            <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">
+              Explore step-by-step creator tutorials, technical principles, deep
+              comparisons, and commercial use cases.
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                title:
+                  'What is AI Lip Sync? Technical Principles & Neural Viseme Alignment',
+                excerpt:
+                  'Learn how neural networks align audio visemes with facial movements and video re-dubbing.',
+                href: '/lip-sync-ai/what-is',
+                tag: 'Technical Guide',
+              },
+              {
+                title:
+                  'How to Create AI Lip Sync Videos: Step-by-Step Creator Guide',
+                excerpt:
+                  'Upload source video files, align audio tracks, and export high-definition natural speaking videos.',
+                href: '/lip-sync-ai/how-to-use',
+                tag: 'Creator Tutorial',
+              },
+              {
+                title:
+                  'Free AI Lip Sync Generator: Online Trial & Feature Overview',
+                excerpt:
+                  'Try AI lip synchronization online without software installation. Explore free credits & quality.',
+                href: '/lip-sync-ai/free',
+                tag: 'Free Lead Magnet',
+              },
+              {
+                title:
+                  'AI Lip Sync vs Traditional Voiceover Dubbing: Cost & Speed Comparison',
+                excerpt:
+                  'In-depth breakdown of speed, budget efficiency, localization scalability, and natural visual match.',
+                href: '/lip-sync-ai/vs-traditional-dubbing',
+                tag: 'Deep Comparison',
+              },
+              {
+                title:
+                  'Industry Use Cases & Commercial Applications for AI Lip Sync',
+                excerpt:
+                  'How video localization, e-learning academies, and marketing agencies leverage neural lip sync.',
+                href: '/lip-sync-ai/applications',
+                tag: 'Use Cases',
+              },
+            ].map((guide) => (
+              <a
+                key={guide.href}
+                href={guide.href}
+                className="group flex flex-col justify-between rounded-2xl border border-zinc-200/90 bg-white p-5 shadow-xs transition-all hover:-translate-y-0.5 hover:border-blue-500/40 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900"
+              >
+                <div>
+                  <span className="inline-block rounded-md bg-muted/80 px-2 py-0.5 text-[10px] font-semibold text-muted-foreground mb-2">
+                    {guide.tag}
+                  </span>
+                  <h3 className="text-base font-bold text-zinc-950 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug">
+                    {guide.title}
+                  </h3>
+                  <p className="mt-2 text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed line-clamp-2">
+                    {guide.excerpt}
+                  </p>
+                </div>
+                <div className="mt-4 flex items-center justify-between border-t border-zinc-100 dark:border-zinc-800/80 pt-3 text-xs font-semibold text-blue-600 dark:text-blue-400">
+                  <span>Read Guide</span>
+                  <span className="group-hover:translate-x-1 transition-transform">
+                    →
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* SECTION 5: FAQ Container */}
       <section className="py-16 md:py-24">
         <div className="mx-auto max-w-4xl px-4">

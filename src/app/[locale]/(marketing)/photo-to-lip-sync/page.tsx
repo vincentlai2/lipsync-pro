@@ -467,6 +467,84 @@ export default async function PhotoToLipSyncPage() {
         </div>
       </section>
 
+      {/* SECTION 5.5: Related Guides & Knowledge Matrix (下级文章入口) */}
+      <section className="py-12 md:py-16 bg-white/70 dark:bg-zinc-900/40 border-b border-zinc-200/80 dark:border-zinc-800">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
+            <p className="font-bold text-xs tracking-wider uppercase text-blue-600 dark:text-blue-400">
+              Knowledge & Guides
+            </p>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-zinc-950 dark:text-white">
+              Photo to Lip Sync Guides & Tutorials
+            </h2>
+            <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">
+              Explore tutorials for portrait animation, photo talking avatar
+              generation, free trials, and showcases.
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                title:
+                  'What is Photo to Lip Sync? 2D Portrait Animation Technology',
+                excerpt:
+                  'Single-image landmark detection and neural animation for realistic talking avatars.',
+                href: '/photo-to-lip-sync/what-is',
+                tag: 'Technology Guide',
+              },
+              {
+                title:
+                  'How to Animate Still Photos into Expressive Talking Avatars',
+                excerpt:
+                  'Upload headshot images, attach custom audio tracks or scripts, and generate avatar videos.',
+                href: '/photo-to-lip-sync/how-to-use',
+                tag: 'Creator Tutorial',
+              },
+              {
+                title:
+                  'Free Online Photo Talking Avatar Generator: Step-by-Step Overview',
+                excerpt:
+                  'Animate your first portrait photo for free online. Learn image framing & credit usage.',
+                href: '/photo-to-lip-sync/free',
+                tag: 'Free Generator Guide',
+              },
+              {
+                title: 'Photo Avatar Showcase & Commercial Production Examples',
+                excerpt:
+                  'Real-world examples of photo talking avatars in support bots & marketing promos.',
+                href: '/photo-to-lip-sync/examples',
+                tag: 'Avatar Showcase',
+              },
+            ].map((guide) => (
+              <a
+                key={guide.href}
+                href={guide.href}
+                className="group flex flex-col justify-between rounded-2xl border border-zinc-200/90 bg-white p-5 shadow-xs transition-all hover:-translate-y-0.5 hover:border-blue-500/40 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900"
+              >
+                <div>
+                  <span className="inline-block rounded-md bg-muted/80 px-2 py-0.5 text-[10px] font-semibold text-muted-foreground mb-2">
+                    {guide.tag}
+                  </span>
+                  <h3 className="text-base font-bold text-zinc-950 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug">
+                    {guide.title}
+                  </h3>
+                  <p className="mt-2 text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed line-clamp-2">
+                    {guide.excerpt}
+                  </p>
+                </div>
+                <div className="mt-4 flex items-center justify-between border-t border-zinc-100 dark:border-zinc-800/80 pt-3 text-xs font-semibold text-blue-600 dark:text-blue-400">
+                  <span>Read Guide</span>
+                  <span className="group-hover:translate-x-1 transition-transform">
+                    →
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* SECTION 6: FAQ & Schema JSON-LD */}
       <MarketingFaq
         title="Frequently Asked Questions"

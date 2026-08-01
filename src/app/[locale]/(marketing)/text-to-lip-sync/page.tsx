@@ -475,6 +475,84 @@ export default async function TextToLipSyncPage() {
         </div>
       </section>
 
+      {/* SECTION 5.5: Related Guides & Knowledge Matrix (下级文章入口) */}
+      <section className="py-12 md:py-16 bg-white/70 dark:bg-zinc-900/40 border-b border-zinc-200/80 dark:border-zinc-800">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
+            <p className="font-bold text-xs tracking-wider uppercase text-blue-600 dark:text-blue-400">
+              Knowledge & Guides
+            </p>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-zinc-950 dark:text-white">
+              Text to Lip Sync Tutorials & Guides
+            </h2>
+            <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">
+              Explore step-by-step guides for script writing, neural voice
+              selection, free trials, and multilingual showcases.
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                title:
+                  'What is Text to Lip Sync? Script-to-Speaking Avatar Explained',
+                excerpt:
+                  'Neural text-to-speech models paired with facial animation pipelines.',
+                href: '/text-to-lip-sync/what-is',
+                tag: 'Definition & Overview',
+              },
+              {
+                title: 'How to Convert Written Scripts into HD Speaking Videos',
+                excerpt:
+                  'Step-by-step workflow for writing scripts, choosing neural voices, and outputting HD video.',
+                href: '/text-to-lip-sync/how-to-use',
+                tag: 'Step-by-Step Guide',
+              },
+              {
+                title:
+                  'Free Text to Lip Sync Online Trial: Features & Free Credits',
+                excerpt:
+                  'Test script-driven video generation for free. Evaluate voice personas & accuracy.',
+                href: '/text-to-lip-sync/free',
+                tag: 'Free Trial Guide',
+              },
+              {
+                title:
+                  'Multilingual Voice Examples & Language Alignment Showcase',
+                excerpt:
+                  'Script-to-video capabilities across English, Spanish, Japanese, German & 29+ languages.',
+                href: '/text-to-lip-sync/examples',
+                tag: 'Voice Showcase',
+              },
+            ].map((guide) => (
+              <a
+                key={guide.href}
+                href={guide.href}
+                className="group flex flex-col justify-between rounded-2xl border border-zinc-200/90 bg-white p-5 shadow-xs transition-all hover:-translate-y-0.5 hover:border-blue-500/40 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900"
+              >
+                <div>
+                  <span className="inline-block rounded-md bg-muted/80 px-2 py-0.5 text-[10px] font-semibold text-muted-foreground mb-2">
+                    {guide.tag}
+                  </span>
+                  <h3 className="text-base font-bold text-zinc-950 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug">
+                    {guide.title}
+                  </h3>
+                  <p className="mt-2 text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed line-clamp-2">
+                    {guide.excerpt}
+                  </p>
+                </div>
+                <div className="mt-4 flex items-center justify-between border-t border-zinc-100 dark:border-zinc-800/80 pt-3 text-xs font-semibold text-blue-600 dark:text-blue-400">
+                  <span>Read Guide</span>
+                  <span className="group-hover:translate-x-1 transition-transform">
+                    →
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* SECTION 6: FAQ & Schema JSON-LD */}
       <MarketingFaq
         title="Frequently Asked Questions"
