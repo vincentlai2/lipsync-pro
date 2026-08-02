@@ -213,11 +213,20 @@ const geoDetails = [
 
 const articlesDir = path.join(process.cwd(), 'content', 'articles');
 
-if (!fs.existsSync(articlesDir)) {
+if (fs.existsSync(articlesDir)) {
+  // Wipe old articles to ensure strict 1-per-day alignment starting today (2026-08-02)
+  const existingFiles = fs.readdirSync(articlesDir);
+  existingFiles.forEach((file) => {
+    if (file.endsWith('.json')) {
+      fs.unlinkSync(path.join(articlesDir, file));
+    }
+  });
+} else {
   fs.mkdirSync(articlesDir, { recursive: true });
 }
 
-const startDate = new Date('2026-08-05T00:00:00Z');
+// Start strictly TODAY (2026-08-02)
+const startDate = new Date('2026-08-02T00:00:00Z');
 const totalDays = 365;
 
 let generatedCount = 0;
@@ -244,7 +253,7 @@ for (let i = 0; i < totalDays; i++) {
       pillarRoute: lt.pillarRoute,
       pillarTitle: lt.pillarTitle,
       badge: lt.badge,
-      title: `${lt.title} (2026 Guide)`,
+      title: `${lt.title} (${dateIso})`,
       subtitle: `Master ${lt.keyword.toLowerCase()} with neural acoustic viseme spectrography on LipSync.pro without visual artifacts.`,
       heroTitle: lt.title,
       heroSubtitle: `Solve video desync, optimize lower-face quality, and streamline AI video dubbing with LipSync.pro.`,
@@ -291,7 +300,7 @@ for (let i = 0; i < totalDays; i++) {
       pillarRoute: '/lip-sync-ai',
       pillarTitle: 'Lip Sync AI',
       badge: `${geo.city} Localization`,
-      title: `AI Lip Sync & Video Localization Guide for ${geo.city}, ${geo.country} (${geo.lang})`,
+      title: `AI Lip Sync & Video Localization Guide for ${geo.city}, ${geo.country} (${geo.lang}) (${dateIso})`,
       subtitle: `How production houses in ${geo.city} leverage LipSync.pro neural viseme alignment to sync ${geo.lang} audio tracks.`,
       heroTitle: `AI Lip Sync for ${geo.city}`,
       heroSubtitle: `Streamline ${geo.lang} video localization, cut dubbing costs, and preserve viewer retention in ${geo.country} with LipSync.pro.`,
@@ -338,5 +347,5 @@ for (let i = 0; i < totalDays; i++) {
 }
 
 console.log(
-  `🎉 Successfully updated ${generatedCount} daily articles with explicit Pain Points, Solutions, Brand Injections, LSI, and FAQs!`
+  `🎉 Successfully updated ${generatedCount} daily articles with strictly 1 article per day starting from 2026-08-02!`
 );
