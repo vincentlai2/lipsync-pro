@@ -1,8 +1,17 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import type { TopicClusterContent } from '@/components/seo/topic-cluster-page';
 
-export interface ArticleMetadata extends TopicClusterContent {
+export interface ArticleFeature {
+  title: string;
+  description: string;
+}
+
+export interface ArticleFAQ {
+  question: string;
+  answer: string;
+}
+
+export interface ArticleMetadata {
   slug: string;
   publishedAt: string; // ISO date format "YYYY-MM-DD"
   category:
@@ -10,7 +19,32 @@ export interface ArticleMetadata extends TopicClusterContent {
     | 'text-to-lip-sync'
     | 'photo-to-lip-sync'
     | 'general-strategy';
+  pillarRoute: string;
+  pillarTitle: string;
+  badge: string;
+  title: string;
+  subtitle: string;
+  heroTitle?: string;
+  heroSubtitle?: string;
+  overviewTitle?: string;
+  overviewParagraphs?: string[];
+  featuresTitle?: string;
+  featuresSubtitle?: string;
+  features?: ArticleFeature[];
+  diagramTitle?: string;
+  diagramSubtitle?: string;
+  faqs?: ArticleFAQ[];
   author?: string;
+  description?: string;
+  lsiKeywords?: string[];
+  ctaText?: string;
+  pathname?: string;
+  sections?: {
+    heading: string;
+    subheading?: string;
+    content: string[];
+    bulletPoints?: string[];
+  }[];
 }
 
 const ARTICLES_DIR = path.join(process.cwd(), 'content', 'articles');

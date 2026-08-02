@@ -194,7 +194,33 @@ function getRelatedArticles(
   return filtered.slice(0, 3);
 }
 
-export function TopicClusterPage({ content }: { content: ClusterPageContent }) {
+export function TopicClusterPage({ content }: { content: any }) {
+  const effectiveDescription = content.description || content.subtitle || '';
+  const effectiveSections = content.sections || [
+    {
+      heading: content.overviewTitle || 'Overview & Strategy',
+      subheading: 'Core Visual & Acoustic Overview',
+      content: content.overviewParagraphs || [effectiveDescription],
+    },
+    {
+      heading: content.featuresTitle || 'Key Capabilities & Technical Features',
+      subheading: content.featuresSubtitle || 'Acoustic to Viseme Alignment',
+      content: (content.features || []).map(
+        (f: any) => `${f.title}: ${f.description}`
+      ),
+      bulletPoints: (content.features || []).map(
+        (f: any) => `${f.title} - ${f.description}`
+      ),
+    },
+    {
+      heading: content.diagramTitle || 'Acoustic Processing Pipeline',
+      subheading: content.diagramSubtitle || 'Deep Neural Viseme Alignment',
+      content: [
+        `LipSync.pro utilizes deep neural acoustic models to process 16kHz WAV voice tracks and match phonemes directly to lower-face visual landmarks.`,
+      ],
+    },
+  ];
+
   return (
     <div className="relative overflow-hidden py-10 sm:py-16">
       {/* Background Subtle Gradient Overlay */}
@@ -251,7 +277,7 @@ export function TopicClusterPage({ content }: { content: ClusterPageContent }) {
                 ? [
                     {
                       '@type': 'FAQPage',
-                      mainEntity: content.faqs.map((faq) => ({
+                      mainEntity: content.faqs.map((faq: any) => ({
                         '@type': 'Question',
                         name: faq.question,
                         acceptedAnswer: {
@@ -376,7 +402,7 @@ export function TopicClusterPage({ content }: { content: ClusterPageContent }) {
 
         {/* Article Body Sections */}
         <div className="space-y-12 border-t border-border pt-10">
-          {content.sections.map((section, idx) => (
+          {effectiveSections.map((section: any, idx: number) => (
             <section key={idx} className="space-y-4">
               <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
                 {section.heading}
@@ -404,7 +430,7 @@ export function TopicClusterPage({ content }: { content: ClusterPageContent }) {
                 renderSectionVisual(content.pillarRoute, content.pathname, idx)
               )}
 
-              {section.content.map((paragraph, pIdx) => (
+              {section.content.map((paragraph: string, pIdx: number) => (
                 <p
                   key={pIdx}
                   className="leading-relaxed text-muted-foreground sm:text-base"
@@ -415,7 +441,7 @@ export function TopicClusterPage({ content }: { content: ClusterPageContent }) {
 
               {section.bulletPoints && section.bulletPoints.length > 0 && (
                 <ul className="mt-4 space-y-2.5 rounded-2xl border border-border bg-card/50 p-5 backdrop-blur-xs">
-                  {section.bulletPoints.map((point, bIdx) => (
+                  {section.bulletPoints.map((point: string, bIdx: number) => (
                     <li
                       key={bIdx}
                       className="flex items-start gap-3 text-sm text-foreground sm:text-base"
@@ -437,7 +463,7 @@ export function TopicClusterPage({ content }: { content: ClusterPageContent }) {
               Explore Related AI Concepts & Capabilities
             </h3>
             <div className="flex flex-wrap gap-2">
-              {content.lsiKeywords.map((kw, idx) => (
+              {content.lsiKeywords.map((kw: string, idx: number) => (
                 <span
                   key={idx}
                   className="rounded-lg border border-border/60 bg-background px-2.5 py-1 text-xs font-medium text-muted-foreground"
@@ -518,7 +544,7 @@ export function TopicClusterPage({ content }: { content: ClusterPageContent }) {
               </h2>
             </div>
             <div className="space-y-6">
-              {content.faqs.map((faq, idx) => (
+              {content.faqs.map((faq: any, idx: number) => (
                 <div
                   key={idx}
                   className="rounded-2xl border border-border bg-card p-6 shadow-xs"
