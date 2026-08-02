@@ -29,8 +29,22 @@ jobs:
       - name: Run IndexNow Auto-Push Script
         run: npx tsx scripts/push-indexnow.ts
 
-      - name: Generate SEO Drip Schedule & Send Email Digest
-        env:
-          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-          NOTIFICATION_EMAIL: ${{ secrets.NOTIFICATION_EMAIL }}
+      - name: Generate SEO Drip Schedule & Status Summary
         run: npx tsx scripts/seo-status.ts
+
+      - name: Send Email Report to Gmail (Optional)
+        if: env.MAIL_USERNAME != '' && env.MAIL_PASSWORD != ''
+        uses: dawidd6/action-send-mail@v3
+        env:
+          MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
+          MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: 🚀 [LipSync.pro] Daily SEO Drip & Published Article Report
+          to: ${{ secrets.NOTIFICATION_EMAIL || secrets.MAIL_USERNAME }}
+          from: LipSync.pro Bot
+          html_body: file://seo-status-report.html
+          priority: normal
