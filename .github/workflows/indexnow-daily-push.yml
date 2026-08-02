@@ -1,0 +1,30 @@
+name: Daily IndexNow SEO Auto-Push
+
+on:
+  schedule:
+    # Runs automatically every day at 00:05 UTC (8:05 AM Beijing Time)
+    - cron: '5 0 * * *'
+  workflow_dispatch: # Allows manual trigger from GitHub UI
+
+jobs:
+  indexnow-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Run IndexNow Auto-Push Script
+        run: npx tsx scripts/push-indexnow.ts
