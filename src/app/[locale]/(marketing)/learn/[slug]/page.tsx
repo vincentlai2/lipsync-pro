@@ -5,6 +5,8 @@ import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
 import { notFound } from 'next/navigation';
 
+export const revalidate = 3600; // Hourly ISR cache revalidation
+
 export async function generateStaticParams() {
   const articles = getAllArticles(false);
   return articles.map((article) => ({

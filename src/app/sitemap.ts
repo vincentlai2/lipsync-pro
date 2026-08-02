@@ -7,6 +7,8 @@ import type { MetadataRoute } from 'next';
 import type { Locale } from 'next-intl';
 import { getBaseUrl } from '../lib/urls/urls';
 
+export const revalidate = 3600; // Hourly ISR cache revalidation for sitemap
+
 type Href = Parameters<typeof getLocalePathname>[0]['href'];
 
 /**
