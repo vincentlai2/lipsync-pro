@@ -28,3 +28,6 @@ jobs:
 
       - name: Run IndexNow Auto-Push Script
         run: npx tsx scripts/push-indexnow.ts
+
+      - name: Generate SEO Drip Schedule & Status Summary
+        run: npx tsx scripts/seo-status.ts
