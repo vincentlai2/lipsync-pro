@@ -1,8 +1,9 @@
 import { defaultMessages } from '@/i18n/messages';
 import { routing } from '@/i18n/routing';
+import EmailButton from '@/mail/components/email-button';
 import EmailLayout from '@/mail/components/email-layout';
 import type { BaseEmailProps } from '@/mail/types';
-import { Button, Heading, Section, Text } from '@react-email/components';
+import { Heading, Section, Text } from '@react-email/components';
 import { createTranslator } from 'use-intl/core';
 
 interface DailyCreditsReminderProps extends BaseEmailProps {
@@ -30,21 +31,16 @@ export default function DailyCreditsReminder({
 
   return (
     <EmailLayout locale={locale} messages={messages}>
-      <Heading className="text-xl font-bold text-zinc-900 dark:text-white">
+      <Heading className="text-xl font-bold text-zinc-900">
         {t('title', { name: userName })}
       </Heading>
-      <Text className="text-base text-zinc-700 dark:text-zinc-300 my-4 leading-relaxed">
+      <Text className="my-4 text-base text-zinc-700 leading-relaxed">
         {t('body', { amount: creditsAmount })}
       </Text>
       <Section className="my-6 text-center">
-        <Button
-          href={studioUrl}
-          className="bg-primary text-primary-foreground font-semibold px-6 py-3 rounded-lg text-sm shadow-md inline-block"
-        >
-          {t('ctaButton')}
-        </Button>
+        <EmailButton href={studioUrl}>{t('ctaButton')}</EmailButton>
       </Section>
-      <Text className="text-xs text-muted-foreground mt-4 italic border-t border-zinc-200 dark:border-zinc-800 pt-4">
+      <Text className="mt-4 border-zinc-200 border-t pt-4 text-xs text-zinc-500 italic">
         {t('footerNote')}
       </Text>
     </EmailLayout>
