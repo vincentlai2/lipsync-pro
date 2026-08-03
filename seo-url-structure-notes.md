@@ -306,5 +306,12 @@ ia synchronisation labiale
   - **SEO Title**: `Wav2Lip Online Lip Sync AI Video Generator | Free WebUI`
   - **Hero H1**: `Wav2Lip Online Lip Sync AI Video Generator`
 
+### 对话 5：前台公共页面入口决议
+* **问**：前端页面的入口怎么安排？先只聊。用footer
+* **答**：
+  - **顶栏 Navbar**：保持极简原样，不新增顶级按钮，防止中窄屏拥挤及通用用户认知负荷；
+  - **底栏 Footer**：在 `PRODUCT` 列中新增 `Wav2Lip Online` (`Routes.Wav2Lip`)，打通 Google 爬虫与深度用户的直连通道。
+
+
 
 
