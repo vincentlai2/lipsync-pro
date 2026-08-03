@@ -229,3 +229,37 @@ ia synchronisation labiale
 这样做的好处是：哪怕 `wav2lip` 法国搜索量小，`lip sync ia` 和 `synchronisation labiale ia` 也能帮你摸到更大的相关需求。后面根据 Search Console，看哪个页面有曝光，再继续扩。
 
 我的结论：**不要等，但要小步扩展。先做 3 个主题入口 + 3 篇辅助文，别做站群式铺量。**
+
+---
+
+## 2026-08-04 /wav2lip 与 /lip-sync-ai 双 Silo 孤岛架构与工作台规划记录
+
+### 1. 架构定位：双 Pillar 独立孤岛 (Isolated Silos)
+* **取消正文强制交叉互链**：`/lip-sync-ai` 与 `/wav2lip` 作为两个独立的落地页 Pillar，在正文中零交叉干扰，各自作为独立 Topical Silo 向上吸收长尾文章权重，保证最高的商业转化率 (CRO) 与搜索引擎纯粹语义。
+* **物理连通性**：仅在全局 Top Nav 及 Footer 中保持 natural 导航连接。
+
+### 2. 关键词与搜索意图精准映射矩阵
+* `/lip-sync-ai` 承接大词/泛意图：`ai lip sync video generator`, `ai lip sync tool`, `audio to video lip sync`。
+* `/wav2lip` 承接工具/精准词：`wav2lip online`, `wav2lip webui`, `wav2lip colab alternative`, `wav2lip free trial`。
+
+### 3. /wav2lip 页面规划蓝图
+* **Meta & H1**: Title: `Wav2Lip Online Free Video Generator | WebUI Without Colab`, H1: `Wav2Lip Online Video Generator`.
+* **核心痛点对比**: 解决 Google Colab 断连/环境配置困难，解决传统 Wav2Lip 下半脸/嘴部模糊（内置 CodeFormer / GFPGAN 面部增强），解决音视频手工切分对齐。
+* **组件复用**: 100% 复用 `Wav2LipUploader`, `AlternatingFeatures`, `WorkspaceSidePanel`。
+
+### 4. 登录态工作面板 (Workspace Dashboard) 规划
+* **无缝切换**: 登录后自动隐藏下方 SEO 营销长文，切换为沉浸式生产力 Workstation（包含 `DashboardSidebar` 边栏、`Wav2LipUploader` 画布、`WorkspaceSidePanel` 作品与额度面板）。
+* **高级渲染微调**:
+  - HD Neural Upscaling (CodeFormer / GFPGAN 高清修复开关)
+  - 嘴部 Box 裁切与 Padding 边距设置
+  - 30fps / 60fps 帧率平滑模式
+* **模态框无缝留存**: 未登录用户在上传素材后触发模态框登录 (`mode="modal"`)，登录成功后保留所选素材，在工作面板中直接提交渲染。
+
+### 5. 侧边栏 (Sidebar) 菜单排版决议
+* **视觉一致性**: 保持项目既有的极简高端设计，不叠加多余的花哨 Emoji / 装饰符号。
+* **分级结构**:
+  - `Lip Sync Studio` (主创作区)：`Lip Sync AI`, `Text to Lip Sync`, `Photo to Lip Sync`
+  - `Other Lip Sync Tools` (特定工具区)：`Wav2Lip`
+* **优势**: 兼顾了普通 `Lip Sync AI` 用户的流程极简性（避免选择困惑），同时为搜 `Wav2Lip` 的精准用户提供了清晰不突兀的专属功能入口。
+
+

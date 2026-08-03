@@ -49,6 +49,19 @@ export function useSidebarLinks(): NestedMenuItem[] {
       ],
     },
     {
+      title: 'Other Lip Sync Tools',
+      icon: <SparklesIcon className="size-4 shrink-0 text-primary" />,
+      href: Routes.Wav2Lip,
+      external: false,
+      items: [
+        {
+          title: 'Wav2Lip',
+          href: Routes.Wav2Lip,
+          external: false,
+        },
+      ],
+    },
+    {
       title: t('myCreations'),
       icon: <VideoIcon className="size-4 shrink-0 text-primary" />,
       href: Routes.Wav2LipCreations,
