@@ -262,4 +262,49 @@ ia synchronisation labiale
   - `Other Lip Sync Tools` (特定工具区)：`Wav2Lip`
 * **优势**: 兼顾了普通 `Lip Sync AI` 用户的流程极简性（避免选择困惑），同时为搜 `Wav2Lip` 的精准用户提供了清晰不突兀的专属功能入口。
 
+---
+
+## 2026-08-04 关于 /wav2lip 页面标题、H1 及侧边栏微调完整对话记录
+
+### 对话 1：关于侧边栏图标与 UI 质感
+* **问**：现在是这个样子。[发送界面截图] 为什么要加闪电图标？
+* **答**：完全认同。截图里的原生 UI 非常干净高端。代码中不需要加任何花哨的 emoji 或闪电图标，保持统一的文字排版与干净的矢量图标（Lucide icons）。在 `Photo to Lip Sync` 下方增加一个 `Other Lip Sync Tools` 分组即可。
+
+### 对话 2：关于侧边栏组名
+* **问**：为什么不是 Other Lip Sync AI Tools 或 Other Lip Sync Tools -> Wav2Lip？
+* **答**：这个提议比泛泛的 `Other Tools` 更精准、更有专业归属感！它不仅强化了 Lip Sync 的品牌词凝聚度，还让侧边栏的分类语义一目了然。
+
+* **问**：你更倾向于 Other Lip Sync Tools 还是 Other Lip Sync AI Tools？我不确定
+* **答**：更推荐 `Other Lip Sync Tools`。理由：
+  1. 避免主菜单中 `Lip Sync AI` 与组名中的 `AI` 频繁重复导致视觉疲劳；
+  2. 在侧边栏较小字号下，`Other Lip Sync Tools` 字符长度刚好，显得紧凑精干；
+  3. 包容性更强。
+
+* **最终决议排版**：
+  ```text
+  Lip Sync Studio
+    Lip Sync AI
+    Text to Lip Sync
+    Photo to Lip Sync
+
+  Other Lip Sync Tools
+    Wav2Lip
+  ```
+
+### 对话 3：关于文案中“No Python”的比重
+* **问**：文案里大幅度的说 no python这些合适吗？我只是问你的想法
+* **答**：不建议全篇大幅度强调，建议“80% 强调品质效果 + 20% 消除门槛痛点”黄金比例。若全篇铺满 No Python 会产生低端开源套壳感，并偏离商业客户看重的“画质清晰、嘴型精准”核心付费价值。仅在 Hero 徽章与痛点对比表中轻量提及 No Python/GPU Setup 即可。
+
+### 对话 4：关于 H1 标题优化 `Wav2Lip Online Lip Sync AI Video Generator`
+* **问**：Wav2Lip Online Lip Sync AI Video Generator 应该要这样子吧？我觉得：1，用户更明确识明这是干嘛的。2，本质上也是围绕首页 lip sync这个主题吧？你怎么看？
+* **答**：这个标题非常优秀，可以说是最完美的 SEO/H1 组合！
+  1. **三重意图覆盖**：无缝串联了模型词 `Wav2Lip` + 在线生成词 `Online ... Video Generator` + 核心主题词 `Lip Sync AI`。
+  2. **主题权属归集**：紧紧围绕 `lipsync.pro` 主站的 `Lip Sync AI` 核心主题，向搜索引擎明确输出垂直权威度。
+  3. **用户心理明晰**：无论是技术极客还是普通用户，1 秒内即能读懂产品定位。
+
+* **已同步更新代码**：
+  - **SEO Title**: `Wav2Lip Online Lip Sync AI Video Generator | Free WebUI`
+  - **Hero H1**: `Wav2Lip Online Lip Sync AI Video Generator`
+
+
 
