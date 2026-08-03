@@ -312,6 +312,21 @@ ia synchronisation labiale
   - **顶栏 Navbar**：保持极简原样，不新增顶级按钮，防止中窄屏拥挤及通用用户认知负荷；
   - **底栏 Footer**：在 `PRODUCT` 列中新增 `Wav2Lip Online` (`Routes.Wav2Lip`)，打通 Google 爬虫与深度用户的直连通道。
 
+### 对话 6：底栏 Product 顺位微调
+* **问**：不应排这个顺位吧？[截图指出 Wav2Lip Online 放在了第 2 个位置]
+* **答**：非常准确！放在第 2 位打破了顶栏“Lip Sync AI -> Text to Lip Sync -> Photo to Lip Sync”三大核心主流程的 1-to-1 呼应节奏。已调整置于三大主流程之后（`Photo to Lip Sync` 下方、`Pricing` 上方）：
+
+* **调整后顺位**：
+  ```text
+  PRODUCT
+   ├── Lip Sync AI
+   ├── Text to Lip Sync
+   ├── Photo to Lip Sync
+   ├── Wav2Lip Online        [调整至此处]
+   └── Pricing & Credit Plans
+  ```
+
+
 
 
 

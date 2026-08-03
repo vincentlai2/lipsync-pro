@@ -24,11 +24,6 @@ export function useFooterLinks(): NestedMenuItem[] {
           external: false,
         },
         {
-          title: 'Wav2Lip Online',
-          href: Routes.Wav2Lip,
-          external: false,
-        },
-        {
           title: 'Text to Lip Sync',
           href: Routes.TextToLipSync,
           external: false,
@@ -36,6 +31,11 @@ export function useFooterLinks(): NestedMenuItem[] {
         {
           title: 'Photo to Lip Sync',
           href: Routes.AnimerPhotoIA,
+          external: false,
+        },
+        {
+          title: 'Wav2Lip Online',
+          href: Routes.Wav2Lip,
           external: false,
         },
         {
