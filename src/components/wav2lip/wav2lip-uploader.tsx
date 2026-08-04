@@ -70,6 +70,44 @@ interface StatusResponse {
 
 const CREDITS_PER_TASK = 20;
 const SERVER_UPLOAD_FALLBACK_LIMIT = 4 * 1024 * 1024;
+const MAX_CLIENT_VIDEO_FILE_SIZE = 300 * 1024 * 1024;
+const MAX_CLIENT_AUDIO_FILE_SIZE = 30 * 1024 * 1024;
+const MIN_AUDIO_DURATION_SECONDS = 1;
+const MAX_AUDIO_DURATION_SECONDS = 60;
+
+function formatDuration(seconds: number) {
+  if (!Number.isFinite(seconds)) return 'unknown';
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = Math.round(seconds % 60);
+  return minutes > 0
+    ? `${minutes}m ${remainingSeconds.toString().padStart(2, '0')}s`
+    : `${remainingSeconds}s`;
+}
+
+function getAudioMetadata(file: File) {
+  return new Promise<{ duration: number } | null>((resolve) => {
+    const url = URL.createObjectURL(file);
+    const audio = document.createElement('audio');
+
+    const cleanup = () => {
+      URL.revokeObjectURL(url);
+      audio.removeAttribute('src');
+      audio.load();
+    };
+
+    audio.preload = 'metadata';
+    audio.onloadedmetadata = () => {
+      const duration = audio.duration;
+      cleanup();
+      resolve(Number.isFinite(duration) ? { duration } : null);
+    };
+    audio.onerror = () => {
+      cleanup();
+      resolve(null);
+    };
+    audio.src = url;
+  });
+}
 
 async function uploadWav2LipFileViaServer(file: File, kind: 'video' | 'audio') {
   const formData = new FormData();
@@ -281,7 +319,7 @@ export function Wav2LipUploader({
   const handleVideoSelect = (file: File | null) => {
     if (videoPreview) URL.revokeObjectURL(videoPreview);
     if (file) {
-      if (file.size > MAX_CLIENT_FILE_SIZE) {
+      if (file.size > MAX_CLIENT_VIDEO_FILE_SIZE) {
         setErrorMessage(
           `The selected file (${(file.size / (1024 * 1024)).toFixed(1)} MB) exceeds the 300 MB limit.`
         );
@@ -353,8 +391,6 @@ export function Wav2LipUploader({
     }
   };
 
-  const MAX_CLIENT_FILE_SIZE = 300 * 1024 * 1024; // 300MB Wav2Lip limit via R2 direct upload
-
   async function parseJsonResponse<T = any>(
     response: Response,
     defaultError: string
@@ -381,13 +417,35 @@ export function Wav2LipUploader({
     }
   }
 
-  const handleAudioSelect = (file: File | null) => {
+  const handleAudioSelect = async (file: File | null) => {
     if (audioPreview && audioSourceMode === 'file')
       URL.revokeObjectURL(audioPreview);
     if (file) {
-      if (file.size > MAX_CLIENT_FILE_SIZE) {
+      if (file.size > MAX_CLIENT_AUDIO_FILE_SIZE) {
+        setAudioFile(null);
+        setAudioPreview('');
         setErrorMessage(
-          `The selected audio file (${(file.size / (1024 * 1024)).toFixed(1)} MB) exceeds the 300 MB limit.`
+          `The selected audio file (${(file.size / (1024 * 1024)).toFixed(1)} MB) exceeds the 30 MB limit.`
+        );
+        return;
+      }
+      const metadata = await getAudioMetadata(file);
+      if (!metadata) {
+        setAudioFile(null);
+        setAudioPreview('');
+        setErrorMessage(
+          'This audio file could not be read before upload. Please use a clear MP3, WAV, M4A, or AAC file.'
+        );
+        return;
+      }
+      if (
+        metadata.duration < MIN_AUDIO_DURATION_SECONDS ||
+        metadata.duration > MAX_AUDIO_DURATION_SECONDS
+      ) {
+        setAudioFile(null);
+        setAudioPreview('');
+        setErrorMessage(
+          `This audio is ${formatDuration(metadata.duration)}. Please use audio between ${MIN_AUDIO_DURATION_SECONDS} and ${MAX_AUDIO_DURATION_SECONDS} seconds.`
         );
         return;
       }
@@ -1106,8 +1164,8 @@ export function Wav2LipUploader({
                     Drop or select your audio file
                   </span>
                   <span className="mt-1.5 text-zinc-500 dark:text-zinc-400 text-xs max-w-xs font-medium">
-                    Clear voiceover or dubbing audio. MP3, WAV, or AAC (max 30
-                    MB)
+                    Clear voiceover or dubbing audio. MP3, WAV, M4A, or AAC (max
+                    60 seconds and 30 MB)
                   </span>
                   <Input
                     id="studio-audio-input"

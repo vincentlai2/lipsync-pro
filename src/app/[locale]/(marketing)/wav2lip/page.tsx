@@ -203,7 +203,7 @@ const faqs = [
   {
     question: 'What video and audio formats are supported?',
     answer:
-      'We support MP4, MOV, WEBM videos, portrait images (JPG, PNG, WebP), and audio files in MP3, WAV, M4A, and AAC formats.',
+      'We support MP4, MOV, WEBM videos, portrait images (JPG, PNG, WebP), and audio files in MP3, WAV, M4A, and AAC formats. Videos can be up to 120 seconds and 300 MB; audio files can be up to 60 seconds and 30 MB.',
   },
 ];
 

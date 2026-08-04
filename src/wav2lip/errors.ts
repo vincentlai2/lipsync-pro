@@ -30,8 +30,13 @@ export function formatWav2LipFailureMessage({
     return `No clear human face was detected in this video. ${refundText} Please use a well-lit video with a visible face.`;
   }
 
-  if (rawError.includes('audio duration') || rawError.includes('audio limit')) {
-    return `The audio duration is invalid. ${refundText}`;
+  if (
+    rawError.includes('audio duration') ||
+    rawError.includes('audio limit') ||
+    rawError.includes('audio is longer than 60 seconds') ||
+    rawError.includes('input audio is longer than 60 seconds')
+  ) {
+    return `The audio file is longer than the 60-second limit. ${refundText} Please shorten the audio and try again.`;
   }
 
   if (
