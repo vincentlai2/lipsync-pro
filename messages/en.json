@@ -752,11 +752,11 @@
       "subject": "Contact Message from Website"
     },
     "dailyCreditsReminder": {
-      "title": "Hi {name}, your daily free credits are ready!",
-      "body": "Great news! Your {amount} daily free credits have been added to your account. You can now lip-sync a new video.",
-      "ctaButton": "Create a video now",
-      "footerNote": "To remove watermarks and unlock ultra-fast rendering speed, explore our Pro plans.",
-      "subject": "Your daily free credits are ready!"
+      "title": "Hi {name}, your next Lip Sync AI video can be ready today",
+      "body": "Your {amount} free credits are available. Use them to fix mismatched mouth movement, test a new voiceover, or turn a presenter clip into a more natural talking video.",
+      "ctaButton": "Create my lip sync video",
+      "footerNote": "Need watermark-free exports or more renders? Pro plans are available whenever you are ready.",
+      "subject": "Your {amount} Lip Sync AI credits are ready - create a more natural video"
     }
   },
   "HomePage": {
