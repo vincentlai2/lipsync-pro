@@ -727,7 +727,7 @@
   "Mail": {
     "common": {
       "team": "{name} Team",
-      "copyright": "漏锔?{year} All Rights Reserved."
+      "copyright": "Copyright {year}. All Rights Reserved."
     },
     "verifyEmail": {
       "title": "Hi, {name}.",
@@ -756,7 +756,7 @@
       "body": "Great news! Your {amount} daily free credits have been added to your account. You can now lip-sync a new video.",
       "ctaButton": "Create a video now",
       "footerNote": "To remove watermarks and unlock ultra-fast rendering speed, explore our Pro plans.",
-      "subject": "馃巵 Your daily free credits are ready!"
+      "subject": "Your daily free credits are ready!"
     }
   },
   "HomePage": {

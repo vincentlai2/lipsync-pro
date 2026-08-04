@@ -57,6 +57,7 @@ export interface SendTemplateParams {
   template: EmailTemplate;
   context: Record<string, any>;
   locale?: Locale;
+  from?: string;
 }
 
 /**
@@ -68,6 +69,7 @@ export interface SendRawEmailParams {
   html: string;
   text?: string;
   locale?: Locale;
+  from?: string;
 }
 
 /**

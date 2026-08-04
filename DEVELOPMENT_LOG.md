@@ -77,6 +77,32 @@ Completed in this step:
 - Added tenant isolation checks for null `site_id`, cross-site task/usage matches, and orphan Lip Sync AI usage transactions.
 - Added recoverable task and recent failed task panels.
 
+## 2026-08-05 - Tenant-aware daily credits email fix
+
+User reported that Gmail showed a daily credits email sent from LipSync.pro, but the subject/body were French and the footer said Wav2Lip IA.
+
+Cause:
+
+- `/api/cron/daily-credits-email` runs daily from Vercel.
+- The route hardcoded `locale: 'fr'`.
+- The query did not filter by `user_credit.site_id`.
+- The mail provider always used the global sender.
+
+Fix intent:
+
+- Keep the daily credits email cron enabled.
+- Make the cron send the correct site/language/brand instead of pausing it.
+- For `lipsync.pro`, send only to `site_id = lipsync.pro` users, use English copy, and send from `LipSync.pro <hi@lipsync.pro>`.
+- Keep a tenant branch for `wav2lipia.com` if explicitly invoked by host/query, using French copy and Wav2Lip IA sender.
+
+Completed in this step:
+
+- Added site filtering to the daily credits email query.
+- Made the daily email locale tenant-aware.
+- Added optional per-email sender override through the mail provider.
+- Added an explicit studio CTA URL to the daily credits template.
+- Fixed the English daily credits subject and copyright footer text.
+
 ## 2026-07-30 - Wav2Lipia architecture alignment
 
 User clarified the intended baseline:

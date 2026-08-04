@@ -1,54 +1,50 @@
 import { getDb } from '@/db';
 import { user, userCredit } from '@/db/schema';
+import { validateCronAuth, unauthorizedCronResponse } from '@/lib/cron-auth';
+import { getTenantByHost } from '@/lib/tenant';
 import { sendEmail } from '@/mail';
-import { eq, gte, and, lt, or, isNull } from 'drizzle-orm';
+import { and, eq, gte, isNull, lt, or } from 'drizzle-orm';
+import type { Locale } from 'next-intl';
 import { NextResponse } from 'next/server';
 
-// Authentication middleware for Cron
-function validateAuth(request: Request): boolean {
-  const authHeader = request.headers.get('authorization');
-  const isVercelCron = request.headers.get('x-vercel-cron') !== null;
-  const cronSecret = process.env.CRON_SECRET;
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
-  if (isVercelCron) {
-    return true;
+const DAILY_CREDITS_EMAIL_AMOUNT = 20;
+
+function getDailyCreditsEmailContext(request: Request) {
+  const url = new URL(request.url);
+  const tenant = getTenantByHost(request.headers.get('host'));
+  const requestedSiteId = url.searchParams.get('siteId');
+  const siteId = requestedSiteId || tenant.siteId;
+
+  if (siteId === 'wav2lipia.com') {
+    return {
+      siteId,
+      locale: 'fr' as Locale,
+      fallbackName: 'Createur',
+      studioUrl: 'https://wav2lipia.com/wav2lip-en-ligne',
+      from: 'Wav2Lip IA <hi@wav2lipia.com>',
+    };
   }
 
-  if (cronSecret && authHeader === `Bearer ${cronSecret}`) {
-    return true;
-  }
-
-  if (authHeader?.startsWith('Basic ')) {
-    const base64Credentials = authHeader.split(' ')[1];
-    const credentials = Buffer.from(base64Credentials, 'base64').toString(
-      'utf-8'
-    );
-    const [username, password] = credentials.split(':');
-
-    const expectedUsername = process.env.CRON_JOBS_USERNAME;
-    const expectedPassword = process.env.CRON_JOBS_PASSWORD;
-
-    if (expectedUsername && expectedPassword) {
-      return username === expectedUsername && password === expectedPassword;
-    }
-  }
-
-  return process.env.NODE_ENV === 'development';
+  return {
+    siteId: 'lipsync.pro',
+    locale: 'en' as Locale,
+    fallbackName: 'Creator',
+    studioUrl: 'https://lipsync.pro/lip-sync-ai',
+    from: 'LipSync.pro <hi@lipsync.pro>',
+  };
 }
 
 /**
- * Cron Endpoint: Send gradient retention emails (Max 2 per user lifetime).
+ * Cron Endpoint: Send gradient retention emails (Max 2 per site credit row).
  * Email 1: 24h after registration/inactivity
  * Email 2: 5 days after Email 1
  */
 export async function GET(request: Request) {
-  if (!validateAuth(request)) {
-    return new NextResponse('Unauthorized', {
-      status: 401,
-      headers: {
-        'WWW-Authenticate': 'Basic realm="Secure Area"',
-      },
-    });
+  if (!validateCronAuth(request)) {
+    return unauthorizedCronResponse();
   }
 
   let sentCount = 0;
@@ -56,15 +52,11 @@ export async function GET(request: Request) {
 
   try {
     const db = await getDb();
+    const emailContext = getDailyCreditsEmailContext(request);
     const now = new Date();
     const twentyFourHoursAgo = new Date(now.getTime() - 24 * 60 * 60 * 1000);
     const fiveDaysAgo = new Date(now.getTime() - 5 * 24 * 60 * 60 * 1000);
 
-    // Eligible users:
-    // 1. Credit >= 20, not banned
-    // 2. retentionEmailCount < 2
-    // 3. User created > 24h ago
-    // 4. Either (retentionEmailCount == 0 AND user created > 24h ago) OR (retentionEmailCount == 1 AND lastRetentionEmailAt < 5 days ago)
     const eligibleUsers = await db
       .select({
         userId: userCredit.userId,
@@ -80,8 +72,9 @@ export async function GET(request: Request) {
       .innerJoin(user, eq(userCredit.userId, user.id))
       .where(
         and(
-          gte(userCredit.currentCredits, 20),
-          eq(user.banned, false),
+          eq(userCredit.siteId, emailContext.siteId),
+          gte(userCredit.currentCredits, DAILY_CREDITS_EMAIL_AMOUNT),
+          or(eq(user.banned, false), isNull(user.banned)),
           lt(userCredit.retentionEmailCount, 2),
           lt(user.createdAt, twentyFourHoursAgo),
           or(
@@ -100,16 +93,17 @@ export async function GET(request: Request) {
         const success = await sendEmail({
           template: 'dailyCreditsReminder',
           to: u.email,
-          locale: 'fr',
+          from: emailContext.from,
+          locale: emailContext.locale,
           context: {
-            userName: u.userName || 'Créateur',
-            creditsAmount: 20,
+            userName: u.userName || emailContext.fallbackName,
+            creditsAmount: DAILY_CREDITS_EMAIL_AMOUNT,
+            studioUrl: emailContext.studioUrl,
           },
         });
 
         if (success) {
           sentCount++;
-          // Update retention email counter & timestamp in DB
           await db
             .update(userCredit)
             .set({
@@ -132,7 +126,9 @@ export async function GET(request: Request) {
 
     return NextResponse.json({
       success: true,
-      message: `Daily credits email dispatch completed. Sent: ${sentCount}, Errors: ${errorCount}`,
+      message: `Daily credits email dispatch completed for ${emailContext.siteId}. Sent: ${sentCount}, Errors: ${errorCount}`,
+      siteId: emailContext.siteId,
+      locale: emailContext.locale,
       sentCount,
       errorCount,
     });

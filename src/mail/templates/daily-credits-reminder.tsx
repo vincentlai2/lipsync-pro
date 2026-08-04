@@ -9,6 +9,7 @@ import { createTranslator } from 'use-intl/core';
 interface DailyCreditsReminderProps extends BaseEmailProps {
   userName?: string;
   creditsAmount?: number;
+  studioUrl?: string;
 }
 
 export default function DailyCreditsReminder({
@@ -16,6 +17,7 @@ export default function DailyCreditsReminder({
   messages,
   userName = 'Creator',
   creditsAmount = 20,
+  studioUrl,
 }: DailyCreditsReminderProps) {
   const t = createTranslator({
     locale,
@@ -24,7 +26,7 @@ export default function DailyCreditsReminder({
   });
 
   const baseUrl = process.env.NEXT_PUBLIC_WEBSITE_URL ?? 'https://lipsync.pro';
-  const studioUrl =
+  const fallbackStudioUrl =
     locale === routing.defaultLocale
       ? `${baseUrl}/lip-sync-ai`
       : `${baseUrl}/${locale}/lip-sync-ai`;
@@ -38,7 +40,9 @@ export default function DailyCreditsReminder({
         {t('body', { amount: creditsAmount })}
       </Text>
       <Section className="my-6 text-center">
-        <EmailButton href={studioUrl}>{t('ctaButton')}</EmailButton>
+        <EmailButton href={studioUrl || fallbackStudioUrl}>
+          {t('ctaButton')}
+        </EmailButton>
       </Section>
       <Text className="mt-4 border-zinc-200 border-t pt-4 text-xs text-zinc-500 italic">
         {t('footerNote')}
