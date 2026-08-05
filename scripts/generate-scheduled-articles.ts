@@ -213,19 +213,11 @@ const geoDetails = [
 
 const articlesDir = path.join(process.cwd(), 'content', 'articles');
 
-if (fs.existsSync(articlesDir)) {
-  // Wipe old articles to ensure strict weekly alignment starting today (2026-08-02)
-  const existingFiles = fs.readdirSync(articlesDir);
-  existingFiles.forEach((file) => {
-    if (file.endsWith('.json')) {
-      fs.unlinkSync(path.join(articlesDir, file));
-    }
-  });
-} else {
+if (!fs.existsSync(articlesDir)) {
   fs.mkdirSync(articlesDir, { recursive: true });
 }
 
-// Start strictly TODAY (2026-08-02)
+// Generate a weekly queue without clearing manually reviewed articles.
 const startDate = new Date('2026-08-02T00:00:00Z');
 const totalWeeks = 52;
 

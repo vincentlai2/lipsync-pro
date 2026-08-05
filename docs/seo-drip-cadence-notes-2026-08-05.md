@@ -20,7 +20,7 @@ Assistant:
 > 理由：
 >
 > - 比周更更快积累页面和长尾词。
-> - 比日更更不容易被看成程序化铺量。
+> - 比日更不容易被看成程序化铺量。
 > - 给 Google 足够时间爬取、理解、测试页面质量。
 > - 你现在核心页面刚改善，不要用大量弱内容稀释站点主题质量。
 >
@@ -28,11 +28,12 @@ Assistant:
 >
 > 1. 每 3 天发布 1 篇。
 > 2. 每周只做 2 篇左右。
-> 3. 每篇必须绑定一个明确 topic cluster，比如 `/lip-sync-ai/...`、`/text-to-lip-sync/...`、`/photo-to-lip-sync`。
+> 3. 每篇必须绑定一个明确 topic cluster，比如 `/lip-sync-ai/...`、`/text-to-lip-sync/...`、`/photo-to-lip-sync/...`。
 > 4. 不发“泛泛 AI 视频文章”，只发能回流工具页的文章。
 > 5. 先跑 30 天，看 Search Console：收录、展示、点击、关键词是否自然扩散。
 >
-> 如果你特别怕“更坏它”，那就先 **周更**。  
+> 如果你特别怕“更坏它”，那就先 **周更**。
+>
 > 但我个人倾向 **3 天一更**：够保守，又不至于太慢。当前站还在成长阶段，完全周更可能有点太软。
 
 User:
@@ -47,10 +48,10 @@ Assistant:
 >
 > 原因是现在数据有两个信号：
 >
-> 1. 话题确实聚焦  
+> 1. 话题确实聚焦
 > 查询基本围绕 `lipsync / lip sync / lip synchronisation / lip sync ai / lip sync software`，不是乱扩。这说明 topic cluster 方向是对的。
 >
-> 2. 站还很新，展示开始冒头，但点击还没有  
+> 2. 站还很新，展示开始冒头，但点击还没有
 > 首页 127 impressions，`/lip-sync-ai`、`/lip-sync-ai/what-is` 等开始有曝光；但位置多在 45-65，说明 Google 在试探主题相关性，还没给你稳定排名。
 >
 > 这种阶段最怕两件事：
@@ -88,8 +89,13 @@ User:
 >
 > 你怎么看
 
+User:
+
+> 不要删啊。 你先排没关系啊。
+
 ## Decision
 
 - Switch the automated article release cadence from daily to weekly for now.
-- Keep already published articles unchanged.
-- Use the slower cadence as a holding pattern while the `lip sync ai` topic cluster is refined manually.
+- Keep already-published articles unchanged.
+- Keep all generated article files; do not reduce the article inventory.
+- Reschedule future articles into a weekly queue while the `lip sync ai` topic cluster is refined manually.

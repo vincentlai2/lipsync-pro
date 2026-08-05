@@ -15,11 +15,14 @@ Completed:
 - Updated SEO report wording and subject from daily to weekly.
 - Rescheduled future article JSON files from daily releases to weekly releases.
 - Kept the already-published 2026-08-02 through 2026-08-05 articles unchanged.
-- Reduced the future queue from 365 total articles to 52 total articles so the site is not carrying a long, bulk-looking legacy programmatic backlog.
+- Kept all 365 article JSON files in place; future articles are now queued weekly instead of being deleted or reduced.
+- Confirmed the current pipeline is 4 live articles and 361 future scheduled articles.
+- Updated the generation script so it no longer wipes the article directory before generating scheduled content.
 
 Current strategy:
 
 - Weekly publishing is the temporary holding pattern.
+- The article inventory is preserved as a backlog, but publishing is intentionally slowed while the `lip sync ai` topic cluster is refined.
 - Next manual iteration should focus on completing and improving the `lip sync ai` topic cluster before increasing cadence again.
 
 ## 2026-08-05 - SEO drip report email delivery
