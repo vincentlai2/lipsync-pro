@@ -29,5 +29,9 @@ jobs:
       - name: Run IndexNow Auto-Push Script
         run: npx tsx scripts/push-indexnow.ts
 
-      - name: Generate SEO Drip Schedule & Native Step Summary
+      - name: Generate SEO Drip Schedule, Summary & Email Report
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          SEO_REPORT_EMAIL: ${{ secrets.SEO_REPORT_EMAIL }}
+          SEO_REPORT_FROM: ${{ secrets.SEO_REPORT_FROM }}
         run: npx tsx scripts/seo-status.ts

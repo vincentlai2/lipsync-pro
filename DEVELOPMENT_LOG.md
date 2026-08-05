@@ -1,5 +1,24 @@
 # LipSync.pro Development Log
 
+## 2026-08-05 - SEO drip report email delivery
+
+Goal:
+
+- Make the daily automated article publishing report send an email instead of only writing a GitHub Actions step summary.
+
+Completed:
+
+- Updated the `Daily IndexNow SEO Auto-Push` workflow to pass email-related GitHub Secrets into the report script.
+- Updated `scripts/seo-status.ts` to send the generated HTML report with Resend when `RESEND_API_KEY` and `SEO_REPORT_EMAIL` are configured.
+- Kept the script non-failing when email secrets are missing; it logs an explicit skip message instead.
+- Cleaned report mojibake and fixed upcoming-article sorting.
+
+Required GitHub Secrets:
+
+- `RESEND_API_KEY`
+- `SEO_REPORT_EMAIL`
+- Optional: `SEO_REPORT_FROM`
+
 ## 2026-08-01 - Next architecture targets from wav2lipia comparison
 
 User clarified the next LipSync.pro gaps compared with wav2lipia.com:
