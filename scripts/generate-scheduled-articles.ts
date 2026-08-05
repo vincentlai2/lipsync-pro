@@ -214,7 +214,7 @@ const geoDetails = [
 const articlesDir = path.join(process.cwd(), 'content', 'articles');
 
 if (fs.existsSync(articlesDir)) {
-  // Wipe old articles to ensure strict 1-per-day alignment starting today (2026-08-02)
+  // Wipe old articles to ensure strict weekly alignment starting today (2026-08-02)
   const existingFiles = fs.readdirSync(articlesDir);
   existingFiles.forEach((file) => {
     if (file.endsWith('.json')) {
@@ -227,12 +227,14 @@ if (fs.existsSync(articlesDir)) {
 
 // Start strictly TODAY (2026-08-02)
 const startDate = new Date('2026-08-02T00:00:00Z');
-const totalDays = 365;
+const totalWeeks = 52;
 
 let generatedCount = 0;
 
-for (let i = 0; i < totalDays; i++) {
-  const currentDate = new Date(startDate.getTime() + i * 24 * 60 * 60 * 1000);
+for (let i = 0; i < totalWeeks; i++) {
+  const currentDate = new Date(
+    startDate.getTime() + i * 7 * 24 * 60 * 60 * 1000
+  );
   const dateIso = currentDate.toISOString().split('T')[0]; // "YYYY-MM-DD"
   const publishedAt = `${dateIso}T00:00:00Z`;
 
@@ -347,5 +349,5 @@ for (let i = 0; i < totalDays; i++) {
 }
 
 console.log(
-  `🎉 Successfully updated ${generatedCount} daily articles with strictly 1 article per day starting from 2026-08-02!`
+  `Successfully updated ${generatedCount} weekly articles with strictly 1 article per week starting from 2026-08-02!`
 );

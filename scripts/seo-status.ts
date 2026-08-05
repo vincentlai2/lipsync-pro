@@ -121,7 +121,7 @@ ${publishedTable}
 
 ---
 
-### Next 7 Days Scheduled Release Plan
+### Next 7 Scheduled Releases
 
 | Target Release Date | Planned Article Title | SEO Category |
 | :--- | :--- | :--- |
@@ -152,8 +152,8 @@ ${futureTable}
 
   const htmlReport = `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 680px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; background: #ffffff;">
-      <h2 style="color: #0f172a; margin-top: 0;">LipSync.pro Daily SEO Drip Report</h2>
-      <p style="color: #475569; font-size: 14px;">Here is the automated daily content publishing and indexing report for <strong>LipSync.pro</strong>.</p>
+      <h2 style="color: #0f172a; margin-top: 0;">LipSync.pro Weekly SEO Drip Report</h2>
+      <p style="color: #475569; font-size: 14px;">Here is the automated weekly content publishing and indexing report for <strong>LipSync.pro</strong>.</p>
 
       <div style="background: #f8fafc; border-radius: 8px; padding: 16px; margin: 16px 0; border: 1px solid #cbd5e1;">
         <h3 style="margin: 0 0 8px 0; color: #1e293b; font-size: 15px;">Progress Summary</h3>
@@ -178,7 +178,7 @@ ${futureTable}
   fs.writeFileSync('seo-status-report.html', htmlReport, 'utf-8');
 
   await sendSeoStatusEmail({
-    subject: `LipSync.pro daily SEO report - ${today}`,
+    subject: `LipSync.pro weekly SEO report - ${today}`,
     html: htmlReport,
   });
 }

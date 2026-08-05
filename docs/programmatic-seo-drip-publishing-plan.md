@@ -1,14 +1,14 @@
 # Programmatic SEO & Drip Publishing System Architecture Plan
 
 ## Executive Summary
-This document outlines the technical design for LipSync.pro's automated content engine, combining **Programmatic SEO (GEO/Keyword Matrix)**, **Competitor Skyscraper Scraping**, and **Daily Drip Publishing**.
+This document outlines the technical design for LipSync.pro's automated content engine, combining **Programmatic SEO (GEO/Keyword Matrix)**, **Competitor Skyscraper Scraping**, and **Weekly Drip Publishing**.
 
 ---
 
 ## 1. System Architecture Diagram & Dual-Layer Strategy
 
 ### Dual-Layer Growth Architecture
-- **Layer 1: Flagship Main Site (`LipSync.pro`)**: Focuses on **EEAT, Brand Trust, & High Conversion**. Competitor articles are ingested purely as a **Knowledge Corpus**. The AI synthesizes multi-source data, enriches it with 2026 benchmarks & custom UI diagrams (`VisemeAlignmentDiagram`), and publishes high-authority Skyscraper content on a daily drip schedule.
+- **Layer 1: Flagship Main Site (`LipSync.pro`)**: Focuses on **EEAT, Brand Trust, & High Conversion**. Competitor articles are ingested purely as a **Knowledge Corpus**. The AI synthesizes multi-source data, enriches it with 2026 benchmarks & custom UI diagrams (`VisemeAlignmentDiagram`), and publishes high-authority Skyscraper content on a weekly drip schedule.
 - **Layer 2: Micro-CMS Satellite Network (PBN / Link Juice Generator)**: Ultra-lightweight static satellite sites (deployed on Cloudflare Pages/Vercel). Automatically crawls competitor blogs, runs light AI translation/rewriting, and injects contextual anchor backlinks pointing directly to `LipSync.pro`.
 
 ```mermaid
@@ -52,7 +52,7 @@ flowchart TD
    - Inputs: Competitor blog URLs or Japanese/French technical articles.
    - Extracts body text, performs LLM Skyscraper enhancement (adds 2026 model benchmarks, LipSync.pro tool CTAs, and interactive UI components).
 3. **Sequential Date Scheduler**:
-   - Assigns incremental `publishedAt` dates (1 article per day starting from `tomorrow`).
+   - Assigns incremental `publishedAt` dates (1 article per week while the `lip sync ai` topic cluster is being refined).
 
 ---
 

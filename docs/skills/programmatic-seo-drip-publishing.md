@@ -1,7 +1,7 @@
 # Programmatic SEO Drip Publishing & Growth Engine Skill
 
 ## 📌 Skill Overview & Purpose
-This Skill defines the architectural blueprint, strategic rationale, and implementation guidelines for the **Programmatic SEO Drip Publishing Engine**. It governs how LipSync.pro achieves continuous, hands-free organic search traffic by combining daily time-locked releases, GEO-targeted content, high-intent long-tail query answers, and dynamic sitemap integration.
+This Skill defines the architectural blueprint, strategic rationale, and implementation guidelines for the **Programmatic SEO Drip Publishing Engine**. It governs how LipSync.pro achieves continuous, hands-free organic search traffic by combining weekly time-locked releases, GEO-targeted content, high-intent long-tail query answers, and dynamic sitemap integration.
 
 ---
 
@@ -9,8 +9,8 @@ This Skill defines the architectural blueprint, strategic rationale, and impleme
 
 ### 1. Why Drip Publishing via `publishedAt` instead of Bulk Publishing?
 - **Problem**: Uploading hundreds of articles simultaneously triggers Google's *Scaled Content Abuse* algorithm, leading to domain penalty or index deprioritization.
-- **Solution**: Pre-generate structured JSON articles in `content/articles/*.json` with incremental `publishedAt` ISO dates (`YYYY-MM-DD`). The site filters articles dynamically (`publishedAt <= current_date`), unlocking exactly one new article per day at 00:00 UTC.
-- **SEO Impact**: Google and Bing crawlers establish a daily re-crawl routine, building steady domain authority (Domain Rank) and maximizing crawl budget efficiency.
+- **Solution**: Pre-generate structured JSON articles in `content/articles/*.json` with incremental `publishedAt` ISO dates (`YYYY-MM-DD`). The site filters articles dynamically (`publishedAt <= current_date`), unlocking exactly one new article per week while the core `lip sync ai` topic cluster is being refined.
+- **SEO Impact**: Google and Bing crawlers see a steadier, lower-risk publishing rhythm while the site gathers early Search Console signals.
 
 ### 2. Why File-Based JSON Content instead of Database/CMS?
 - **Problem**: Database-backed CMS platforms (WordPress, Strapi) add runtime latency, database connection pooling limits, and deployment complexity.
@@ -40,7 +40,7 @@ Every article MUST explicitly include these 5 structural pillars to rank on both
 │       ├── ai-lip-sync-tokyo-anime.json
 │       └── ai-lip-sync-wav2lip-alternative.json
 ├── scripts/
-│   └── generate-scheduled-articles.ts   # 365-day generator script
+│   └── generate-scheduled-articles.ts   # weekly generator script
 ├── docs/
 │   └── skills/
 │       └── programmatic-seo-drip-publishing.md # This skill doc
