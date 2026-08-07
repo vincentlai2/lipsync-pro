@@ -70,8 +70,13 @@ interface StatusResponse {
 
 const CREDITS_PER_TASK = 20;
 const SERVER_UPLOAD_FALLBACK_LIMIT = 4 * 1024 * 1024;
+const MIN_PROVIDER_VIDEO_DIMENSION = 640;
+const MAX_PROVIDER_VIDEO_DIMENSION = 2048;
 const MAX_CLIENT_VIDEO_FILE_SIZE = 300 * 1024 * 1024;
 const MAX_CLIENT_AUDIO_FILE_SIZE = 30 * 1024 * 1024;
+const MAX_CLIENT_IMAGE_FILE_SIZE = 10 * 1024 * 1024;
+const MIN_VIDEO_DURATION_SECONDS = 1;
+const MAX_VIDEO_DURATION_SECONDS = 120;
 const MIN_AUDIO_DURATION_SECONDS = 1;
 const MAX_AUDIO_DURATION_SECONDS = 60;
 
@@ -82,6 +87,41 @@ function formatDuration(seconds: number) {
   return minutes > 0
     ? `${minutes}m ${remainingSeconds.toString().padStart(2, '0')}s`
     : `${remainingSeconds}s`;
+}
+
+function getVideoMetadata(file: File) {
+  return new Promise<{
+    width: number;
+    height: number;
+    duration: number;
+  } | null>((resolve) => {
+    const url = URL.createObjectURL(file);
+    const video = document.createElement('video');
+
+    const cleanup = () => {
+      URL.revokeObjectURL(url);
+      video.removeAttribute('src');
+      video.load();
+    };
+
+    video.preload = 'metadata';
+    video.onloadedmetadata = () => {
+      const width = video.videoWidth;
+      const height = video.videoHeight;
+      const duration = video.duration;
+      cleanup();
+      resolve(
+        width && height && Number.isFinite(duration)
+          ? { width, height, duration }
+          : null
+      );
+    };
+    video.onerror = () => {
+      cleanup();
+      resolve(null);
+    };
+    video.src = url;
+  });
 }
 
 function getAudioMetadata(file: File) {
@@ -107,6 +147,28 @@ function getAudioMetadata(file: File) {
     };
     audio.src = url;
   });
+}
+
+function isProviderVideoResolutionSupported(width: number, height: number) {
+  return (
+    width >= MIN_PROVIDER_VIDEO_DIMENSION &&
+    height >= MIN_PROVIDER_VIDEO_DIMENSION &&
+    width <= MAX_PROVIDER_VIDEO_DIMENSION &&
+    height <= MAX_PROVIDER_VIDEO_DIMENSION
+  );
+}
+
+function isLikelyVideoFile(file: File) {
+  return (
+    file.type.startsWith('video/') ||
+    /\.(mp4|mov|avi|webm|mkv)$/i.test(file.name)
+  );
+}
+
+function isLikelyImageFile(file: File) {
+  return (
+    file.type.startsWith('image/') || /\.(jpe?g|png|webp)$/i.test(file.name)
+  );
 }
 
 async function uploadWav2LipFileViaServer(file: File, kind: 'video' | 'audio') {
@@ -316,15 +378,62 @@ export function Wav2LipUploader({
     }
   };
 
-  const handleVideoSelect = (file: File | null) => {
+  const handleVideoSelect = async (file: File | null) => {
     if (videoPreview) URL.revokeObjectURL(videoPreview);
     if (file) {
       if (file.size > MAX_CLIENT_VIDEO_FILE_SIZE) {
+        setVideoFile(null);
+        setVideoPreview('');
         setErrorMessage(
           `The selected file (${(file.size / (1024 * 1024)).toFixed(1)} MB) exceeds the 300 MB limit.`
         );
         return;
       }
+
+      if (isLikelyImageFile(file) && file.size > MAX_CLIENT_IMAGE_FILE_SIZE) {
+        setVideoFile(null);
+        setVideoPreview('');
+        setErrorMessage(
+          `The selected image (${(file.size / (1024 * 1024)).toFixed(1)} MB) exceeds the 10 MB limit. Please use a lighter JPG, PNG, or WEBP image.`
+        );
+        return;
+      }
+
+      if (isLikelyVideoFile(file)) {
+        const metadata = await getVideoMetadata(file);
+        if (!metadata) {
+          setVideoFile(null);
+          setVideoPreview('');
+          setErrorMessage(
+            'This video cannot be read before upload. Please use a short standard MP4/H.264 or MOV clip with a clearly visible face.'
+          );
+          return;
+        }
+
+        if (
+          !isProviderVideoResolutionSupported(metadata.width, metadata.height)
+        ) {
+          setVideoFile(null);
+          setVideoPreview('');
+          setErrorMessage(
+            `This video resolution (${metadata.width} x ${metadata.height} px) is not supported. Please use a video with both width and height between 640 and 2048 px.`
+          );
+          return;
+        }
+
+        if (
+          metadata.duration < MIN_VIDEO_DURATION_SECONDS ||
+          metadata.duration > MAX_VIDEO_DURATION_SECONDS
+        ) {
+          setVideoFile(null);
+          setVideoPreview('');
+          setErrorMessage(
+            `This video is ${formatDuration(metadata.duration)}. Please use a short video between ${MIN_VIDEO_DURATION_SECONDS} and ${MAX_VIDEO_DURATION_SECONDS} seconds.`
+          );
+          return;
+        }
+      }
+
       setVideoFile(file);
       setVideoPreview(URL.createObjectURL(file));
       setIsFaceDetectionError(false);
@@ -665,6 +774,7 @@ export function Wav2LipUploader({
           audioUrl: finalAudioUrl,
           ...(finalRefImageUrl ? { refImageUrl: finalRefImageUrl } : {}),
           modelMode: isImageInput ? 'emo' : 'videoretalk',
+          videoExtension: !isImageInput,
         }),
       });
       const data = await parseJsonResponse(response, 'Task creation failed');
