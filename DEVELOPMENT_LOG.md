@@ -612,3 +612,21 @@ Completed in this step:
 Result:
 
 - `lipsync.pro` now has 2 succeeded task records in production.
+
+## 2026-08-08 - Daily credits email subject interpolation fix
+
+Observed:
+
+- The daily credits email subject displayed `Your {amount} Lip Sync AI credits are ready...` while the email body correctly showed `20 free credits`.
+- The subject was read directly from `messages/en.json`, so next-intl placeholders were not interpolated.
+
+Completed:
+
+- Updated the shared mail template loader to translate email subjects with `createTranslator`, passing the same template context used by the body.
+- Added `amount` to the daily credits reminder context while keeping `creditsAmount` for the body template.
+
+Verification:
+
+- `pnpm exec tsc --noEmit` passed.
+- Direct subject render now outputs `Your 20 Lip Sync AI credits are ready - create a more natural video`.
+- `pnpm build` is currently blocked by external image-size fetch failures from `cdn.mksaas.com`, unrelated to this email fix.

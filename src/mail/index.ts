@@ -3,6 +3,7 @@ import { getMessagesForLocale } from '@/i18n/messages';
 import { routing } from '@/i18n/routing';
 import type { Locale, Messages } from 'next-intl';
 import type { ReactElement } from 'react';
+import { createTranslator } from 'use-intl/core';
 import { ResendProvider } from './provider/resend';
 import {
   type EmailTemplate,
@@ -133,10 +134,16 @@ export async function getTemplate<T extends EmailTemplate>({
     messages,
   });
 
-  // Get the subject from the messages
+  const templateMessages = messages.Mail[template as keyof Messages['Mail']];
+  const translateSubject = createTranslator({
+    locale,
+    messages,
+    namespace: `Mail.${template}`,
+  }) as unknown as (key: string, values?: Record<string, any>) => string;
+
   const subject =
-    'subject' in messages.Mail[template as keyof Messages['Mail']]
-      ? messages.Mail[template].subject
+    'subject' in templateMessages
+      ? translateSubject('subject', context)
       : '';
 
   const html = await renderEmailHtml(email);

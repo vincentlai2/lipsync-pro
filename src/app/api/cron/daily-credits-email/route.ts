@@ -97,6 +97,7 @@ export async function GET(request: Request) {
           locale: emailContext.locale,
           context: {
             userName: u.userName || emailContext.fallbackName,
+            amount: DAILY_CREDITS_EMAIL_AMOUNT,
             creditsAmount: DAILY_CREDITS_EMAIL_AMOUNT,
             studioUrl: emailContext.studioUrl,
           },
