@@ -104,6 +104,11 @@ export const auth = betterAuth({
       trustedProviders: ['google', 'github'],
     },
   },
+  advanced: {
+    ipAddress: {
+      ipAddressHeaders: ['cf-connecting-ip', 'x-real-ip', 'x-forwarded-for'],
+    },
+  },
   user: {
     // https://www.better-auth.com/docs/concepts/database#extending-core-schema
     additionalFields: {
