@@ -86,8 +86,9 @@ export const createCustomerPortal = async (
  */
 export const handleWebhookEvent = async (
   payload: string,
-  signature: string
+  signature: string,
+  siteId?: string
 ): Promise<void> => {
   const provider = getPaymentProvider();
-  await provider.handleWebhookEvent(payload, signature);
+  await provider.handleWebhookEvent(payload, signature, siteId);
 };

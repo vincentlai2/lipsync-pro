@@ -18,6 +18,7 @@ import { findPlanByPlanId, findPriceInPlan } from '@/lib/price-plan';
 import { sendNotification } from '@/notification/notification';
 import { desc, eq } from 'drizzle-orm';
 import { Stripe } from 'stripe';
+import { isForeignStripeEvent } from './stripe-event-ownership';
 import {
   type CheckoutResult,
   type CreateCheckoutParams,
@@ -427,7 +428,8 @@ export class StripeProvider implements PaymentProvider {
    */
   public async handleWebhookEvent(
     payload: string,
-    signature: string
+    signature: string,
+    siteId = 'lipsync.pro'
   ): Promise<void> {
     try {
       // Verify the event signature if webhook secret is available
@@ -438,6 +440,27 @@ export class StripeProvider implements PaymentProvider {
       );
       const eventType = event.type;
       console.log(`handle webhook event, type: ${eventType}`);
+
+      // A shared Stripe account sends events from other sites here too.
+      // Check only after signature verification, before API/DB calls or retries.
+      if (
+        (eventType.startsWith('customer.subscription.') ||
+          eventType.startsWith('invoice.') ||
+          eventType.startsWith('checkout.')) &&
+        isForeignStripeEvent(
+          event.data.object as
+            | Stripe.Subscription
+            | Stripe.Invoice
+            | Stripe.Checkout.Session,
+          siteId
+        )
+      ) {
+        console.info('Ignoring Stripe event for another site', {
+          eventId: event.id,
+          eventType,
+        });
+        return;
+      }
 
       // Handle subscription events
       if (eventType.startsWith('customer.subscription.')) {

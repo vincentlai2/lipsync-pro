@@ -1,3 +1,4 @@
+import { getTenantByHost } from '@/lib/tenant';
 import { handleWebhookEvent } from '@/payment';
 import { type NextRequest, NextResponse } from 'next/server';
 
@@ -32,7 +33,8 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     }
 
     // Process the webhook event
-    await handleWebhookEvent(payload, signature);
+    const tenant = getTenantByHost(req.nextUrl.hostname);
+    await handleWebhookEvent(payload, signature, tenant.siteId);
 
     // Return success
     return NextResponse.json({ received: true }, { status: 200 });
